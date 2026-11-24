@@ -13,6 +13,7 @@ import Debts from "./pages/Debts";
 import Recurring from "./pages/Recurring";
 import Settings from "./pages/Settings";
 import { Updater } from "./Updater";
+import { applyTheme } from "./theme";
 
 const PAGES = [
   ["dash", "◈", "Огляд"],
@@ -28,6 +29,7 @@ export type PageId = (typeof PAGES)[number][0];
 
 export default function App() {
   const { data, update, month, setMonth, saveState } = useStore();
+  applyTheme(data.settings.theme); // before children render so charts read the right CSS vars
   const [page, setPage] = useState<PageId>("dash");
   const [modal, setModal] = useState<null | "salary" | "expense" | "income">(null);
   const [version, setVersion] = useState("");

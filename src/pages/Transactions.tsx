@@ -4,6 +4,7 @@ import { DelBtn, Empty, Panel } from "../ui";
 import { fmt, monthFull, monthStats } from "../calc";
 import { SOURCES, TxModal } from "../TxModal";
 import type { Tx } from "../types";
+import { catColor, cssVar } from "../theme";
 
 type Filter = "all" | "income" | "expense" | "transfer";
 
@@ -31,13 +32,13 @@ export default function Transactions() {
   for (const t of list) byDay.set(t.date, [...(byDay.get(t.date) || []), t]);
 
   const label = (t: Tx) => {
-    if (t.type === "income") return { icon: "▲", name: SOURCES[t.source || "other"], color: "#39ff88" };
+    if (t.type === "income") return { icon: "▲", name: SOURCES[t.source || "other"], color: cssVar("--green") };
     if (t.type === "transfer") {
       const p = t.potId ? potMap[t.potId] : undefined;
-      return { icon: p?.icon ?? "⇄", name: `${t.amount < 0 ? "Зняття з" : "Поповнення:"} ${p?.name ?? "—"}`, color: "#f5ff3b" };
+      return { icon: p?.icon ?? "⇄", name: `${t.amount < 0 ? "Зняття з" : "Поповнення:"} ${p?.name ?? "—"}`, color: cssVar("--yellow") };
     }
     const c = t.categoryId ? catMap[t.categoryId] : undefined;
-    return { icon: c?.icon ?? "∗", name: c?.name ?? "Інше", color: c?.color ?? "#888" };
+    return { icon: c?.icon ?? "∗", name: c?.name ?? "Інше", color: catColor(c?.color) };
   };
 
   return (

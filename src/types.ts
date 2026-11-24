@@ -101,6 +101,7 @@ export interface Settings {
   cushionMonths: number;
   startBalance: number;
   rates: Rates;
+  theme?: string;
 }
 
 export interface Data {

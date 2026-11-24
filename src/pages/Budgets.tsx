@@ -3,6 +3,7 @@ import { useStore } from "../store";
 import { Bar, DelBtn, Field, Modal, Panel, num } from "../ui";
 import { avgMonthlyExpense, fmt, monthStats, shiftMonth, uid } from "../calc";
 import type { Bucket, Category } from "../types";
+import { catColor } from "../theme";
 
 const COLORS = ["#00f0ff", "#ff2bd6", "#39ff88", "#f5ff3b", "#ff8a3d", "#c03bff", "#4d9dff", "#ff3b5c", "#7cffcb"];
 
@@ -50,7 +51,7 @@ export default function Budgets() {
                 return (
                   <div key={c.id} className="budget-row">
                     <span className="b-name" onDoubleClick={() => setCatEdit(c)}>
-                      <span style={{ color: c.color, textShadow: `0 0 8px ${c.color}` }}>{c.icon}</span> {c.name}
+                      <span style={{ color: catColor(c.color), textShadow: `0 0 8px ${catColor(c.color)}` }}>{c.icon}</span> {c.name}
                     </span>
                     <span className="b-spent">{fmt(spent)}</span>
                     <div className="b-bar">

@@ -15,17 +15,14 @@ import {
   curMonth,
 } from "../calc";
 import type { PageId } from "../App";
+import { catColor, chartTheme } from "../theme";
 
-const tip = {
-  contentStyle: { background: "#0a0d1f", border: "1px solid #00f0ff55", borderRadius: 0, fontFamily: "JetBrains Mono" },
-  labelStyle: { color: "#00f0ff" },
-  itemStyle: { color: "#e6f6ff" },
-  cursor: { fill: "#00f0ff10" },
-};
 const kfmt = (v: number) => (Math.abs(v) >= 1000 ? `${Math.round(v / 1000)}k` : String(Math.round(v)));
 
 export default function Dashboard({ go }: { go: (p: PageId) => void }) {
   const { data, month } = useStore();
+  const ct = chartTheme();
+  const tip = ct.tip;
   const s = monthStats(data, month);
   const pf = portfolio(data);
   const cush = cushionInfo(data);
@@ -40,7 +37,7 @@ export default function Dashboard({ go }: { go: (p: PageId) => void }) {
 
   const catMap = Object.fromEntries(data.categories.map((c) => [c.id, c]));
   const pie = Object.entries(s.byCategory)
-    .map(([id, v]) => ({ name: catMap[id]?.name ?? "Інше", value: Math.round(v), color: catMap[id]?.color ?? "#888", icon: catMap[id]?.icon ?? "∗" }))
+    .map(([id, v]) => ({ name: catMap[id]?.name ?? "Інше", value: Math.round(v), color: catColor(catMap[id]?.color), icon: catMap[id]?.icon ?? "∗" }))
     .sort((a, b) => b.value - a.value);
 
   const savingsRate = s.income > 0 ? ((s.income - s.expense) / s.income) * 100 : 0;
@@ -131,12 +128,12 @@ export default function Dashboard({ go }: { go: (p: PageId) => void }) {
         <div style={{ height: 230 }}>
           <ResponsiveContainer>
             <BarChart data={history} barGap={2}>
-              <CartesianGrid stroke="#00f0ff14" vertical={false} />
-              <XAxis dataKey="m" tick={{ fill: "#6f7ca8", fontSize: 11 }} axisLine={{ stroke: "#00f0ff33" }} tickLine={false} />
-              <YAxis tickFormatter={kfmt} tick={{ fill: "#6f7ca8", fontSize: 11 }} axisLine={false} tickLine={false} width={40} />
+              <CartesianGrid stroke={ct.grid} vertical={false} />
+              <XAxis dataKey="m" tick={{ fill: ct.muted, fontSize: 11 }} axisLine={{ stroke: ct.line }} tickLine={false} />
+              <YAxis tickFormatter={kfmt} tick={{ fill: ct.muted, fontSize: 11 }} axisLine={false} tickLine={false} width={40} />
               <Tooltip {...tip} formatter={(v) => fmt(Number(v))} />
-              <RBar dataKey="Дохід" fill="#39ff88" radius={[2, 2, 0, 0]} />
-              <RBar dataKey="Витрати" fill="#ff2bd6" radius={[2, 2, 0, 0]} />
+              <RBar dataKey="Дохід" fill={ct.green} radius={[2, 2, 0, 0]} />
+              <RBar dataKey="Витрати" fill={ct.magenta} radius={[2, 2, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

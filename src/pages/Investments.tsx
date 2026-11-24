@@ -3,11 +3,13 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { useStore } from "../store";
 import { Bar, CurSelect, DelBtn, Empty, Field, Modal, Panel, Stat, num } from "../ui";
 import { daysBetween, depositNow, fmt, portfolio, toUAH, todayStr, uid } from "../calc";
+import { chartTheme } from "../theme";
 import type { CashFx, Cur, Deposit, Stock } from "../types";
 
 export default function Investments() {
   const { data, update } = useStore();
   const pf = portfolio(data);
+  const ct = chartTheme();
   const r = data.settings.rates;
   const [dep, setDep] = useState<Deposit | "new" | null>(null);
   const [stk, setStk] = useState<Stock | "new" | null>(null);
@@ -17,9 +19,9 @@ export default function Investments() {
   const pnl = pf.stocks - pf.stocksCost;
   const depIncome = data.deposits.reduce((a, d) => a + toUAH(depositNow(d).projected, d.currency, r), 0);
   const alloc = [
-    { name: "Депозити / ОВДП", value: Math.round(pf.deposits), color: "#f5ff3b" },
-    { name: "Акції / ETF", value: Math.round(pf.stocks), color: "#ff2bd6" },
-    { name: "Валюта", value: Math.round(pf.cash), color: "#00f0ff" },
+    { name: "Депозити / ОВДП", value: Math.round(pf.deposits), color: ct.yellow },
+    { name: "Акції / ETF", value: Math.round(pf.stocks), color: ct.magenta },
+    { name: "Валюта", value: Math.round(pf.cash), color: ct.cyan },
   ].filter((x) => x.value > 0);
 
   return (
@@ -41,7 +43,7 @@ export default function Investments() {
                     <Cell key={a.name} fill={a.color} />
                   ))}
                 </Pie>
-                <Tooltip contentStyle={{ background: "#0a0d1f", border: "1px solid #00f0ff55" }} itemStyle={{ color: "#e6f6ff" }} formatter={(v) => fmt(Number(v))} />
+                <Tooltip {...ct.tip} formatter={(v) => fmt(Number(v))} />
               </PieChart>
             </ResponsiveContainer>
           </div>

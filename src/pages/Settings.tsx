@@ -4,6 +4,7 @@ import { Field, Panel, num } from "../ui";
 import { dataLocation, defaultData, exportBackup, fetchNbuRates } from "../storage";
 import { fmt, todayStr } from "../calc";
 import type { Data } from "../types";
+import { THEMES } from "../theme";
 
 export default function Settings() {
   const { data, update, replace } = useStore();
@@ -37,6 +38,28 @@ export default function Settings() {
 
   return (
     <div className="grid">
+      <Panel title="ТЕМА ОФОРМЛЕННЯ" className="span-12" accent="magenta">
+        <div className="themes">
+          {THEMES.map((t) => {
+            const on = (s.theme || "neon") === t.id;
+            return (
+              <button key={t.id} className={`theme-card ${on ? "on" : ""}`} onClick={() => update((d) => void (d.settings.theme = t.id))}>
+                <div className="theme-prev" style={{ background: t.sw[0] }}>
+                  <i style={{ background: t.sw[1] }} />
+                  <i style={{ background: t.sw[2], width: "60%" }} />
+                  <i style={{ background: t.sw[3], width: "80%" }} />
+                </div>
+                <div className="theme-name">
+                  {on ? "● " : ""}
+                  {t.name}
+                </div>
+                <div className="theme-desc muted">{t.desc}</div>
+              </button>
+            );
+          })}
+        </div>
+      </Panel>
+
       <Panel title="ПРАВИЛО РОЗПОДІЛУ ЗП" className="span-6">
         <div className="form-grid three">
           <Field label="Потреби, %">
