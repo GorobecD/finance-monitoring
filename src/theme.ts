@@ -1,7 +1,9 @@
-export type ThemeId = "neon" | "synthwave" | "terminal" | "aurora" | "nord" | "minimal" | "paper";
+export type ThemeId = "blocks" | "miami" | "neon" | "synthwave" | "terminal" | "aurora" | "nord" | "minimal" | "paper";
 
 export const THEMES: { id: ThemeId; name: string; desc: string; sw: string[] }[] = [
   { id: "neon", name: "Неон", desc: "Кіберпанк, світіння, HUD", sw: ["#04050d", "#00f0ff", "#ff2bd6", "#39ff88"] },
+  { id: "miami", name: "Маямі", desc: "Неоновий захід, пальми", sw: ["#3a0f5e", "#ff3d8b", "#ffb547", "#2ee6d6"] },
+  { id: "blocks", name: "Блоки", desc: "Піксельний воксель-стиль", sw: ["#866043", "#55ff55", "#5ce1e6", "#ffff55"] },
   { id: "synthwave", name: "Синтвейв", desc: "Захід сонця 80-х, хром", sw: ["#2b0b55", "#ff3cac", "#ffd319", "#2de2e6"] },
   { id: "terminal", name: "Термінал", desc: "Зелений CRT-монітор", sw: ["#020a04", "#33ff66", "#ffb000", "#b6ffc8"] },
   { id: "aurora", name: "Аврора", desc: "Скляні панелі, сяйво", sw: ["#3b1d8f", "#6ee7f9", "#f0abfc", "#86efac"] },
