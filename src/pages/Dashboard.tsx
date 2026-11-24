@@ -7,6 +7,7 @@ import {
   debtLeft,
   fmt,
   monthShort,
+  monthFull,
   monthStats,
   pendingRecurring,
   portfolio,
@@ -75,6 +76,19 @@ export default function Dashboard({ go }: { go: (p: PageId) => void }) {
 
   return (
     <div className="grid dash">
+      <section className="hero span-12">
+        <div className="hero-inner">
+          <div className="hero-kicker">{monthFull(month)}</div>
+          <div className="hero-title">{fmt(pf.net)}</div>
+          <div className="hero-sub">
+            чистий капітал · вільні {fmt(pf.free)} · подушка {cush.months.toFixed(1)} з {data.settings.cushionMonths} міс
+          </div>
+        </div>
+        <div className="hero-badge">
+          <span>{s.income > 0 ? `${Math.round(savingsRate)}%` : "—"}</span>
+          <small>норма заощаджень</small>
+        </div>
+      </section>
       <div className="stats-row span-12">
         <Stat label="ДОХІД МІСЯЦЯ" value={fmt(s.income)} sub={`з них ЗП ${fmt(s.salary)}`} tone="green" />
         <Stat label="ВИТРАТИ" value={fmt(s.expense)} sub={`потреби ${fmt(s.byBucket.needs)} · бажання ${fmt(s.byBucket.wants)}`} tone="magenta" />

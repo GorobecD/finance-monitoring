@@ -4,6 +4,46 @@
    Original names & art; references via composition, type and texture only.
    ========================================================= */
 
+/* ---------- ПСИХО-ТАБІР (Psychonauts): wobbly hand-drawn cartoon camp ---------- */
+[data-theme="psycamp"] {
+  --bg: #2a1446; --bg2: #fff1d6; --panel: #fff1d6; --line: #2a1446;
+  --text: #2a1446; --muted: #7b5a8c;
+  --cyan: #13a89e; --magenta: #e83f7b; --yellow: #f08a00; --green: #5aa832; --red: #e03131;
+  --head: "Pangolin", "Comic Sans MS", cursive; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #fff1d6; --side-bg: #fff1d6; --top-bg: transparent; --input-bg: #fffaf0;
+  --modal-bg: #fff1d6; --overlay: rgba(26, 11, 46, .55);
+  --radius: 255px 18px 225px 18px / 18px 225px 18px 255px; --btn-r: 30px 8px 26px 10px / 10px 26px 8px 30px;
+  --modal-r: 255px 22px 225px 22px / 22px 225px 22px 255px; --misc-r: 20px 8px 18px 8px / 8px 18px 8px 20px; --bar-r: 14px 4px 14px 4px;
+  --panel-shadow: 6px 7px 0 #1a0b2e; --chart-grid: #ecd9b8;
+  color-scheme: light;
+}
+[data-theme="psycamp"] .panel, [data-theme="psycamp"] .stat { border: 4px solid #2a1446; }
+[data-theme="psycamp"] .panel:nth-child(3n) { transform: rotate(-.6deg); }
+[data-theme="psycamp"] .panel:nth-child(3n+1) { transform: rotate(.5deg); }
+[data-theme="psycamp"] .panel-head h3, [data-theme="psycamp"] .modal-head h3 { font: 400 24px var(--head); color: var(--acc); letter-spacing: 0; text-transform: none; -webkit-text-stroke: .5px #2a1446; }
+[data-theme="psycamp"] .stat { background: var(--acc); border-left-width: 4px; border-left-color: #2a1446; }
+[data-theme="psycamp"] .stat * { color: #fff1d6 !important; }
+[data-theme="psycamp"] .stat-value { font: 400 32px var(--head); -webkit-text-stroke: 1px #2a1446; }
+[data-theme="psycamp"] .side { border-right: 4px solid #2a1446; border-radius: 0 40px 0 0 / 0 300px 0 0; }
+[data-theme="psycamp"] .top { border-bottom: none; backdrop-filter: none; }
+[data-theme="psycamp"] .top .month-label, [data-theme="psycamp"] .top .icon-btn { color: #fff1d6; font: 400 22px var(--head); }
+[data-theme="psycamp"] .rates { background: #fff1d6; border: 3px solid #2a1446; }
+[data-theme="psycamp"] .logo { font: 400 30px var(--head); color: #e83f7b; transform: rotate(-4deg); -webkit-text-stroke: 1px #2a1446; }
+[data-theme="psycamp"] .logo em { color: #13a89e; }
+[data-theme="psycamp"] .btn { font: 400 18px var(--head); border: 3px solid #2a1446; box-shadow: 3px 4px 0 #2a1446; background: #fff1d6; color: #2a1446; }
+[data-theme="psycamp"] .btn.primary, [data-theme="psycamp"] .btn.green { background: var(--acc); color: #fff1d6; }
+[data-theme="psycamp"] .btn:hover:not(:disabled) { animation: wobble .4s ease-in-out; }
+@keyframes wobble { 25% { transform: rotate(-3deg) scale(1.04); } 75% { transform: rotate(3deg) scale(1.04); } }
+[data-theme="psycamp"] .bar { height: 16px; border: 3px solid #2a1446; background: #fffaf0; }
+[data-theme="psycamp"] .bar-fill { background: repeating-linear-gradient(-45deg, var(--acc) 0 9px, color-mix(in srgb, var(--acc) 65%, #fff) 9px 18px); }
+[data-theme="psycamp"] .nav-btn { font: 400 18px var(--head); color: #2a1446; }
+[data-theme="psycamp"] .nav-btn.on { background: #e83f7b; color: #fff1d6; border: 3px solid #2a1446; }
+[data-theme="psycamp"] .modal { border: 4px solid #2a1446; box-shadow: 10px 12px 0 #1a0b2e; }
+[data-theme="psycamp"] input:not([type=checkbox]), [data-theme="psycamp"] select { border: 3px solid #2a1446; }
+[data-theme="psycamp"] .ring-bg { stroke: #ecd9b8; stroke-width: 12; } [data-theme="psycamp"] .ring-fg { stroke: #e83f7b; stroke-width: 12; }
+[data-theme="psycamp"] .ring-label { color: #e83f7b; font-family: var(--head); }
+[data-theme="psycamp"] input[type=date]::-webkit-calendar-picker-indicator { filter: none; }
+
 /* ---------- СІМЕЙНА СПРАВА (Mafia): rainy 30s city, newspaper panels ---------- */
 [data-theme="family"] {
   --bg: #0b0e13; --bg2: #efe6d2; --panel: #efe6d2; --line: #1a1a1a;

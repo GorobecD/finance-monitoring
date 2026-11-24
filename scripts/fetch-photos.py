@@ -23,16 +23,19 @@ def fix(url):
 
 
 def get(url):
-    for i in range(5):
-        time.sleep(1.0)
-        try:
-            with urllib.request.urlopen(urllib.request.Request(fix(url), headers={"User-Agent": UA}), timeout=90) as r:
-                return r.read()
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and i < 4:
-                time.sleep(6 * (i + 1))
-                continue
-            raise
+    """curl with polite pacing + retry on 429 (more reliable than urllib through the proxy)."""
+    import subprocess
+    for i in range(6):
+        time.sleep(1.5)
+        r = subprocess.run(["curl", "-s", "-m", "120", "-A", UA, "-w", "\\n%{http_code}", fix(url)], capture_output=True)
+        body, _, code = r.stdout.rpartition(b"\n")
+        if code == b"200":
+            return body
+        if code == b"429":
+            time.sleep(8 * (i + 1))
+            continue
+        raise RuntimeError(f"HTTP {code.decode()} for {url}")
+    raise RuntimeError("too many 429")
 
 
 def plain(s):
@@ -49,8 +52,13 @@ def main():
     for theme, idx in picks.items():
         c = cands[theme][int(idx)]
         # ask Commons for a 2400px rendition instead of the (often huge) original
-        url = re.sub(r"/\d+px-", "/2400px-", c["thumb"]) if c["w"] > 2400 else c["url"]
-        im = Image.open(io.BytesIO(get(url))).convert("RGB")
+        # standard Commons thumbnail size (non-standard sizes are rejected with HTTP 400)
+        url = re.sub(r"/\d+px-", "/1920px-", c["thumb"]) if c["w"] > 1920 else c["url"]
+        try:
+            im = Image.open(io.BytesIO(get(url))).convert("RGB")
+        except Exception as e:  # noqa: BLE001
+            print(theme, "FAILED", e)
+            continue
         if im.width > 1920:
             im = im.resize((1920, round(im.height * 1920 / im.width)), Image.LANCZOS)
         dst = out / f"{theme}.webp"
