@@ -330,3 +330,4 @@ tr:hover .row-actions, .tx-row:hover .row-actions, .cash-row:hover .row-actions 
 @keyframes blink { 50% { opacity: .3; } }
 @keyframes flick { 0%, 100% { opacity: 1; } 45% { opacity: .6; } 50% { opacity: 1; } 52% { opacity: .4; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+.update-notes { white-space: pre-wrap; font: 12px/1.5 var(--mono); color: var(--muted); max-height: 220px; overflow: auto; margin: 12px 0 0; padding: 10px 12px; border: 1px solid var(--line); background: #03040bcc; }

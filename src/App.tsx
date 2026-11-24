@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getVersion } from "@tauri-apps/api/app";
 import { useStore } from "./store";
 import { fetchNbuRates } from "./storage";
 import { fmt, monthFull, portfolio, shiftMonth, curMonth, todayStr } from "./calc";
@@ -11,6 +12,7 @@ import Investments from "./pages/Investments";
 import Debts from "./pages/Debts";
 import Recurring from "./pages/Recurring";
 import Settings from "./pages/Settings";
+import { Updater } from "./Updater";
 
 const PAGES = [
   ["dash", "◈", "Огляд"],
@@ -28,6 +30,10 @@ export default function App() {
   const { data, update, month, setMonth, saveState } = useStore();
   const [page, setPage] = useState<PageId>("dash");
   const [modal, setModal] = useState<null | "salary" | "expense" | "income">(null);
+  const [version, setVersion] = useState("");
+  useEffect(() => {
+    if ("__TAURI_INTERNALS__" in window) getVersion().then(setVersion).catch(() => {});
+  }, []);
   const [ratesState, setRatesState] = useState<"idle" | "loading" | "error">("idle");
   const pf = portfolio(data);
 
@@ -89,6 +95,7 @@ export default function App() {
           <div className={`networth ${pf.net < 0 ? "neg" : ""}`}>{fmt(pf.net)}</div>
           <div className={`save-dot s-${saveState}`}>
             {saveState === "saved" ? "● синхр." : saveState === "saving" ? "◌ запис…" : "✕ помилка запису"}
+            {version && <span className="ver"> · v{version}</span>}
           </div>
         </div>
       </aside>
@@ -146,6 +153,7 @@ export default function App() {
       {modal === "salary" && <TxModal mode="income" source="salary" onClose={() => setModal(null)} />}
       {modal === "income" && <TxModal mode="income" source="bonus" onClose={() => setModal(null)} />}
       {modal === "expense" && <TxModal mode="expense" onClose={() => setModal(null)} />}
+      <Updater />
     </div>
   );
 }
