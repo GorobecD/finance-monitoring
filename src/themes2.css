@@ -56,28 +56,6 @@
 
 /* ================= ІГРОВІ ================= */
 
-/* ---------- КІБЕР-МІСТО: yellow glitch megacity ---------- */
-[data-theme="cybercity"] {
-  --bg: #0a0a0f; --bg2: #12121a; --panel: rgba(18, 18, 26, .9); --line: rgba(252, 238, 10, .3);
-  --text: #f2f2f2; --muted: #8b8b9a;
-  --cyan: #fcee0a; --magenta: #00f0ff; --yellow: #fcee0a; --green: #00ff9f; --red: #ff003c;
-  --head: "Russo One", "Arial Black", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
-  --cut: 18px; --glow: 12px; --on-acc: #0a0a0f; --side-bg: #0d0d13; --top-bg: #0a0a0fee;
-  --input-bg: #050508; --modal-bg: #12121a; --overlay: #000b; --grid-op: .5; --scan-op: .5;
-  --chart-grid: rgba(252, 238, 10, .08);
-}
-[data-theme="cybercity"] .bg-grid { background: linear-gradient(115deg, transparent 0 62%, rgba(252,238,10,.06) 62% 64%, transparent 64%), radial-gradient(ellipse at 100% 0%, rgba(255,0,60,.18), transparent 50%), #0a0a0f; }
-[data-theme="cybercity"] .panel { clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut)); }
-[data-theme="cybercity"] .panel::before { width: 90px; height: 4px; background: var(--yellow); box-shadow: none; left: var(--cut); }
-[data-theme="cybercity"] .panel-head h3 { font: 400 14px var(--head); letter-spacing: .14em; color: var(--yellow); text-shadow: 2px 0 0 #ff003c, -2px 0 0 #00f0ff; }
-[data-theme="cybercity"] .stat-value { font: 400 28px var(--head); text-shadow: 2px 0 0 #ff003c, -2px 0 0 #00f0ff; }
-[data-theme="cybercity"] .logo { font: 400 22px var(--head); color: var(--yellow); text-shadow: 3px 0 0 #ff003c, -3px 0 0 #00f0ff; animation: glitch 3s infinite steps(1); }
-[data-theme="cybercity"] .logo em { color: #fff; }
-[data-theme="cybercity"] .btn { font-family: var(--head); font-weight: 400; text-transform: uppercase; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
-[data-theme="cybercity"] .btn.primary { background: var(--yellow); color: #0a0a0f; }
-[data-theme="cybercity"] .nav-btn.on { color: var(--yellow); border-left-color: var(--yellow); background: linear-gradient(90deg, rgba(252,238,10,.16), transparent); }
-@keyframes glitch { 0%, 92%, 100% { transform: none; } 93% { transform: translate(2px, -1px) skewX(8deg); } 95% { transform: translate(-2px, 1px); } 97% { transform: skewX(-6deg); } }
-
 /* ---------- ПУСТКА: amber wrist-computer ---------- */
 [data-theme="wasteland"] {
   --bg: #140c00; --bg2: #1d1200; --panel: rgba(30, 18, 0, .85); --line: rgba(255, 176, 0, .35);
