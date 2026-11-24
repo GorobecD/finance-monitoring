@@ -17,11 +17,16 @@ UA = "NeonFinThemeBuilder/1.0 (open-source personal finance app; theme backgroun
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
+def fix(url):
+    """thumb.wikimedia.org serves the same paths as upload.wikimedia.org."""
+    return url.split("?")[0].replace("//thumb.wikimedia.org/", "//upload.wikimedia.org/")
+
+
 def get(url):
     for i in range(5):
         time.sleep(1.0)
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=90) as r:
+            with urllib.request.urlopen(urllib.request.Request(fix(url), headers={"User-Agent": UA}), timeout=90) as r:
                 return r.read()
         except urllib.error.HTTPError as e:
             if e.code == 429 and i < 4:

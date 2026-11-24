@@ -35,13 +35,18 @@ QUERIES = {
 }
 
 
+def fix(url):
+    """thumb.wikimedia.org serves the same paths as upload.wikimedia.org."""
+    return url.split("?")[0].replace("//thumb.wikimedia.org/", "//upload.wikimedia.org/")
+
+
 def get(url, tries=5):
     """Polite fetch: 1 req/sec, backoff on 429 (Wikimedia API etiquette)."""
     import time
     for i in range(tries):
         time.sleep(1.0)
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            req = urllib.request.Request(fix(url), headers={"User-Agent": UA})
             with urllib.request.urlopen(req, timeout=40) as r:
                 return r.read()
         except urllib.error.HTTPError as e:
