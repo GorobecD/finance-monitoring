@@ -20,28 +20,41 @@ jobs:
     runs-on: windows-latest
     env:
       VERSION: 1.0.${{ github.run_number }}
+      HAS_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY != '' }}
     steps:
+      - name: Signing key missing
+        if: env.HAS_KEY != 'true'
+        shell: bash
+        run: echo "::warning::Secret TAURI_SIGNING_PRIVATE_KEY is not set - release skipped. Add it in Settings > Secrets and variables > Actions."
+
       - uses: actions/checkout@v5
+        if: env.HAS_KEY == 'true'
 
       - uses: actions/setup-node@v5
+        if: env.HAS_KEY == 'true'
         with:
           node-version: 22
           cache: npm
 
       - uses: dtolnay/rust-toolchain@stable
+        if: env.HAS_KEY == 'true'
 
       - uses: Swatinem/rust-cache@v2
+        if: env.HAS_KEY == 'true'
         with:
           workspaces: src-tauri
 
       - run: npm ci
+        if: env.HAS_KEY == 'true'
 
       - name: Set version
+        if: env.HAS_KEY == 'true'
         shell: bash
         run: |
           node -e "const f='src-tauri/tauri.conf.json',fs=require('fs'),c=JSON.parse(fs.readFileSync(f));c.version=process.env.VERSION;fs.writeFileSync(f,JSON.stringify(c,null,2))"
 
       - name: Build, sign and publish release
+        if: env.HAS_KEY == 'true'
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
