@@ -1,0 +1,417 @@
+/* =========================================================
+   THEMES vol.3 — "за мотивами" games & films.
+   Original names, palette/mood references only; no logos, characters or art.
+   ========================================================= */
+
+/* ---------- ПСИХО-ТАБІР (Psychonauts): psychedelic camp, wobbly ---------- */
+[data-theme="psycamp"] {
+  --bg: #2a1446; --bg2: #3a1d5e; --panel: #3d1f63; --line: #ff9f1c;
+  --text: #fff4e0; --muted: #c9a7e8;
+  --cyan: #2ec4b6; --magenta: #ff5fa2; --yellow: #ffbf1f; --green: #9be564; --red: #ff4f4f;
+  --head: "Rubik Mono One", "Arial Black", sans-serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #2a1446; --side-bg: #24103d; --top-bg: #2a1446ee; --input-bg: #24103d;
+  --modal-bg: #3d1f63; --overlay: rgba(20, 8, 36, .6);
+  --radius: 22px 8px 22px 8px; --btn-r: 14px 4px 14px 4px; --modal-r: 26px 10px; --misc-r: 14px 6px;
+  --panel-shadow: 5px 5px 0 #1a0b2e; --chart-grid: rgba(255, 159, 28, .12);
+}
+[data-theme="psycamp"] .bg-grid { background: repeating-conic-gradient(from 0deg at 70% 40%, #2a1446 0 10deg, #34195a 10deg 20deg), #2a1446; }
+[data-theme="psycamp"] .bg-grid::after { opacity: 1; mask-image: none; background: radial-gradient(circle at 70% 40%, transparent 0 15%, #2a1446 60%); }
+[data-theme="psycamp"] .panel { border: 3px solid var(--acc); }
+[data-theme="psycamp"] .panel:nth-child(odd) { transform: rotate(-.4deg); }
+[data-theme="psycamp"] .panel:nth-child(even) { transform: rotate(.4deg); }
+[data-theme="psycamp"] .panel-head h3 { font: 400 13px var(--head); color: var(--yellow); letter-spacing: .02em; }
+[data-theme="psycamp"] .stat { border: 3px solid var(--acc); }
+[data-theme="psycamp"] .stat-value { font: 400 24px var(--head); }
+[data-theme="psycamp"] .logo { font: 400 18px var(--head); color: var(--yellow); transform: rotate(-3deg); }
+[data-theme="psycamp"] .logo em { color: var(--magenta); }
+[data-theme="psycamp"] .btn { border-width: 3px; font-weight: 800; }
+[data-theme="psycamp"] .btn.primary, [data-theme="psycamp"] .btn.green { background: var(--acc); color: var(--on-acc); }
+[data-theme="psycamp"] .bar { height: 12px; border: 2px solid #1a0b2e; }
+[data-theme="psycamp"] .bar-fill { background: repeating-linear-gradient(-45deg, var(--acc) 0 8px, color-mix(in srgb, var(--acc) 70%, #fff) 8px 16px); }
+
+/* ---------- ЦЕГЛИНКИ (LEGO): plastic bricks & studs ---------- */
+[data-theme="bricks"] {
+  --bg: #4b9f4a; --bg2: #ffffff; --panel: #ffffff; --line: #d6d6d6;
+  --text: #1b1b1b; --muted: #5d5d5d;
+  --cyan: #0055bf; --magenta: #c91a09; --yellow: #f2cd37; --green: #237841; --red: #c91a09;
+  --head: "Rubik Mono One", "Arial Black", sans-serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #ffffff; --side-bg: #f2cd37; --top-bg: #ffffff; --input-bg: #ffffff;
+  --modal-bg: #ffffff; --overlay: rgba(0,0,0,.35);
+  --radius: 6px; --btn-r: 6px; --modal-r: 8px; --misc-r: 6px; --bar-r: 4px;
+  --stud: radial-gradient(circle at 45% 40%, rgba(255,255,255,.55) 0 3px, transparent 4px), radial-gradient(circle, rgba(0,0,0,.18) 0 8px, transparent 9px);
+  --panel-shadow: 0 4px 0 rgba(0,0,0,.25); --chart-grid: #eeeeee;
+  color-scheme: light;
+}
+[data-theme="bricks"] .bg-grid { background: radial-gradient(circle at 45% 40%, rgba(255,255,255,.35) 0 3px, transparent 4px) 0 0 / 28px 28px, radial-gradient(circle, rgba(0,0,0,.15) 0 9px, transparent 10px) 0 0 / 28px 28px, #4b9f4a; }
+[data-theme="bricks"] .panel { border: none; padding-top: 30px; position: relative; overflow: visible; }
+[data-theme="bricks"] .panel::before { display: block; content: ""; position: absolute; left: 14px; right: 14px; top: -9px; height: 12px; width: auto; box-shadow: none;
+  background: radial-gradient(ellipse 10px 7px at 50% 60%, var(--acc) 0 9px, transparent 10px) 0 0 / 30px 12px repeat-x; filter: drop-shadow(0 -1px 0 rgba(255,255,255,.4)); }
+[data-theme="bricks"] .panel { background: var(--panel); box-shadow: inset 0 -4px 0 rgba(0,0,0,.08), 0 4px 0 rgba(0,0,0,.25); border-top: 6px solid var(--acc); }
+[data-theme="bricks"] .panel-head h3 { font: 400 13px var(--head); color: var(--acc); letter-spacing: .02em; }
+[data-theme="bricks"] .stat { background: var(--acc); border: none; box-shadow: inset 0 -5px 0 rgba(0,0,0,.2), inset 0 3px 0 rgba(255,255,255,.25); }
+[data-theme="bricks"] .stat * { color: #fff !important; }
+[data-theme="bricks"] .stat.tone-yellow * { color: #1b1b1b !important; }
+[data-theme="bricks"] .stat-value { font: 400 24px var(--head); }
+[data-theme="bricks"] .logo { font: 400 18px var(--head); color: #fff; background: #c91a09; padding: 6px 10px; border-radius: 6px; box-shadow: inset 0 -3px 0 rgba(0,0,0,.25); }
+[data-theme="bricks"] .logo em { color: #f2cd37; }
+[data-theme="bricks"] .side-foot .networth { color: #1b1b1b; }
+[data-theme="bricks"] .btn { border: none; color: #fff; background: var(--acc); box-shadow: inset 0 -4px 0 rgba(0,0,0,.25), inset 0 2px 0 rgba(255,255,255,.3); font-weight: 800; }
+[data-theme="bricks"] .btn.ghost { background: #e4e4e4; color: #1b1b1b; }
+[data-theme="bricks"] .btn:active { box-shadow: inset 0 2px 0 rgba(0,0,0,.25); transform: translateY(2px); }
+[data-theme="bricks"] .bar { height: 14px; background: #e4e4e4; box-shadow: inset 0 2px 0 rgba(0,0,0,.1); }
+[data-theme="bricks"] .bar-fill { background: radial-gradient(circle at 50% 45%, rgba(255,255,255,.45) 0 2px, transparent 3px) 0 0 / 14px 14px, var(--acc); box-shadow: inset 0 -3px 0 rgba(0,0,0,.2); }
+[data-theme="bricks"] .nav-btn { color: #1b1b1b; font-weight: 700; }
+[data-theme="bricks"] .nav-btn.on { background: #fff; color: #1b1b1b; box-shadow: inset 0 -3px 0 rgba(0,0,0,.15); }
+[data-theme="bricks"] .modal { border: none; border-top: 8px solid #c91a09; }
+[data-theme="bricks"] input[type=date]::-webkit-calendar-picker-indicator { filter: none; }
+
+/* ---------- СІМЕЙНА СПРАВА (Mafia): 1930s noir, art deco ---------- */
+[data-theme="family"] {
+  --bg: #0e0c0a; --bg2: #1a1612; --panel: rgba(24, 20, 16, .92); --line: #5a4a32;
+  --text: #ede3cf; --muted: #9a8c72;
+  --cyan: #c8a96a; --magenta: #9e2b25; --yellow: #e6cf98; --green: #7d8f6a; --red: #b8342c;
+  --head: "Cormorant Garamond", Georgia, serif; --body: "IBM Plex Mono", Consolas, monospace;
+  --on-acc: #0e0c0a; --side-bg: #0b0907; --top-bg: #0e0c0aee; --input-bg: #0b0907;
+  --modal-bg: #1a1612; --overlay: rgba(0,0,0,.7); --radius: 0px; --btn-r: 0px; --modal-r: 0px; --misc-r: 0px; --bar-r: 0px;
+  --chart-grid: #2a241b;
+}
+[data-theme="family"] .bg-grid { background: repeating-linear-gradient(90deg, transparent 0 60px, rgba(200,169,106,.04) 60px 61px), radial-gradient(ellipse at 50% 0%, #2a2117, #0e0c0a 65%); filter: sepia(.3); }
+[data-theme="family"] .bg-grid::after { opacity: .5; mask-image: none; background: repeating-radial-gradient(circle at 30% 40%, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
+[data-theme="family"] .panel { border: 1px solid var(--line); outline: 1px solid var(--line); outline-offset: -6px; padding: 22px; }
+[data-theme="family"] .panel-head h3 { font: 700 20px var(--head); letter-spacing: .25em; color: var(--cyan); text-align: center; width: 100%; }
+[data-theme="family"] .panel-head h3::before, [data-theme="family"] .panel-head h3::after { content: " ◆ "; color: var(--line); font-size: 11px; vertical-align: 3px; }
+[data-theme="family"] .stat-value { font: 700 30px var(--head); color: var(--yellow); }
+[data-theme="family"] .logo { font: 700 22px var(--head); letter-spacing: .3em; color: var(--cyan); }
+[data-theme="family"] .logo em { color: var(--magenta); }
+[data-theme="family"] .btn { letter-spacing: .15em; text-transform: uppercase; font-size: 11px; }
+[data-theme="family"] .btn.primary { background: var(--magenta); color: #ede3cf; border-color: var(--magenta); }
+[data-theme="family"] .bar { height: 4px; }
+
+/* ---------- КОЛОНІЯ (Oxygen Not Included): cartoon underground base ---------- */
+[data-theme="colony"] {
+  --bg: #3b2a22; --bg2: #24344a; --panel: #2b3d55; --line: #4f6d8f;
+  --text: #f2f6fa; --muted: #9db3cc;
+  --cyan: #5fd3c6; --magenta: #f5a54a; --yellow: #ffd54a; --green: #8bd65a; --red: #ef5a5a;
+  --head: "Nunito", "Segoe UI", sans-serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #1c2838; --side-bg: #1f2d40; --top-bg: #24344aee; --input-bg: #1c2838;
+  --modal-bg: #2b3d55; --overlay: rgba(20, 14, 10, .55);
+  --radius: 14px; --btn-r: 10px; --modal-r: 16px;
+  --panel-shadow: 0 0 0 3px #1c2838, 0 6px 0 3px #1c2838; --chart-grid: rgba(255,255,255,.07);
+}
+[data-theme="colony"] .bg-grid { background:
+  repeating-linear-gradient(176deg, #4a3529 0 38px, #5c4332 38px 70px, #3b2a22 70px 96px, #6b5444 96px 112px, #2f221b 112px 150px); }
+[data-theme="colony"] .bg-grid::after { opacity: 1; mask-image: none; background: radial-gradient(circle at 20% 30%, rgba(95,211,198,.25) 0 6px, transparent 8px) 0 0 / 220px 180px, radial-gradient(circle at 70% 70%, rgba(139,214,90,.2) 0 5px, transparent 7px) 0 0 / 260px 200px; }
+[data-theme="colony"] .panel-head { background: #1c2838; margin: -16px -18px 14px; padding: 10px 18px; border-radius: 14px 14px 0 0; }
+[data-theme="colony"] .panel-head h3 { font: 800 14px var(--head); letter-spacing: .04em; text-transform: none; color: var(--yellow); }
+[data-theme="colony"] .stat-value { font: 800 28px var(--head); }
+[data-theme="colony"] .btn { font-weight: 800; border-width: 2px; }
+[data-theme="colony"] .btn.primary, [data-theme="colony"] .btn.green { background: var(--acc); color: var(--on-acc); box-shadow: 0 3px 0 #1c2838; }
+[data-theme="colony"] .bar { height: 12px; background: #1c2838; }
+[data-theme="colony"] .bar-fill { box-shadow: inset 0 3px 0 rgba(255,255,255,.3); }
+[data-theme="colony"] .logo { font: 800 22px var(--head); color: var(--yellow); }
+
+/* ---------- ГЛИБОКОВОДНА БАЗА (Subnautica): PDA hologram, bioluminescence ---------- */
+[data-theme="abyss"] {
+  --bg: #01131f; --bg2: #032336; --panel: rgba(3, 40, 58, .55); --line: rgba(110, 231, 255, .35);
+  --text: #dffbff; --muted: #6fb7c9;
+  --cyan: #6ee7ff; --magenta: #b388ff; --yellow: #ffe28a; --green: #6dffb0; --red: #ff7a8a;
+  --head: "Exo 2", "Segoe UI", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --cut: 0px; --glow: 14px; --on-acc: #01131f; --side-bg: rgba(1, 19, 31, .8); --top-bg: rgba(1, 19, 31, .6);
+  --input-bg: rgba(0, 10, 18, .6); --modal-bg: rgba(3, 35, 54, .92); --overlay: rgba(0, 6, 12, .6);
+  --grid-op: 0; --scan-op: 0; --chart-grid: rgba(110, 231, 255, .1);
+}
+[data-theme="abyss"] .bg-grid { background:
+  radial-gradient(circle at 12% 80%, rgba(109,255,176,.5) 0 2px, transparent 4px), radial-gradient(circle at 16% 76%, rgba(179,136,255,.5) 0 3px, transparent 5px),
+  radial-gradient(circle at 88% 70%, rgba(110,231,255,.45) 0 2px, transparent 4px), radial-gradient(circle at 60% 90%, rgba(179,136,255,.4) 0 2px, transparent 4px),
+  radial-gradient(ellipse 30% 60% at 85% 100%, rgba(179,136,255,.18), transparent 70%), radial-gradient(ellipse 30% 50% at 10% 100%, rgba(109,255,176,.14), transparent 70%),
+  linear-gradient(180deg, #05405a 0%, #032336 35%, #01131f 75%); }
+[data-theme="abyss"] .panel { clip-path: none; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(160deg, rgba(110,231,255,.10), rgba(3,40,58,.5)); backdrop-filter: blur(10px); box-shadow: inset 0 0 30px rgba(110,231,255,.08); }
+[data-theme="abyss"] .panel::before { width: 40%; left: 30%; height: 2px; top: 0; border-radius: 2px; }
+[data-theme="abyss"] .stat { border-radius: 14px; border: 1px solid var(--line); background: rgba(3,40,58,.5); backdrop-filter: blur(8px); }
+[data-theme="abyss"] .stat::after { display: none; }
+[data-theme="abyss"] .panel-head h3 { font: 600 13px var(--head); letter-spacing: .2em; }
+[data-theme="abyss"] .stat-value { font: 700 28px var(--head); }
+[data-theme="abyss"] .btn { clip-path: none; border-radius: 99px; }
+[data-theme="abyss"] .modal { clip-path: none; border-radius: 20px; }
+[data-theme="abyss"] .bar { border-radius: 99px; } [data-theme="abyss"] .bar-fill { border-radius: 99px; }
+[data-theme="abyss"] .logo { font: 700 20px var(--head); letter-spacing: .15em; }
+
+/* ---------- КАРАНТИН (Dying Light): dusk vs UV night, infection ---------- */
+[data-theme="quarantine"] {
+  --bg: #120f14; --bg2: #1c171c; --panel: rgba(26, 20, 24, .88); --line: #4a3a2e;
+  --text: #f1e7dc; --muted: #a39080;
+  --cyan: #ff9a2e; --magenta: #8f5cff; --yellow: #ffcf4a; --green: #8fd14f; --red: #e0362c;
+  --head: "Oswald", "Arial Narrow", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --on-acc: #120f14; --side-bg: #0e0b0f; --top-bg: #120f14ee; --input-bg: #0e0b0f;
+  --modal-bg: #1c171c; --overlay: rgba(0,0,0,.7); --radius: 2px; --btn-r: 2px; --modal-r: 2px; --misc-r: 2px; --bar-r: 0px;
+  --chart-grid: #2a2226;
+}
+[data-theme="quarantine"] .bg-grid { background:
+  linear-gradient(180deg, transparent 0 62%, #0e0b0f 62%) ,
+  linear-gradient(90deg, #0e0b0f 0 4%, transparent 4% 7%, #0e0b0f 7% 13%, transparent 13% 15%, #0e0b0f 15% 22%, transparent 22% 26%, #0e0b0f 26% 30%, transparent 30% 37%, #0e0b0f 37% 45%, transparent 45% 48%, #0e0b0f 48% 55%, transparent 55% 60%, #0e0b0f 60% 68%, transparent 68% 72%, #0e0b0f 72% 80%, transparent 80% 83%, #0e0b0f 83% 92%, transparent 92% 95%, #0e0b0f 95%) 0 52% / 100% 18% no-repeat,
+  linear-gradient(180deg, #2a1a3a 0%, #8a3d2e 38%, #ff9a2e 58%, #3a1a1a 62%); }
+[data-theme="quarantine"] .panel { border: 1px solid var(--line); border-left: 4px solid var(--acc); }
+[data-theme="quarantine"] .panel-head h3 { font: 700 18px var(--head); letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+[data-theme="quarantine"] .panel-head h3::before { content: "▲ "; color: var(--acc); font-size: 12px; vertical-align: 2px; }
+[data-theme="quarantine"] .stat-value { font: 700 32px var(--head); }
+[data-theme="quarantine"] .logo { font: 700 24px var(--head); letter-spacing: .1em; }
+[data-theme="quarantine"] .logo em { color: var(--red); }
+[data-theme="quarantine"] .btn { font: 700 13px var(--head); letter-spacing: .1em; text-transform: uppercase; }
+[data-theme="quarantine"] .btn.primary { background: var(--cyan); color: #120f14; }
+[data-theme="quarantine"] .bar { height: 6px; background: #2a2226; }
+[data-theme="quarantine"] .bar-fill { background: linear-gradient(90deg, color-mix(in srgb, var(--acc) 60%, #000), var(--acc)); }
+[data-theme="quarantine"] .nav-btn.on { background: linear-gradient(90deg, rgba(143,92,255,.3), transparent); color: #fff; box-shadow: inset 3px 0 0 var(--magenta); border-radius: 0; }
+
+/* ---------- ЛАБОРАТОРІЯ ТЕСТІВ (Portal): white panels, blue/orange rings ---------- */
+[data-theme="testlab"] {
+  --bg: #e9ecef; --bg2: #ffffff; --panel: #ffffff; --line: #d3d8de;
+  --text: #22262b; --muted: #7a828c;
+  --cyan: #1e90ff; --magenta: #ff8c1a; --yellow: #e6a100; --green: #2bb673; --red: #e5383b;
+  --head: "Exo 2", "Segoe UI", sans-serif; --body: "Manrope", "Segoe UI", sans-serif;
+  --on-acc: #ffffff; --side-bg: #f7f8fa; --top-bg: #ffffffdd; --input-bg: #f4f6f8;
+  --modal-bg: #ffffff; --overlay: rgba(34, 38, 43, .35);
+  --radius: 3px; --btn-r: 2px; --modal-r: 4px; --misc-r: 2px; --bar-r: 0px;
+  --panel-shadow: 0 1px 0 #cfd5db, 0 6px 18px rgba(30, 40, 50, .06); --chart-grid: #eceff2;
+  color-scheme: light;
+}
+[data-theme="testlab"] .bg-grid { background:
+  radial-gradient(ellipse 60px 110px at 6% 55%, transparent 0 46px, #1e90ff 48px 56px, rgba(30,144,255,.25) 60px, transparent 70px),
+  radial-gradient(ellipse 60px 110px at 97% 30%, transparent 0 46px, #ff8c1a 48px 56px, rgba(255,140,26,.25) 60px, transparent 70px),
+  linear-gradient(#d7dce1 2px, transparent 2px) 0 0 / 120px 120px, linear-gradient(90deg, #d7dce1 2px, transparent 2px) 0 0 / 120px 120px, #e9ecef; }
+[data-theme="testlab"] .panel-head h3 { font: 700 13px var(--head); letter-spacing: .14em; color: var(--text); }
+[data-theme="testlab"] .panel-head h3::before { content: "◉ "; color: var(--cyan); }
+[data-theme="testlab"] .panel.accent-magenta .panel-head h3::before, [data-theme="testlab"] .panel.accent-yellow .panel-head h3::before, [data-theme="testlab"] .panel.accent-red .panel-head h3::before { color: var(--magenta); }
+[data-theme="testlab"] .stat-value { font: 700 30px var(--head); color: var(--text); }
+[data-theme="testlab"] .stat { border-left: 4px solid var(--acc); }
+[data-theme="testlab"] .logo { font: 700 20px var(--head); color: var(--text); letter-spacing: .08em; }
+[data-theme="testlab"] .logo em { color: var(--magenta); }
+[data-theme="testlab"] .btn.primary { background: var(--cyan); color: #fff; }
+[data-theme="testlab"] .btn.green { background: var(--magenta); color: #fff; border-color: var(--magenta); --acc: var(--magenta); }
+[data-theme="testlab"] .bar { height: 6px; background: #e3e7eb; }
+[data-theme="testlab"] input[type=date]::-webkit-calendar-picker-indicator { filter: none; }
+
+/* ---------- ПЕТЛЯ ЧАСУ (Outer Wilds): campfire, cozy space, supernova ---------- */
+[data-theme="timeloop"] {
+  --bg: #0b1026; --bg2: #151b3b; --panel: rgba(21, 27, 59, .82); --line: #3a3f6b;
+  --text: #f5ead6; --muted: #a39bb8;
+  --cyan: #ffa64d; --magenta: #8fb8ff; --yellow: #ffd27a; --green: #9fd8a0; --red: #ff6b5a;
+  --head: "Lora", Georgia, serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #0b1026; --side-bg: rgba(11, 16, 38, .9); --top-bg: rgba(11, 16, 38, .7);
+  --input-bg: #0b1026; --modal-bg: #151b3b; --overlay: rgba(5, 8, 20, .6);
+  --radius: 10px; --btn-r: 8px; --panel-shadow: 0 8px 24px rgba(0,0,0,.35); --chart-grid: rgba(255, 210, 122, .08);
+}
+[data-theme="timeloop"] .bg-grid { background:
+  radial-gradient(1px 1px at 30px 40px, #fff, transparent), radial-gradient(1px 1px at 150px 120px, #ffe, transparent), radial-gradient(1.5px 1.5px at 240px 60px, #fff, transparent), radial-gradient(1px 1px at 90px 220px, #cdf, transparent),
+  radial-gradient(circle at 92% 12%, #9fd0ff 0 1.2%, rgba(140,190,255,.35) 2.5%, transparent 9%),
+  radial-gradient(ellipse 50% 30% at 50% 110%, rgba(255,166,77,.35), transparent 70%),
+  linear-gradient(180deg, #0b1026, #1a1d45 80%, #2a2042);
+  background-size: 280px 280px, 280px 280px, 280px 280px, 280px 280px, auto, auto, auto; }
+[data-theme="timeloop"] .panel-head h3 { font: 700 17px var(--head); text-transform: none; letter-spacing: .02em; color: var(--yellow); }
+[data-theme="timeloop"] .panel-head h3::before { content: "✺ "; color: var(--cyan); }
+[data-theme="timeloop"] .stat-value { font: 700 28px var(--head); }
+[data-theme="timeloop"] .logo { font: 700 22px var(--head); color: var(--yellow); }
+[data-theme="timeloop"] .logo em { color: var(--magenta); }
+[data-theme="timeloop"] .btn.primary { background: var(--cyan); color: var(--on-acc); }
+[data-theme="timeloop"] .bar-fill { background: linear-gradient(90deg, var(--acc), color-mix(in srgb, var(--acc) 50%, #fff)); }
+[data-theme="timeloop"] .ring-fg { stroke: var(--cyan); }
+
+/* ---------- ДАЛЕКА ГАЛАКТИКА (Star Wars): space, crawl yellow, lightsaber bars ---------- */
+[data-theme="galaxy"] {
+  --bg: #000000; --bg2: #0a0a12; --panel: rgba(8, 8, 14, .82); --line: rgba(255, 232, 31, .25);
+  --text: #f0f0f0; --muted: #8a8a9a;
+  --cyan: #ffe81f; --magenta: #ff2a2a; --yellow: #ffe81f; --green: #3aff3a; --red: #ff2a2a;
+  --head: "Russo One", "Arial Black", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --cut: 0px; --glow: 14px; --on-acc: #000; --side-bg: rgba(0, 0, 0, .85); --top-bg: rgba(0, 0, 0, .7);
+  --input-bg: #000; --modal-bg: #0a0a12; --overlay: rgba(0,0,0,.75); --grid-op: 0; --scan-op: 0;
+  --chart-grid: rgba(255, 232, 31, .08);
+  --saber-blue: #2e9bff;
+}
+[data-theme="galaxy"] .bg-grid { background:
+  radial-gradient(1px 1px at 20px 30px, #fff, transparent), radial-gradient(1px 1px at 110px 90px, #fff, transparent), radial-gradient(1.5px 1.5px at 190px 150px, #fff, transparent),
+  radial-gradient(1px 1px at 70px 210px, #fff, transparent), radial-gradient(1px 1px at 230px 250px, #ddf, transparent), #000;
+  background-size: 260px 260px; }
+[data-theme="galaxy"] .panel { clip-path: none; border: 1px solid var(--line); background: var(--panel); }
+[data-theme="galaxy"] .panel::before { display: none; }
+[data-theme="galaxy"] .panel-head h3 { font: 400 15px var(--head); color: var(--yellow); letter-spacing: .18em; }
+[data-theme="galaxy"] .stat { border: 1px solid var(--line); }
+[data-theme="galaxy"] .stat-value { font: 400 28px var(--head); }
+[data-theme="galaxy"] .logo { font: 400 20px var(--head); color: var(--yellow); letter-spacing: .2em; text-shadow: none; -webkit-text-stroke: 1px #000; }
+[data-theme="galaxy"] .logo em { color: #fff; }
+[data-theme="galaxy"] .logo-mark { display: none; }
+[data-theme="galaxy"] .btn { clip-path: none; border-radius: 2px; font-family: var(--head); font-weight: 400; letter-spacing: .1em; }
+[data-theme="galaxy"] .modal { clip-path: none; }
+/* lightsaber: hilt + white core + coloured glow */
+[data-theme="galaxy"] .bar { height: 8px; overflow: visible; background: linear-gradient(90deg, #555 0 14px, #999 14px 16px, #444 16px 22px, transparent 22px); border-radius: 0; }
+[data-theme="galaxy"] .bar-fill { position: relative; left: 22px; max-width: calc(100% - 22px); height: 4px; margin-top: 2px; border-radius: 0 4px 4px 0; background: #fff; box-shadow: 0 0 4px 2px var(--acc), 0 0 12px 3px var(--acc); }
+[data-theme="galaxy"] .bar-fill.tone-cyan { --acc: var(--saber-blue); }
+
+/* ---------- МАШИНА ЧАСУ (Back to the Future): time circuits, steel, flames ---------- */
+[data-theme="timecar"] {
+  --bg: #0d0d0f; --bg2: #1b1c1f; --panel: #232428; --line: #5b5e66;
+  --text: #f0f0f0; --muted: #a0a3aa;
+  --cyan: #ff3b1f; --magenta: #ff9d00; --yellow: #ffd000; --green: #33ff55; --red: #ff2020;
+  --head: "Russo One", "Arial Black", sans-serif; --body: "IBM Plex Mono", Consolas, monospace;
+  --on-acc: #0d0d0f; --side-bg: #141518; --top-bg: #0d0d0fee; --input-bg: #000;
+  --modal-bg: #232428; --overlay: rgba(0,0,0,.7);
+  --radius: 4px; --btn-r: 4px; --modal-r: 6px; --bar-r: 2px;
+  --steel: repeating-linear-gradient(90deg, #2b2c31 0 2px, #26272b 2px 4px);
+  --panel-shadow: inset 0 1px 0 #6a6d75, inset 0 -1px 0 #0a0a0c, 0 6px 18px rgba(0,0,0,.5); --chart-grid: #33353b;
+}
+[data-theme="timecar"] .bg-grid { background:
+  linear-gradient(180deg, transparent 0 78%, rgba(255,157,0,.0) 78%),
+  linear-gradient(90deg, transparent 0 20%, rgba(255,80,0,.35) 20% 21%, transparent 21% 79%, rgba(255,80,0,.35) 79% 80%, transparent 80%) 0 100% / 100% 30% no-repeat,
+  radial-gradient(ellipse 60% 25% at 50% 100%, rgba(255,120,0,.25), transparent 70%), #0d0d0f; }
+[data-theme="timecar"] .panel { background: var(--steel); }
+[data-theme="timecar"] .panel-head h3 { font: 400 14px var(--head); letter-spacing: .16em; color: #fff;
+  background: linear-gradient(180deg, #ffd000, #ff9d00 50%, #ff3b1f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+/* time-circuit display */
+[data-theme="timecar"] .stat { background: #000; border: 3px solid #5b5e66; border-radius: 4px; box-shadow: inset 0 0 0 2px #000, inset 0 0 18px rgba(0,0,0,.9); }
+[data-theme="timecar"] .stat-label { color: #fff; background: #3a3c42; display: inline-block; padding: 1px 6px; letter-spacing: .12em; }
+[data-theme="timecar"] .stat-value { font: 700 28px var(--body); color: var(--acc); text-shadow: 0 0 8px var(--acc), 0 0 2px #fff; letter-spacing: .06em; }
+[data-theme="timecar"] .logo { font: 400 20px var(--head); background: linear-gradient(180deg, #ffd000, #ff3b1f); -webkit-background-clip: text; background-clip: text; color: transparent; transform: skewX(-12deg); }
+[data-theme="timecar"] .logo em { -webkit-text-fill-color: #c9ccd4; }
+[data-theme="timecar"] .btn { background: linear-gradient(180deg, #4a4c52, #2b2c31); color: #fff; border: 1px solid #000; box-shadow: inset 0 1px 0 #7a7d85; }
+[data-theme="timecar"] .btn.primary { background: linear-gradient(180deg, #ff6a3d, #c62a10); }
+[data-theme="timecar"] .bar { height: 10px; background: #000; border: 1px solid #5b5e66; }
+[data-theme="timecar"] .bar-fill { background: repeating-linear-gradient(90deg, var(--acc) 0 6px, transparent 6px 8px); box-shadow: 0 0 6px var(--acc); }
+[data-theme="timecar"] .networth { font: 700 22px var(--body); color: var(--green); text-shadow: 0 0 8px var(--green); }
+
+/* ---------- ШКОЛА МАГІЇ (Harry Potter): burgundy & gold, candles, starry hall ---------- */
+[data-theme="wizard"] {
+  --bg: #120a10; --bg2: #1e1018; --panel: rgba(36, 16, 22, .9); --line: #6b4a24;
+  --text: #f4e6c8; --muted: #b59a77;
+  --cyan: #d4a537; --magenta: #8e2a35; --yellow: #f0cf72; --green: #3f7d5a; --red: #b0303f;
+  --head: "Cormorant Garamond", Georgia, serif; --body: "Lora", Georgia, serif;
+  --on-acc: #1e1018; --side-bg: #170c13; --top-bg: #120a10ee; --input-bg: #170c13;
+  --modal-bg: #241016; --overlay: rgba(0,0,0,.65); --radius: 6px; --btn-r: 4px; --modal-r: 8px;
+  --panel-shadow: 0 10px 30px rgba(0,0,0,.55); --chart-grid: #3a2128;
+}
+[data-theme="wizard"] .bg-grid { background:
+  radial-gradient(circle at 10% 12%, #ffd27a 0 2px, rgba(255,190,90,.35) 4px, transparent 14px), radial-gradient(circle at 30% 6%, #ffd27a 0 2px, rgba(255,190,90,.35) 4px, transparent 14px),
+  radial-gradient(circle at 55% 14%, #ffd27a 0 2px, rgba(255,190,90,.35) 4px, transparent 14px), radial-gradient(circle at 78% 8%, #ffd27a 0 2px, rgba(255,190,90,.35) 4px, transparent 14px),
+  radial-gradient(circle at 93% 16%, #ffd27a 0 2px, rgba(255,190,90,.35) 4px, transparent 14px),
+  radial-gradient(1px 1px at 40px 60px, #fff, transparent) 0 0 / 200px 160px,
+  linear-gradient(180deg, #1a1330 0%, #120a10 45%); }
+[data-theme="wizard"] .panel { border: 1px solid var(--line); border-top: none; padding-top: 24px; position: relative; overflow: hidden; }
+[data-theme="wizard"] .panel::before { display: block; width: 100%; height: 8px; left: 0; top: 0; box-shadow: none; background: repeating-linear-gradient(90deg, #8e2a35 0 18px, #d4a537 18px 26px); }
+[data-theme="wizard"] .panel-head h3, [data-theme="wizard"] .modal-head h3 { font: 700 20px var(--head); letter-spacing: .06em; text-transform: none; color: var(--yellow); }
+[data-theme="wizard"] .panel-head h3::before { content: "✦ "; color: var(--cyan); }
+[data-theme="wizard"] .stat-value { font: 700 30px var(--head); color: var(--yellow); }
+[data-theme="wizard"] .logo { font: italic 700 24px var(--head); color: var(--yellow); }
+[data-theme="wizard"] .logo em { color: var(--magenta); }
+[data-theme="wizard"] .btn { font-family: var(--head); font-size: 15px; }
+[data-theme="wizard"] .btn.primary { background: var(--magenta); color: var(--yellow); border-color: var(--cyan); }
+[data-theme="wizard"] .bar-fill { background: linear-gradient(90deg, var(--acc), color-mix(in srgb, var(--acc) 40%, #fff)); box-shadow: 0 0 8px color-mix(in srgb, var(--acc) 60%, transparent); }
+
+/* ---------- ПІВНІЧНІ ЗЕМЛІ (Valheim): norse wood, stone, runes, mist ---------- */
+[data-theme="norse"] {
+  --bg: #12161a; --bg2: #1c2126; --panel: rgba(36, 30, 24, .9); --line: #5a4a36;
+  --text: #e8e0d0; --muted: #9c9282;
+  --cyan: #8fc1d4; --magenta: #c9874b; --yellow: #e3b25a; --green: #8fae6a; --red: #c0503c;
+  --head: "Cormorant Garamond", Georgia, serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --on-acc: #12161a; --side-bg: #15110d; --top-bg: rgba(18, 22, 26, .9); --input-bg: #15110d;
+  --modal-bg: #241e18; --overlay: rgba(0,0,0,.6); --radius: 3px; --btn-r: 2px; --modal-r: 4px; --misc-r: 2px; --bar-r: 0px;
+  --panel-shadow: 0 0 0 1px #000, 0 8px 20px rgba(0,0,0,.5); --chart-grid: #2e2820;
+}
+[data-theme="norse"] .bg-grid { background:
+  linear-gradient(180deg, rgba(200,215,225,.12), transparent 30%),
+  conic-gradient(from 150deg at 20% 100%, transparent 0 25deg, #0c0f12 25deg 55deg, transparent 55deg) 0 100% / 300px 220px repeat-x,
+  conic-gradient(from 155deg at 50% 100%, transparent 0 20deg, #161b20 20deg 50deg, transparent 50deg) 120px 100% / 420px 320px repeat-x,
+  linear-gradient(180deg, #3a4a55 0%, #1c2329 55%, #12161a); }
+[data-theme="norse"] .panel { background: repeating-linear-gradient(0deg, rgba(36,30,24,.94) 0 22px, rgba(30,25,20,.94) 22px 24px); border-top: 3px solid #6b5a42; }
+[data-theme="norse"] .panel-head h3 { font: 700 19px var(--head); letter-spacing: .14em; color: var(--yellow); }
+[data-theme="norse"] .panel-head h3::before { content: "ᚠ "; color: var(--cyan); }
+[data-theme="norse"] .panel.accent-magenta .panel-head h3::before { content: "ᚱ "; }
+[data-theme="norse"] .panel.accent-green .panel-head h3::before { content: "ᛟ "; }
+[data-theme="norse"] .panel.accent-yellow .panel-head h3::before { content: "ᛉ "; }
+[data-theme="norse"] .panel.accent-red .panel-head h3::before { content: "ᚦ "; }
+[data-theme="norse"] .stat-value { font: 700 30px var(--head); }
+[data-theme="norse"] .logo { font: 700 22px var(--head); letter-spacing: .14em; color: var(--yellow); }
+[data-theme="norse"] .logo::before { content: "ᛝ "; color: var(--cyan); }
+[data-theme="norse"] .btn { background: linear-gradient(180deg, #4a3c2c, #2e251b); color: var(--yellow); border: 1px solid #000; box-shadow: inset 0 1px 0 #6b5a42; }
+[data-theme="norse"] .bar { height: 10px; background: #0f0d0b; border: 1px solid #000; }
+[data-theme="norse"] .bar-fill { box-shadow: inset 0 2px 0 rgba(255,255,255,.2); }
+
+/* ---------- КАНАЛІЗАЦІЯ (TMNT): sewer bricks, slime, four bandana colours ---------- */
+[data-theme="sewer"] {
+  --bg: #16231a; --bg2: #1f3324; --panel: #1c2b20; --line: #0a0f0b;
+  --text: #ecffe6; --muted: #9bc29a;
+  --cyan: #2a7fff; --magenta: #a24bff; --yellow: #ff8c1a; --green: #7cff3a; --red: #ff2d2d;
+  --head: "Rubik Mono One", "Arial Black", sans-serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #0a0f0b; --side-bg: #111b14; --top-bg: #16231aee; --input-bg: #0f1711;
+  --modal-bg: #1c2b20; --overlay: rgba(0,0,0,.6); --radius: 8px; --btn-r: 6px; --modal-r: 10px;
+  --panel-shadow: 4px 4px 0 #0a0f0b; --chart-grid: rgba(124, 255, 58, .08);
+}
+[data-theme="sewer"] .bg-grid { background:
+  linear-gradient(180deg, transparent 0 85%, rgba(124,255,58,.25) 85% 86%, rgba(80,200,40,.18) 86%),
+  linear-gradient(#101912 2px, transparent 2px) 0 0 / 60px 30px,
+  linear-gradient(90deg, #101912 2px, transparent 2px) 0 0 / 60px 60px,
+  linear-gradient(90deg, #101912 2px, transparent 2px) 30px 30px / 60px 60px,
+  #1d2e21; }
+[data-theme="sewer"] .panel { border: 3px solid #0a0f0b; }
+[data-theme="sewer"] .panel::before { display: block; left: 0; top: 0; width: 100%; height: 8px; box-shadow: none; background: var(--acc); border-radius: 6px 6px 0 0; }
+[data-theme="sewer"] .panel { padding-top: 22px; position: relative; overflow: hidden; }
+[data-theme="sewer"] .panel-head h3 { font: 400 13px var(--head); color: var(--green); }
+[data-theme="sewer"] .stat { border: 3px solid #0a0f0b; }
+[data-theme="sewer"] .stat-value { font: 400 24px var(--head); }
+[data-theme="sewer"] .logo { font: 400 18px var(--head); color: var(--green); -webkit-text-stroke: 1px #0a0f0b; }
+[data-theme="sewer"] .logo em { color: var(--yellow); }
+[data-theme="sewer"] .btn { border: 3px solid #0a0f0b; box-shadow: 3px 3px 0 #0a0f0b; font-weight: 800; }
+[data-theme="sewer"] .btn.primary, [data-theme="sewer"] .btn.green { background: var(--acc); color: #0a0f0b; }
+[data-theme="sewer"] .bar { height: 12px; border: 2px solid #0a0f0b; background: #0f1711; }
+[data-theme="sewer"] .bar-fill { box-shadow: inset 0 3px 0 rgba(255,255,255,.3); }
+
+/* ---------- ЗАВОД (Factorio): industrial metal, hazard stripes, conveyor bars ---------- */
+[data-theme="factory"] {
+  --bg: #1e1e1e; --bg2: #2b2b2b; --panel: #313131; --line: #1a1a1a;
+  --text: #ffe6c0; --muted: #b0a089;
+  --cyan: #ffa200; --magenta: #e06b2c; --yellow: #ffd54a; --green: #5eb663; --red: #e04a3a;
+  --head: "Exo 2", "Segoe UI", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --on-acc: #1e1e1e; --side-bg: #252525; --top-bg: #252525; --input-bg: #1a1a1a;
+  --modal-bg: #313131; --overlay: rgba(0,0,0,.6); --radius: 2px; --btn-r: 2px; --modal-r: 2px; --misc-r: 2px; --bar-r: 0px;
+  --panel-shadow: inset 0 1px 0 #4a4a4a, inset 0 -1px 0 #111, 0 0 0 1px #111, 0 4px 10px rgba(0,0,0,.4); --chart-grid: #3a3a3a;
+}
+[data-theme="factory"] .bg-grid { background:
+  linear-gradient(rgba(0,0,0,.35) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(90deg, rgba(0,0,0,.35) 1px, transparent 1px) 0 0 / 32px 32px,
+  radial-gradient(circle at 30% 40%, #3a3328, transparent 60%), #24221f; }
+[data-theme="factory"] .panel-head { margin: -16px -18px 14px; padding: 8px 18px; background: #262626; border-bottom: 1px solid #111; }
+[data-theme="factory"] .panel-head h3 { font: 700 14px var(--head); letter-spacing: .04em; text-transform: none; color: var(--text); }
+[data-theme="factory"] .stat { border-left: none; border-top: 6px solid transparent; border-image: repeating-linear-gradient(-45deg, #ffd54a 0 8px, #1a1a1a 8px 16px) 6; }
+[data-theme="factory"] .stat-value { font: 700 28px var(--head); }
+[data-theme="factory"] .logo { font: 700 20px var(--head); color: var(--cyan); }
+[data-theme="factory"] .btn { background: linear-gradient(180deg, #5a5a5a, #3c3c3c); color: #fff; border: 1px solid #111; box-shadow: inset 0 1px 0 #7a7a7a; }
+[data-theme="factory"] .btn.primary, [data-theme="factory"] .btn.green { background: linear-gradient(180deg, #ffb52e, #e08a00); color: #1e1e1e; }
+[data-theme="factory"] .btn:hover:not(:disabled) { filter: brightness(1.15); }
+[data-theme="factory"] .bar { height: 12px; background: #1a1a1a; border: 1px solid #111; }
+[data-theme="factory"] .bar-fill { background: repeating-linear-gradient(90deg, var(--acc) 0 10px, color-mix(in srgb, var(--acc) 55%, #000) 10px 12px); background-size: 24px 100%; animation: conveyor 1s linear infinite; }
+@keyframes conveyor { to { background-position: 24px 0; } }
+[data-theme="factory"] .nav-btn.on { background: #3c3c3c; color: var(--cyan); box-shadow: inset 3px 0 0 var(--cyan); border-radius: 0; }
+
+/* ---------- ПАНТЕОН (SMITE): gods, marble & gold, meander ---------- */
+[data-theme="pantheon"] {
+  --bg: #0d1024; --bg2: #161a36; --panel: rgba(20, 24, 52, .88); --line: #6b5a2a;
+  --text: #f6f0e0; --muted: #a8a3c0;
+  --cyan: #e6c15a; --magenta: #6fa8ff; --yellow: #ffe39a; --green: #7fd6a0; --red: #e0594a;
+  --head: "Cormorant Garamond", Georgia, serif; --body: "Manrope", "Segoe UI", sans-serif;
+  --on-acc: #0d1024; --side-bg: #0b0e1f; --top-bg: rgba(13, 16, 36, .9); --input-bg: #0b0e1f;
+  --modal-bg: #161a36; --overlay: rgba(0,0,0,.6); --radius: 4px; --btn-r: 2px; --modal-r: 4px;
+  --meander: repeating-linear-gradient(90deg, #e6c15a 0 2px, transparent 2px 12px), linear-gradient(#e6c15a, #e6c15a);
+  --panel-shadow: 0 10px 30px rgba(0,0,0,.5); --chart-grid: #262b50;
+}
+[data-theme="pantheon"] .bg-grid { background:
+  radial-gradient(ellipse 50% 40% at 50% -10%, rgba(255,227,154,.35), transparent 70%),
+  repeating-linear-gradient(90deg, transparent 0 140px, rgba(230,193,90,.05) 140px 150px, transparent 150px 170px, rgba(230,193,90,.05) 170px 180px),
+  linear-gradient(180deg, #1a1f48, #0d1024 70%); }
+[data-theme="pantheon"] .panel { border: 1px solid var(--line); padding-top: 26px; position: relative; overflow: hidden; }
+[data-theme="pantheon"] .panel::before { display: block; left: 0; top: 0; width: 100%; height: 10px; box-shadow: none;
+  background:
+    linear-gradient(#e6c15a, #e6c15a) 0 0 / 100% 2px no-repeat, linear-gradient(#e6c15a, #e6c15a) 0 100% / 100% 2px no-repeat,
+    repeating-linear-gradient(90deg, #e6c15a 0 2px, transparent 2px 10px, #e6c15a 10px 12px, transparent 12px 20px) 0 2px / 100% 4px no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 4px, #e6c15a 4px 18px, transparent 18px 20px) 0 6px / 100% 2px no-repeat; }
+[data-theme="pantheon"] .panel-head h3, [data-theme="pantheon"] .modal-head h3 { font: 700 20px var(--head); letter-spacing: .18em; color: var(--cyan); }
+[data-theme="pantheon"] .stat-value { font: 700 32px var(--head); color: var(--yellow); }
+[data-theme="pantheon"] .logo { font: 700 22px var(--head); letter-spacing: .2em; color: var(--cyan); }
+[data-theme="pantheon"] .logo::before { content: "⚡ "; }
+[data-theme="pantheon"] .btn { font-family: var(--head); font-size: 15px; letter-spacing: .1em; }
+[data-theme="pantheon"] .btn.primary { background: linear-gradient(180deg, #ffe39a, #e6c15a 50%, #a8842a); color: #0d1024; }
+[data-theme="pantheon"] .bar-fill { background: linear-gradient(90deg, color-mix(in srgb, var(--acc) 60%, #000), var(--acc), color-mix(in srgb, var(--acc) 40%, #fff)); box-shadow: 0 0 10px color-mix(in srgb, var(--acc) 50%, transparent); }

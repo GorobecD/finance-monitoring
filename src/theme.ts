@@ -1,4 +1,4 @@
-export type ThemeGroup = "Класичні" | "Ігрові" | "Ретро" | "Атмосферні" | "Стильові";
+export type ThemeGroup = "Класичні" | "За мотивами ігор" | "За мотивами фільмів" | "Ігрові" | "Ретро" | "Атмосферні" | "Стильові";
 type Family = "glow" | "flat";
 
 export const THEMES: { id: string; name: string; desc: string; group: ThemeGroup; family: Family; sw: string[] }[] = [
@@ -9,10 +9,27 @@ export const THEMES: { id: string; name: string; desc: string; group: ThemeGroup
   { id: "paper", name: "Папір", desc: "Записник, чорнило", group: "Класичні", family: "flat", sw: ["#f3ecdf", "#1f4e79", "#a23b3b", "#3d6b35"] },
   { id: "luxury", name: "Люкс", desc: "Чорне золото, преміум", group: "Класичні", family: "flat", sw: ["#0b0b0b", "#d4af37", "#f3e5ab", "#8c7a4b"] },
   { id: "ukraine", name: "Вишиванка", desc: "Синє-жовте, орнамент", group: "Класичні", family: "flat", sw: ["#f7f4ec", "#0057b7", "#ffd700", "#c8102e"] },
+  // За мотивами ігор
+  { id: "psycamp", name: "Психо-табір", desc: "У дусі Psychonauts", group: "За мотивами ігор", family: "flat", sw: ["#2a1446", "#ff9f1c", "#ff5fa2", "#2ec4b6"] },
+  { id: "bricks", name: "Цеглинки", desc: "У дусі LEGO-ігор", group: "За мотивами ігор", family: "flat", sw: ["#4b9f4a", "#c91a09", "#f2cd37", "#0055bf"] },
+  { id: "family", name: "Сімейна справа", desc: "У дусі Mafia, нуар 30-х", group: "За мотивами ігор", family: "flat", sw: ["#0e0c0a", "#c8a96a", "#9e2b25", "#ede3cf"] },
+  { id: "colony", name: "Колонія", desc: "У дусі Oxygen Not Included", group: "За мотивами ігор", family: "flat", sw: ["#4a3529", "#2b3d55", "#5fd3c6", "#ffd54a"] },
+  { id: "abyss", name: "Глибоководна база", desc: "У дусі Subnautica", group: "За мотивами ігор", family: "glow", sw: ["#032336", "#6ee7ff", "#b388ff", "#6dffb0"] },
+  { id: "quarantine", name: "Карантин", desc: "У дусі Dying Light", group: "За мотивами ігор", family: "flat", sw: ["#2a1a3a", "#ff9a2e", "#8f5cff", "#e0362c"] },
+  { id: "testlab", name: "Лабораторія тестів", desc: "У дусі Portal", group: "За мотивами ігор", family: "flat", sw: ["#e9ecef", "#1e90ff", "#ff8c1a", "#22262b"] },
+  { id: "timeloop", name: "Петля часу", desc: "У дусі Outer Wilds", group: "За мотивами ігор", family: "flat", sw: ["#0b1026", "#ffa64d", "#8fb8ff", "#ffd27a"] },
+  { id: "norse", name: "Північні землі", desc: "У дусі Valheim, руни", group: "За мотивами ігор", family: "flat", sw: ["#1c2329", "#e3b25a", "#8fc1d4", "#6b5a42"] },
+  { id: "factory", name: "Завод", desc: "У дусі Factorio, конвеєри", group: "За мотивами ігор", family: "flat", sw: ["#24221f", "#ffa200", "#ffd54a", "#5eb663"] },
+  { id: "pantheon", name: "Пантеон", desc: "У дусі SMITE, боги", group: "За мотивами ігор", family: "flat", sw: ["#161a36", "#e6c15a", "#6fa8ff", "#ffe39a"] },
+  // За мотивами фільмів
+  { id: "galaxy", name: "Далека галактика", desc: "У дусі Star Wars, мечі-бари", group: "За мотивами фільмів", family: "glow", sw: ["#000000", "#ffe81f", "#2e9bff", "#ff2a2a"] },
+  { id: "timecar", name: "Машина часу", desc: "У дусі «Назад у майбутнє»", group: "За мотивами фільмів", family: "flat", sw: ["#1b1c1f", "#ff3b1f", "#33ff55", "#ffd000"] },
+  { id: "wizard", name: "Школа магії", desc: "У дусі Гаррі Поттера", group: "За мотивами фільмів", family: "flat", sw: ["#1a1330", "#8e2a35", "#d4a537", "#f4e6c8"] },
+  { id: "sewer", name: "Каналізація", desc: "У дусі Черепашок-ніндзя", group: "За мотивами фільмів", family: "flat", sw: ["#1d2e21", "#7cff3a", "#2a7fff", "#ff8c1a"] },
   // Ігрові
   { id: "miami", name: "Маямі", desc: "Неоновий захід, пальми", group: "Ігрові", family: "glow", sw: ["#3a0f5e", "#ff3d8b", "#ffb547", "#2ee6d6"] },
   { id: "blocks", name: "Блоки", desc: "Піксельний воксель-стиль", group: "Ігрові", family: "glow", sw: ["#866043", "#55ff55", "#5ce1e6", "#ffff55"] },
-  { id: "cybercity", name: "Кібер-місто", desc: "Жовтий глітч, мегаполіс", group: "Ігрові", family: "glow", sw: ["#0a0a0f", "#fcee0a", "#00f0ff", "#ff003c"] },
+  { id: "cybercity", name: "Кібер-місто", desc: "У дусі Cyberpunk 2077", group: "За мотивами ігор", family: "glow", sw: ["#0a0a0f", "#fcee0a", "#00f0ff", "#ff003c"] },
   { id: "wasteland", name: "Пустка", desc: "Бурштиновий наручний ПК", group: "Ігрові", family: "glow", sw: ["#140c00", "#ffb000", "#ffd27a", "#7a5200"] },
   { id: "fantasy", name: "Фентезі RPG", desc: "Золото, пергамент, магія", group: "Ігрові", family: "flat", sw: ["#1a1410", "#e0b54a", "#b83a3a", "#5b8def"] },
   { id: "horror", name: "Хорор", desc: "Кров, туман, мерехтіння", group: "Ігрові", family: "flat", sw: ["#0b0606", "#a30d0d", "#d8cfc0", "#4a3b2f"] },
@@ -40,7 +57,7 @@ export const THEMES: { id: string; name: string; desc: string; group: ThemeGroup
   { id: "contrast", name: "Контраст", desc: "Максимальна читабельність", group: "Стильові", family: "flat", sw: ["#000000", "#ffffff", "#ffff00", "#00ffff"] },
 ];
 
-export const THEME_GROUPS: ThemeGroup[] = ["Класичні", "Ігрові", "Ретро", "Атмосферні", "Стильові"];
+export const THEME_GROUPS: ThemeGroup[] = ["Класичні", "За мотивами ігор", "За мотивами фільмів", "Ігрові", "Ретро", "Атмосферні", "Стильові"];
 
 export function applyTheme(id: string | undefined) {
   const t = THEMES.find((x) => x.id === id) ?? THEMES[0];

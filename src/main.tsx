@@ -29,6 +29,7 @@ import "@fontsource/lora/700-italic.css";
 import "./styles.css";
 import "./themes.css";
 import "./themes2.css";
+import "./themes3.css";
 import App from "./App";
 import { StoreProvider } from "./store";
 
