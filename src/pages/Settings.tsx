@@ -44,7 +44,7 @@ export default function Settings() {
             <h4 className="theme-group-title muted">{g}</h4>
             <div className="themes">
               {THEMES.filter((t) => t.group === g).map((t) => {
-                const on = (s.theme || "neon") === t.id;
+                const on = (THEMES.some((x) => x.id === s.theme) ? s.theme : "neon") === t.id;
                 return (
                   <button key={t.id} className={`theme-card ${on ? "on" : ""}`} onClick={() => update((d) => void (d.settings.theme = t.id))}>
                     <div className="theme-prev" style={{ background: t.sw[0] }}>
