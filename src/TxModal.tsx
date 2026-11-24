@@ -3,6 +3,7 @@ import { useStore } from "./store";
 import { Field, CurSelect, Modal, num } from "./ui";
 import type { Cur, IncomeSource, Tx } from "./types";
 import { cushionInfo, fmt, rateOf, todayStr, uid } from "./calc";
+import { fxEmit } from "./fx/engine";
 
 export const SOURCES: Record<IncomeSource, string> = {
   salary: "Зарплата",
@@ -66,6 +67,7 @@ export function TxModal({
       if (i >= 0) d.txs[i] = tx;
       else d.txs.push(tx);
     });
+    fxEmit(mode);
     if (!edit && mode === "income" && source === "salary") setSplit(uahVal);
     else onClose();
   };
@@ -186,6 +188,7 @@ export function SalarySplit({ amount, onClose }: { amount: number; onClose: () =
       }),
     );
     setDone(true);
+    fxEmit("transfer");
   };
 
   return (

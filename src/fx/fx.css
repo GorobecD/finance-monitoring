@@ -1,0 +1,147 @@
+/* ================= THEME FX: overlays, page transitions, hovers ================= */
+.fx-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 45; }
+.fx-layer { position: fixed; inset: 0; pointer-events: none; z-index: 60; overflow: hidden; }
+.fx-dom { position: absolute; }
+:root[data-fx="off"] .fx-canvas, :root[data-fx="off"] .fx-layer { display: none; }
+@media (prefers-reduced-motion: reduce) { .fx-canvas, .fx-layer { display: none; } }
+
+/* generic flashes */
+.fx-flash { inset: 0; background: #fff; animation: fxflash .7s ease-out forwards; mix-blend-mode: overlay; }
+.fx-flash.gold { background: #ffe39a; animation-duration: .4s; }
+.fx-flash.white { background: #cfe8ff; mix-blend-mode: screen; animation-duration: .5s; }
+@keyframes fxflash { 0% { opacity: 0; } 8% { opacity: .85; } 16% { opacity: .1; } 24% { opacity: .6; } 100% { opacity: 0; } }
+
+/* ---------- NEON ---------- */
+.fx-neon-glitch { inset: 0; background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(0,240,255,.08) 3px 4px); animation: nglitch .45s steps(3) forwards; mix-blend-mode: screen; }
+@keyframes nglitch { 0% { transform: translateX(0); opacity: 1; } 33% { transform: translateX(-6px); } 66% { transform: translateX(5px); } 100% { opacity: 0; } }
+.fx-neon-hud { left: 50%; top: 42%; transform: translate(-50%, -50%); font: 700 34px Unbounded, sans-serif; letter-spacing: .25em; color: #00f0ff;
+  text-shadow: 3px 0 #ff2bd6, -3px 0 #39ff88, 0 0 30px #00f0ff; animation: nhud 1.4s ease-out forwards; border: 1px solid #00f0ff; padding: 14px 28px; background: rgba(4,5,13,.6); }
+@keyframes nhud { 0% { opacity: 0; clip-path: inset(0 100% 0 0); } 20% { opacity: 1; clip-path: inset(0 0 0 0); } 80% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -60%); } }
+
+/* ---------- MINIMAL ---------- */
+.fx-min-check { left: 50%; top: 45%; width: 90px; height: 90px; transform: translate(-50%, -50%); animation: mcheck 1.3s ease forwards; }
+.fx-min-check svg { width: 100%; height: 100%; fill: none; stroke: #12a46b; stroke-width: 3; stroke-linecap: round; }
+.fx-min-check circle { stroke-dasharray: 151; stroke-dashoffset: 151; animation: mdraw .5s ease forwards; }
+.fx-min-check path { stroke-dasharray: 40; stroke-dashoffset: 40; animation: mdraw .35s .4s ease forwards; }
+@keyframes mdraw { to { stroke-dashoffset: 0; } }
+@keyframes mcheck { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.8); } 15% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 80% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ---------- MIAMI ---------- */
+.fx-miami-banner { left: 0; right: 0; top: 38%; text-align: center; padding: 16px 0 12px; background: linear-gradient(90deg, transparent, rgba(18,4,36,.85) 20%, rgba(18,4,36,.85) 80%, transparent); animation: mban 2.6s ease forwards; }
+.fx-miami-banner .t { font: italic 700 46px Oswald, sans-serif; letter-spacing: .04em; color: #ffb547; text-shadow: 3px 3px 0 #ff3d8b, 0 0 30px rgba(255,61,139,.7); }
+.fx-miami-banner .s { font: 600 14px Manrope, sans-serif; letter-spacing: .3em; color: #2ee6d6; text-transform: uppercase; }
+@keyframes mban { 0% { opacity: 0; transform: scaleY(0); } 10% { opacity: 1; transform: scaleY(1); } 85% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ---------- PSYCAMP ---------- */
+.fx-psy-pop { left: 50%; top: 40%; font: 400 64px Pangolin, cursive; color: #fff1d6; -webkit-text-stroke: 2px #2a1446; text-shadow: 6px 6px 0 #e83f7b; animation: psypop 1.4s cubic-bezier(.2,1.6,.4,1) forwards; }
+@keyframes psypop { 0% { transform: translate(-50%, -50%) scale(0) rotate(-20deg); } 30% { transform: translate(-50%, -50%) scale(1.2) rotate(6deg); } 45% { transform: translate(-50%, -50%) scale(1) rotate(-3deg); } 85% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -60%) scale(1) rotate(0); } }
+
+/* ---------- FAMILY (stamp) ---------- */
+.fx-stamp { left: 50%; top: 45%; transform: translate(-50%, -50%) rotate(-12deg); animation: stamp 1.8s ease forwards; }
+.fx-stamp span { display: block; font: 900 56px "Playfair Display", serif; letter-spacing: .1em; color: #b3261e; border: 6px double #b3261e; padding: 6px 26px; opacity: .85;
+  mask-image: repeating-radial-gradient(circle at 30% 40%, #000 0 2px, rgba(0,0,0,.6) 2px 3px); }
+@keyframes stamp { 0% { opacity: 0; transform: translate(-50%, -50%) rotate(-12deg) scale(2.4); } 12% { opacity: 1; transform: translate(-50%, -50%) rotate(-12deg) scale(.95); } 18% { transform: translate(-50%, -50%) rotate(-12deg) scale(1); } 85% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ---------- ABYSS (PDA) ---------- */
+.fx-pda { left: 50%; bottom: 60px; transform: translateX(-50%); min-width: 380px; padding: 14px 20px; border: 1px solid #6ee7ff; border-radius: 18px 18px 18px 4px; background: rgba(3,35,54,.88);
+  box-shadow: 0 0 30px rgba(110,231,255,.35); color: #dffbff; font: 600 13px "Exo 2", sans-serif; letter-spacing: .12em; animation: pda 2s ease forwards; }
+.fx-pda .bar { height: 3px; background: #6ee7ff; box-shadow: 0 0 10px #6ee7ff; margin-bottom: 8px; animation: pdabar .9s ease forwards; transform-origin: left; }
+@keyframes pdabar { from { transform: scaleX(0); } }
+@keyframes pda { 0% { opacity: 0; transform: translate(-50%, 20px); } 12% { opacity: 1; transform: translate(-50%, 0); } 85% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ---------- QUARANTINE (flashlight + XP) ---------- */
+.fx-flashlight { inset: 0; background: radial-gradient(circle 320px at var(--mx, 50%) var(--my, 50%), rgba(255,200,120,.10) 0, transparent 45%, rgba(8,4,14,.28) 100%); }
+.fx-xp { left: 50%; top: 18px; transform: translateX(-50%); width: 360px; text-align: center; animation: pda 1.8s ease forwards; }
+.fx-xp .lvl { font: 700 13px Oswald, sans-serif; letter-spacing: .3em; color: #ffcf4a; margin-bottom: 6px; }
+.fx-xp .xp { height: 8px; background: rgba(255,255,255,.12); transform: skewX(-20deg); }
+.fx-xp .xp i { display: block; height: 100%; width: 30%; background: #ff9a2e; box-shadow: 0 0 12px #ff9a2e; animation: xpfill 1.2s .2s ease forwards; }
+@keyframes xpfill { to { width: 85%; } }
+
+/* ---------- TESTLAB (voice subtitle) ---------- */
+.fx-lab-voice { left: 50%; bottom: 46px; transform: translateX(-50%); display: flex; gap: 14px; align-items: center; max-width: 640px; padding: 12px 20px; background: rgba(34,38,43,.92); color: #fff;
+  font: 600 15px Manrope, sans-serif; animation: pda 3s ease forwards; }
+.fx-lab-voice .ico { font-size: 26px; color: #ff8c1a; animation: labpulse 1s ease-in-out infinite alternate; }
+@keyframes labpulse { from { color: #ff8c1a; text-shadow: 0 0 6px #ff8c1a; } to { color: #ffc27a; text-shadow: 0 0 18px #ff8c1a; } }
+
+/* ---------- FACTORY (conveyor crate) ---------- */
+.fx-conveyor { left: 0; right: 0; bottom: 24px; height: 46px; background: repeating-linear-gradient(90deg, #3a3a3a 0 18px, #2b2b2b 18px 20px); border-top: 3px solid #555; border-bottom: 3px solid #555; animation: pda 2.6s ease forwards; }
+.fx-conveyor .crate { position: absolute; top: -26px; left: -60px; width: 56px; height: 56px; display: grid; place-items: center; font: 700 26px "Exo 2", sans-serif; color: #1e1e1e;
+  background: linear-gradient(135deg, #ffb52e, #e08a00); box-shadow: inset 0 0 0 3px #8a5200, inset 0 0 0 6px #ffcf6a; animation: crate 2.4s linear forwards; }
+@keyframes crate { to { left: calc(100% + 60px); } }
+
+/* ---------- PANTHEON ---------- */
+.fx-pantheon { left: 0; right: 0; top: 36%; text-align: center; animation: mban 2.2s ease forwards; }
+.fx-pantheon .t { display: inline-block; white-space: nowrap; max-width: 92vw; font: 700 clamp(26px, 3.4vw, 44px) "Cormorant Garamond", serif; letter-spacing: .3em; padding: 10px 40px; border-top: 2px solid #e6c15a; border-bottom: 2px solid #e6c15a;
+  background: linear-gradient(180deg, #fff6d0, #e6c15a 55%, #a8842a); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 16px rgba(230,193,90,.8)); }
+
+/* ---------- SEWER ---------- */
+.fx-sewer-pop { left: 50%; top: 40%; font: 400 60px "Rubik Wet Paint", sans-serif; color: #7cff3a; -webkit-text-stroke: 2px #0a0f0b; text-shadow: 5px 5px 0 #0a0f0b; animation: psypop 1.5s cubic-bezier(.2,1.6,.4,1) forwards; }
+
+/* ---------- LOFI ---------- */
+.fx-lofi { right: 26px; bottom: 26px; display: flex; gap: 14px; align-items: center; padding: 12px 18px 12px 12px; background: rgba(43,38,80,.75); backdrop-filter: blur(12px); border-radius: 99px; color: #fdf1f5;
+  font: 700 14px Nunito, sans-serif; animation: pda 2.4s ease forwards; }
+.fx-lofi .vinyl { width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle, #f6a5c0 0 5px, #111 6px 9px, #222 10px, #111 12px, #2a2a2a 14px, #111 16px 100%); animation: spin 1.2s linear infinite; }
+
+/* ---------- OCEAN ---------- */
+.fx-caustics { inset: -20%; opacity: .14; mix-blend-mode: soft-light;
+  background: repeating-radial-gradient(ellipse 120px 60px at 30% 20%, rgba(255,255,255,.5) 0 2px, transparent 3px 40px), repeating-radial-gradient(ellipse 90px 140px at 70% 60%, rgba(255,255,255,.4) 0 2px, transparent 3px 36px);
+  animation: caustic 14s ease-in-out infinite alternate; }
+@keyframes caustic { from { transform: translate(0, 0) rotate(0); } to { transform: translate(-4%, 3%) rotate(3deg); } }
+.fx-wave { left: -50%; right: -50%; top: 0; bottom: 0; background: linear-gradient(100deg, transparent 40%, rgba(46,230,201,.35) 48%, rgba(255,255,255,.4) 50%, rgba(46,230,201,.35) 52%, transparent 60%); animation: wave 1.6s ease-in-out forwards; }
+@keyframes wave { from { transform: translateX(-60%); } to { transform: translateX(60%); } }
+
+/* ================= PAGE TRANSITIONS (per theme) ================= */
+:root[data-theme="neon"] .content { animation: pt-glitch .45s steps(4) both; }
+@keyframes pt-glitch { 0% { opacity: 0; transform: translateX(-12px) skewX(8deg); filter: hue-rotate(90deg); } 50% { opacity: 1; transform: translateX(6px); } 100% { transform: none; filter: none; } }
+:root[data-theme="minimal"] .content { animation: pt-fade .35s ease both; }
+@keyframes pt-fade { from { opacity: 0; transform: translateY(8px); } }
+:root[data-theme="miami"] .content { animation: pt-slide .5s cubic-bezier(.2,.9,.3,1) both; }
+@keyframes pt-slide { from { opacity: 0; transform: translateX(60px) skewX(-8deg); } }
+:root[data-theme="psycamp"] .content { animation: pt-jelly .6s cubic-bezier(.2,1.6,.4,1) both; }
+@keyframes pt-jelly { 0% { opacity: 0; transform: scale(.9, 1.1); } 60% { transform: scale(1.03, .97); } 100% { opacity: 1; transform: none; } }
+:root[data-theme="family"] .content { animation: pt-paper .55s ease both; }
+@keyframes pt-paper { from { opacity: 0; transform: translateY(-30px) rotate(-1.5deg); } }
+:root[data-theme="abyss"] .content { animation: pt-float .7s ease both; }
+@keyframes pt-float { from { opacity: 0; transform: translateY(30px); filter: blur(6px); } }
+:root[data-theme="quarantine"] .content { animation: pt-flick .5s steps(5) both; }
+@keyframes pt-flick { 0% { opacity: 0; } 20% { opacity: .8; } 40% { opacity: .1; } 60% { opacity: 1; } 80% { opacity: .5; } 100% { opacity: 1; } }
+:root[data-theme="testlab"] .content { animation: pt-portal .55s cubic-bezier(.3,1.2,.4,1) both; }
+@keyframes pt-portal { from { opacity: 0; clip-path: ellipse(0% 0% at 50% 50%); } to { clip-path: ellipse(150% 150% at 50% 50%); } }
+:root[data-theme="factory"] .content { animation: pt-belt .5s cubic-bezier(.4,0,.2,1) both; }
+@keyframes pt-belt { from { opacity: 0; transform: translateX(-80px); } }
+:root[data-theme="pantheon"] .content { animation: pt-rise .7s ease both; }
+@keyframes pt-rise { from { opacity: 0; transform: translateY(20px); filter: brightness(2) sepia(1); } }
+:root[data-theme="galaxy"] .content { animation: pt-hyper .5s ease-in both; }
+@keyframes pt-hyper { from { opacity: 0; transform: scale(1.15); filter: blur(10px); } }
+:root[data-theme="sewer"] .content { animation: pt-splat .5s cubic-bezier(.2,1.6,.4,1) both; }
+@keyframes pt-splat { from { opacity: 0; transform: translateY(-40px) scaleY(1.2); } }
+:root[data-theme="lofi"] .content { animation: pt-fade .9s ease both; }
+:root[data-theme="ocean"] .content { animation: pt-float .8s ease both; }
+
+/* ================= HOVER INTERACTIONS (per theme) ================= */
+:root[data-theme="neon"] .panel:hover { filter: drop-shadow(0 0 12px color-mix(in srgb, var(--acc) 50%, transparent)); }
+:root[data-theme="minimal"] .panel { transition: transform .2s, box-shadow .2s; }
+:root[data-theme="minimal"] .panel:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(20,24,40,.1); }
+:root[data-theme="miami"] .stat { transition: transform .2s; }
+:root[data-theme="miami"] .stat:hover { transform: skewX(-4deg) translateY(-3px); }
+:root[data-theme="psycamp"] .stat:hover, :root[data-theme="psycamp"] .nav-btn:hover { animation: wobble .45s ease-in-out; }
+:root[data-theme="family"] .panel { transition: transform .25s, box-shadow .25s; }
+:root[data-theme="family"] .panel:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 2px 0 #c9bea6, 0 22px 40px rgba(0,0,0,.7); }
+:root[data-theme="abyss"] .panel:hover { box-shadow: 0 0 34px rgba(110,231,255,.35), inset 0 0 40px rgba(110,231,255,.12); }
+:root[data-theme="quarantine"] .stat:hover { transform: skewX(-4deg) translateX(4px); transition: transform .15s; }
+:root[data-theme="testlab"] .panel:hover { box-shadow: 0 0 0 2px #1e90ff, 0 10px 24px rgba(30,40,50,.08); }
+:root[data-theme="testlab"] .panel:nth-child(even):hover { box-shadow: 0 0 0 2px #ff8c1a, 0 10px 24px rgba(30,40,50,.08); }
+:root[data-theme="factory"] .nav-btn .nav-ico { transition: transform .5s; display: inline-block; }
+:root[data-theme="factory"] .nav-btn:hover .nav-ico { transform: rotate(180deg); }
+:root[data-theme="pantheon"] .panel { position: relative; }
+:root[data-theme="pantheon"] .panel:hover .panel-head h3 { animation: goldshine 1.2s ease; }
+@keyframes goldshine { 0% { filter: none; } 40% { filter: drop-shadow(0 0 10px #ffe39a) brightness(1.3); } 100% { filter: none; } }
+:root[data-theme="galaxy"] .bar-fill { transition: box-shadow .2s; }
+:root[data-theme="galaxy"] .rule-row:hover .bar-fill, :root[data-theme="galaxy"] .asset-row:hover .bar-fill { box-shadow: 0 0 4px 3px var(--acc), 0 0 22px 7px var(--acc); animation: hum .12s infinite alternate; }
+@keyframes hum { to { opacity: .85; } }
+:root[data-theme="sewer"] .stat:hover { animation: shake .35s; }
+@keyframes shake { 25% { transform: translateX(-3px) rotate(-1deg); } 75% { transform: translateX(3px) rotate(1deg); } }
+:root[data-theme="lofi"] .panel { transition: transform .6s ease; }
+:root[data-theme="lofi"] .panel:hover { transform: translateY(-2px) rotate(-.3deg); }
+:root[data-theme="ocean"] .panel:hover { animation: sway 2s ease-in-out infinite alternate; }
+@keyframes sway { from { transform: translateY(0); } to { transform: translateY(-4px); } }

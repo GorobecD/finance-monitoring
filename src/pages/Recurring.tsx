@@ -4,6 +4,7 @@ import { CurSelect, DelBtn, Empty, Field, Modal, Panel, Stat, num } from "../ui"
 import { fmt, monthFull, rateOf, toUAH, uid } from "../calc";
 import { SOURCES } from "../TxModal";
 import type { Cur, Data, IncomeSource, Recurring as Rec } from "../types";
+import { fxEmit } from "../fx/engine";
 
 export function applyRecurring(d: Data, r: Rec, month: string) {
   const [y, m] = month.split("-").map(Number);
@@ -50,7 +51,7 @@ export default function Recurring() {
         right={
           <div className="row gap">
             {pending.length > 0 && (
-              <button className="btn green sm" onClick={() => update((d) => pending.forEach((p) => applyRecurring(d, p, month)))}>
+              <button className="btn green sm" onClick={() => { update((d) => pending.forEach((p) => applyRecurring(d, p, month))); fxEmit("expense"); }}>
                 Провести всі ({pending.length})
               </button>
             )}
@@ -87,7 +88,7 @@ export default function Recurring() {
                     ) : applied.has(x.id) ? (
                       <span className="pos">✓ проведено</span>
                     ) : (
-                      <button className="btn green xs" onClick={() => update((d) => applyRecurring(d, x, month))}>
+                      <button className="btn green xs" onClick={() => { update((d) => applyRecurring(d, x, month)); fxEmit(x.kind); }}>
                         Провести
                       </button>
                     )}

@@ -82,6 +82,16 @@ export default function Settings() {
         ) : null;
       })()}
 
+      <Panel title="АНІМАЦІЇ ТЕМИ" className="span-12">
+        <div className="row gap">
+          <label className="row gap" style={{ cursor: "pointer" }}>
+            <input type="checkbox" checked={s.fx !== false} onChange={(e) => update((d) => void (d.settings.fx = e.target.checked))} />
+            Фонові анімації, ефекти кліків і дій
+          </label>
+          <span className="muted small">Кожна тема має власні ефекти: клікни будь-де або додай операцію. Якщо у Windows увімкнено «зменшення руху» — вимикаються автоматично.</span>
+        </div>
+      </Panel>
+
       <Panel title="ПРАВИЛО РОЗПОДІЛУ ЗП" className="span-6">
         <div className="form-grid three">
           <Field label="Потреби, %">

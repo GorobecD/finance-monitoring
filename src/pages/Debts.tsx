@@ -3,6 +3,7 @@ import { useStore } from "../store";
 import { Bar, CurSelect, DelBtn, Empty, Field, Modal, Panel, Stat, num } from "../ui";
 import { daysBetween, debtLeft, fmt, portfolio, todayStr, uid } from "../calc";
 import type { Cur, Debt } from "../types";
+import { fxEmit } from "../fx/engine";
 
 export default function Debts() {
   const { data } = useStore();
@@ -163,6 +164,7 @@ function PayModal({ debt, onClose }: { debt: Debt; onClose: () => void }) {
     const v = num(amount);
     if (v <= 0) return;
     update((d) => d.debts.find((x) => x.id === debt.id)!.payments.push({ date: todayStr(), amount: Math.min(v, left) }));
+    fxEmit(debt.direction === "lent" ? "income" : "expense");
     onClose();
   };
   return (

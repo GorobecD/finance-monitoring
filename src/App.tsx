@@ -13,7 +13,11 @@ import Debts from "./pages/Debts";
 import Recurring from "./pages/Recurring";
 import Settings from "./pages/Settings";
 import { Updater } from "./Updater";
-import { applyTheme } from "./theme";
+import { applyTheme, THEMES } from "./theme";
+import { Fx } from "./fx/engine";
+import { THEME_FX } from "./fx/themes";
+
+let fxEngine: Fx | null = null;
 
 const PAGES = [
   ["dash", "◈", "Огляд"],
@@ -30,6 +34,15 @@ export type PageId = (typeof PAGES)[number][0];
 export default function App() {
   const { data, update, month, setMonth, saveState } = useStore();
   applyTheme(data.settings.theme); // before children render so charts read the right CSS vars
+  const themeId = THEMES.some((t) => t.id === data.settings.theme) ? data.settings.theme! : "neon";
+  const fxOn = data.settings.fx !== false;
+  useEffect(() => {
+    if (!fxEngine) fxEngine = new Fx();
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    fxEngine.setEnabled(fxOn && !reduce);
+    document.documentElement.dataset.fx = fxOn && !reduce ? "on" : "off";
+    fxEngine.use(THEME_FX[themeId] ?? null);
+  }, [themeId, fxOn]);
   const [page, setPage] = useState<PageId>("dash");
   const [modal, setModal] = useState<null | "salary" | "expense" | "income">(null);
   const [version, setVersion] = useState("");

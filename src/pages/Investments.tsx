@@ -4,6 +4,7 @@ import { useStore } from "../store";
 import { Bar, CurSelect, DelBtn, Empty, Field, Modal, Panel, Stat, num } from "../ui";
 import { daysBetween, depositNow, fmt, portfolio, toUAH, todayStr, uid } from "../calc";
 import { chartTheme } from "../theme";
+import { fxEmit } from "../fx/engine";
 import type { CashFx, Cur, Deposit, Stock } from "../types";
 
 export default function Investments() {
@@ -182,7 +183,7 @@ function Actions({ onClose, onSave }: { onClose: () => void; onSave: () => void 
   return (
     <div className="modal-actions">
       <button className="btn ghost" onClick={onClose}>Скасувати</button>
-      <button className="btn primary" onClick={onSave}>Зберегти</button>
+      <button className="btn primary" onClick={() => { onSave(); fxEmit("save"); }}>Зберегти</button>
     </div>
   );
 }

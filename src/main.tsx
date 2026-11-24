@@ -30,6 +30,7 @@ import "./themes.css";
 import "./themes2.css";
 import "./themes3.css";
 import "./themes-photo.css";
+import "./fx/fx.css";
 import App from "./App";
 import { StoreProvider } from "./store";
 

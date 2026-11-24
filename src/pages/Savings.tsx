@@ -3,6 +3,7 @@ import { useStore } from "../store";
 import { Bar, DelBtn, Empty, Field, Modal, Panel, Ring, Stat, num } from "../ui";
 import { cushionInfo, daysBetween, fmt, potBalance, todayStr, uid } from "../calc";
 import type { Pot } from "../types";
+import { fxEmit } from "../fx/engine";
 
 export default function Savings() {
   const { data } = useStore();
@@ -115,6 +116,7 @@ function MoveModal({ potId, out, onClose }: { potId: string; out: boolean; onClo
     if (v <= 0) return;
     const sign = out ? -1 : 1;
     update((d) => d.txs.push({ id: uid(), date: todayStr(), type: "transfer", amount: v * sign, currency: "UAH", uah: v * sign, potId }));
+    fxEmit("transfer");
     onClose();
   };
   return (

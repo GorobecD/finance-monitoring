@@ -102,6 +102,7 @@ export interface Settings {
   startBalance: number;
   rates: Rates;
   theme?: string;
+  fx?: boolean;
 }
 
 export interface Data {
