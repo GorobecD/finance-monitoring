@@ -30,8 +30,8 @@ QUERIES = {
     "pantheon": ["Parthenon sunset", "Temple of Poseidon Sounion sunset"],
     "galaxy": ["desert night milky way", "sand dunes night stars"],
     "sewer": ["sewer tunnel underground", "storm drain tunnel"],
-    "lofi": ["window night city lights rain", "city lights night from window"],
-    "ocean": ["underwater sun rays ocean", "ocean underwater light beams"],
+    "lofi": ["rain drops window night bokeh", "city night bokeh lights", "twilight city purple sky"],
+    "ocean": ["coral reef underwater", "underwater photography sunlight surface", "ocean wave underwater"],
 }
 
 
@@ -83,8 +83,12 @@ def search(q, limit=14):
 def main():
     out = pathlib.Path(sys.argv[1])
     out.mkdir(parents=True, exist_ok=True)
-    allc = {}
+    only = set(sys.argv[2:])
+    prev = out / "candidates.json"
+    allc = json.loads(prev.read_text()) if prev.exists() else {}
     for theme, qs in QUERIES.items():
+        if only and theme not in only:
+            continue
         seen, cands = set(), []
         for q in qs:
             try:
