@@ -1,0 +1,610 @@
+/* =========================================================
+   THEMES vol.2 — 22 more. Families: [data-family=flat] gets the
+   rounded/no-glow base from themes.css; glow themes inherit neon base.
+   ========================================================= */
+
+/* ================= КЛАСИЧНІ ================= */
+
+/* ---------- ЛЮКС: black & gold ---------- */
+[data-theme="luxury"] {
+  --bg: #0b0b0b; --bg2: #141414; --panel: #121212; --line: #3a3220;
+  --text: #f3eee2; --muted: #9a917c;
+  --cyan: #d4af37; --magenta: #c9a2a2; --yellow: #f3e5ab; --green: #a8c69f; --red: #c86a5a;
+  --head: "Cormorant Garamond", Georgia, serif; --body: "Manrope", "Segoe UI", sans-serif;
+  --on-acc: #0b0b0b; --side-bg: #0e0e0e; --top-bg: #0b0b0bee; --input-bg: #0b0b0b;
+  --modal-bg: #121212; --overlay: #000a; --radius: 2px; --btn-r: 0px; --modal-r: 2px; --misc-r: 0px; --bar-r: 0px;
+  --chart-grid: #2a2418;
+}
+[data-theme="luxury"] .bg-grid { background: radial-gradient(ellipse at 50% -20%, #2a2212 0%, #0b0b0b 60%); }
+[data-theme="luxury"] .panel { border: 1px solid transparent; background: linear-gradient(#121212, #121212) padding-box, linear-gradient(135deg, #d4af37, #3a3220 40%, #3a3220 60%, #d4af37) border-box; }
+[data-theme="luxury"] .panel-head h3, [data-theme="luxury"] .modal-head h3 { font: 600 18px var(--head); letter-spacing: .3em; color: var(--cyan); }
+[data-theme="luxury"] .stat-value, [data-theme="luxury"] .networth, [data-theme="luxury"] .goal-amt { font: 600 30px var(--head); letter-spacing: .02em; color: var(--yellow); }
+[data-theme="luxury"] .logo { font: 600 24px var(--head); letter-spacing: .25em; }
+[data-theme="luxury"] .logo em { color: var(--cyan); }
+[data-theme="luxury"] .btn { text-transform: uppercase; letter-spacing: .2em; font-size: 11px; }
+[data-theme="luxury"] .btn.primary { background: linear-gradient(135deg, #f3e5ab, #d4af37 50%, #9c7a1f); color: #0b0b0b; border-color: #d4af37; }
+[data-theme="luxury"] .bar { height: 3px; }
+[data-theme="luxury"] .bar-fill { background: linear-gradient(90deg, #9c7a1f, var(--acc), #f3e5ab); }
+[data-theme="luxury"] .nav-btn { letter-spacing: .12em; text-transform: uppercase; font-size: 11px; }
+[data-theme="luxury"] .nav-btn.on { background: transparent; color: var(--cyan); box-shadow: inset 2px 0 0 var(--cyan); border-radius: 0; }
+
+/* ---------- ВИШИВАНКА: blue/yellow + cross-stitch ornament ---------- */
+[data-theme="ukraine"] {
+  --bg: #f7f4ec; --bg2: #ffffff; --panel: #ffffff; --line: #e4ddcc;
+  --text: #1d2433; --muted: #6f7686;
+  --cyan: #0057b7; --magenta: #c8102e; --yellow: #d9a400; --green: #2e7d32; --red: #c8102e;
+  --head: "Manrope", "Segoe UI", sans-serif; --body: "Manrope", "Segoe UI", sans-serif;
+  --on-acc: #ffffff; --side-bg: #0057b7; --top-bg: #f7f4ecdd; --input-bg: #fbf9f4;
+  --modal-bg: #ffffff; --overlay: #1d243355; --radius: 10px;
+  --panel-shadow: 0 2px 10px rgba(29,36,51,.06); --chart-grid: #ece6d8;
+  --stitch: repeating-linear-gradient(45deg, #c8102e 0 3px, transparent 3px 7px), repeating-linear-gradient(-45deg, #1d2433 0 3px, transparent 3px 7px);
+  color-scheme: light;
+}
+[data-theme="ukraine"] .bg-grid { background: linear-gradient(180deg, #f7f4ec, #f1ecdf); }
+[data-theme="ukraine"] .panel { position: relative; overflow: hidden; padding-top: 24px; }
+[data-theme="ukraine"] .panel::before { display: block; width: 100%; height: 8px; left: 0; top: 0; box-shadow: none; background: var(--stitch); opacity: .85; }
+[data-theme="ukraine"] .side { color: #fff; --text: #ffffff; --muted: #cfe0ff; background: linear-gradient(180deg, #0057b7 0 70%, #ffd700 70%); }
+[data-theme="ukraine"] .side .nav-btn.on { background: rgba(255,255,255,.18); color: #fff; }
+[data-theme="ukraine"] .side .networth { color: #0b2a57; }
+[data-theme="ukraine"] .side .networth-label, [data-theme="ukraine"] .side .save-dot { color: #0b2a57; }
+[data-theme="ukraine"] .side-foot { border-top: none; }
+[data-theme="ukraine"] .logo em { color: #ffd700; }
+[data-theme="ukraine"] .btn.primary { background: #0057b7; color: #fff; }
+[data-theme="ukraine"] .btn.green { --acc: #ffd700; background: #ffd700; color: #1d2433; border-color: #d9b400; }
+[data-theme="ukraine"] .stat { border-left-color: transparent; border-image: linear-gradient(180deg, #0057b7 50%, #ffd700 50%) 1; border-left-width: 4px; border-radius: 0; }
+[data-theme="ukraine"] input[type=date]::-webkit-calendar-picker-indicator { filter: none; }
+
+/* ================= ІГРОВІ ================= */
+
+/* ---------- КІБЕР-МІСТО: yellow glitch megacity ---------- */
+[data-theme="cybercity"] {
+  --bg: #0a0a0f; --bg2: #12121a; --panel: rgba(18, 18, 26, .9); --line: rgba(252, 238, 10, .3);
+  --text: #f2f2f2; --muted: #8b8b9a;
+  --cyan: #fcee0a; --magenta: #00f0ff; --yellow: #fcee0a; --green: #00ff9f; --red: #ff003c;
+  --head: "Russo One", "Arial Black", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --cut: 18px; --glow: 12px; --on-acc: #0a0a0f; --side-bg: #0d0d13; --top-bg: #0a0a0fee;
+  --input-bg: #050508; --modal-bg: #12121a; --overlay: #000b; --grid-op: .5; --scan-op: .5;
+  --chart-grid: rgba(252, 238, 10, .08);
+}
+[data-theme="cybercity"] .bg-grid { background: linear-gradient(115deg, transparent 0 62%, rgba(252,238,10,.06) 62% 64%, transparent 64%), radial-gradient(ellipse at 100% 0%, rgba(255,0,60,.18), transparent 50%), #0a0a0f; }
+[data-theme="cybercity"] .panel { clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut)); }
+[data-theme="cybercity"] .panel::before { width: 90px; height: 4px; background: var(--yellow); box-shadow: none; left: var(--cut); }
+[data-theme="cybercity"] .panel-head h3 { font: 400 14px var(--head); letter-spacing: .14em; color: var(--yellow); text-shadow: 2px 0 0 #ff003c, -2px 0 0 #00f0ff; }
+[data-theme="cybercity"] .stat-value { font: 400 28px var(--head); text-shadow: 2px 0 0 #ff003c, -2px 0 0 #00f0ff; }
+[data-theme="cybercity"] .logo { font: 400 22px var(--head); color: var(--yellow); text-shadow: 3px 0 0 #ff003c, -3px 0 0 #00f0ff; animation: glitch 3s infinite steps(1); }
+[data-theme="cybercity"] .logo em { color: #fff; }
+[data-theme="cybercity"] .btn { font-family: var(--head); font-weight: 400; text-transform: uppercase; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
+[data-theme="cybercity"] .btn.primary { background: var(--yellow); color: #0a0a0f; }
+[data-theme="cybercity"] .nav-btn.on { color: var(--yellow); border-left-color: var(--yellow); background: linear-gradient(90deg, rgba(252,238,10,.16), transparent); }
+@keyframes glitch { 0%, 92%, 100% { transform: none; } 93% { transform: translate(2px, -1px) skewX(8deg); } 95% { transform: translate(-2px, 1px); } 97% { transform: skewX(-6deg); } }
+
+/* ---------- ПУСТКА: amber wrist-computer ---------- */
+[data-theme="wasteland"] {
+  --bg: #140c00; --bg2: #1d1200; --panel: rgba(30, 18, 0, .85); --line: rgba(255, 176, 0, .35);
+  --text: #ffcf66; --muted: #a8761a;
+  --cyan: #ffb000; --magenta: #ffd27a; --yellow: #ffe3a1; --green: #ffb000; --red: #ff6a3d;
+  --head: "IBM Plex Mono", Consolas, monospace; --body: "IBM Plex Mono", Consolas, monospace;
+  --cut: 0px; --glow: 14px; --on-acc: #140c00; --side-bg: #120a00; --top-bg: #140c00ee;
+  --input-bg: #0a0600; --modal-bg: #1d1200; --overlay: #000b; --grid-op: 0; --scan-op: 1.4;
+  --chart-grid: rgba(255, 176, 0, .1);
+}
+[data-theme="wasteland"] body { text-shadow: 0 0 5px rgba(255,176,0,.5); }
+[data-theme="wasteland"] .bg-grid { background: radial-gradient(ellipse at center, #2a1900 0%, #140c00 70%, #070400 100%); }
+[data-theme="wasteland"] .panel { clip-path: none; border: 2px solid var(--line); border-radius: 14px; background: var(--panel); }
+[data-theme="wasteland"] .panel::before { display: none; }
+[data-theme="wasteland"] .panel-head { border-bottom: 2px solid var(--line); padding-bottom: 8px; }
+[data-theme="wasteland"] .panel-head h3 { color: var(--text); letter-spacing: .25em; font-size: 13px; }
+[data-theme="wasteland"] .stat { border-radius: 10px; border: 2px solid var(--line); }
+[data-theme="wasteland"] .stat::after { display: none; }
+[data-theme="wasteland"] .btn { clip-path: none; border-radius: 6px; border-width: 2px; text-transform: uppercase; }
+[data-theme="wasteland"] .modal { clip-path: none; border-radius: 18px; border-width: 3px; }
+[data-theme="wasteland"] .bar { height: 10px; border: 1px solid var(--line); }
+[data-theme="wasteland"] .bar-fill { background: repeating-linear-gradient(90deg, var(--acc) 0 10px, transparent 10px 13px); }
+[data-theme="wasteland"] .main::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 99; background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.65) 100%); }
+[data-theme="wasteland"] .logo-mark { color: var(--cyan); }
+
+/* ---------- ФЕНТЕЗІ RPG: gold, leather, parchment ---------- */
+[data-theme="fantasy"] {
+  --bg: #1a1410; --bg2: #2a2018; --panel: #241b14; --line: #6b5326;
+  --text: #f1e4c8; --muted: #a8977a;
+  --cyan: #e0b54a; --magenta: #9b6bd6; --yellow: #f0d27a; --green: #4caf7a; --red: #c84040;
+  --head: "Cormorant Garamond", Georgia, serif; --body: "Lora", Georgia, serif;
+  --on-acc: #1a1410; --side-bg: #15100c; --top-bg: #1a1410ee; --input-bg: #15100c;
+  --modal-bg: #241b14; --overlay: #000a; --radius: 4px; --btn-r: 3px; --modal-r: 4px;
+  --panel-shadow: 0 0 0 1px #000, 0 0 0 4px #2a2018, 0 0 0 5px #6b5326, 0 10px 30px rgba(0,0,0,.5);
+  --chart-grid: #3a2e20;
+}
+[data-theme="fantasy"] .bg-grid { background: radial-gradient(ellipse at 50% 30%, #3a2a18 0%, #1a1410 55%, #0c0907 100%); }
+[data-theme="fantasy"] .panel { margin: 5px; }
+[data-theme="fantasy"] .panel-head h3, [data-theme="fantasy"] .modal-head h3 { font: 700 20px var(--head); letter-spacing: .08em; font-variant: small-caps; text-transform: none; color: var(--cyan); }
+[data-theme="fantasy"] .panel-head h3::before { content: "❖ "; color: var(--line); }
+[data-theme="fantasy"] .stat-value, [data-theme="fantasy"] .goal-amt, [data-theme="fantasy"] .networth { font: 700 30px var(--head); color: var(--yellow); }
+[data-theme="fantasy"] .logo { font: 700 24px var(--head); color: var(--cyan); letter-spacing: .1em; }
+[data-theme="fantasy"] .btn { background: linear-gradient(#3a2c1c, #241b14); border: 1px solid var(--cyan); color: var(--yellow); font-family: var(--head); font-size: 15px; }
+[data-theme="fantasy"] .btn:hover:not(:disabled) { background: linear-gradient(#5a4524, #3a2c1c); color: #fff; }
+[data-theme="fantasy"] .bar { height: 10px; border: 1px solid #000; box-shadow: inset 0 1px 3px #000; background: #120d09; }
+[data-theme="fantasy"] .bar-fill { background: linear-gradient(180deg, color-mix(in srgb, var(--acc) 70%, #fff), var(--acc) 50%, color-mix(in srgb, var(--acc) 60%, #000)); }
+
+/* ---------- ХОРОР: blood, fog, flicker ---------- */
+[data-theme="horror"] {
+  --bg: #0b0606; --bg2: #140b0b; --panel: rgba(20, 10, 10, .88); --line: #3a1a1a;
+  --text: #d8cfc0; --muted: #7d6e62;
+  --cyan: #b81414; --magenta: #8a5a7a; --yellow: #c9a86a; --green: #6b8f5e; --red: #e01b1b;
+  --head: "Cormorant Garamond", Georgia, serif; --body: "Lora", Georgia, serif;
+  --on-acc: #0b0606; --side-bg: #080404; --top-bg: #0b0606ee; --input-bg: #060303;
+  --modal-bg: #140b0b; --overlay: #000c; --radius: 2px; --btn-r: 2px; --modal-r: 2px;
+  --chart-grid: #2a1414;
+}
+[data-theme="horror"] .bg-grid { background: radial-gradient(ellipse at 30% 20%, #2a0d0d 0%, transparent 50%), radial-gradient(ellipse at 80% 90%, #1d0808 0%, transparent 45%), #0b0606; }
+[data-theme="horror"] .bg-grid::after { opacity: 1; mask-image: none; background: radial-gradient(ellipse at center, transparent 35%, #000 100%); animation: fog 7s ease-in-out infinite alternate; }
+@keyframes fog { from { opacity: .85; } to { opacity: 1; } }
+[data-theme="horror"] .panel-head h3, [data-theme="horror"] .modal-head h3 { font: italic 700 21px var(--head); color: var(--red); letter-spacing: .03em; text-transform: none; }
+[data-theme="horror"] .logo { font: italic 700 26px var(--head); color: var(--red); animation: flick 4s infinite; }
+[data-theme="horror"] .logo em { color: var(--text); }
+[data-theme="horror"] .stat-value { font: 700 30px var(--head); }
+[data-theme="horror"] .panel { box-shadow: inset 0 0 40px rgba(0,0,0,.8); }
+[data-theme="horror"] .btn.primary { background: #6b0b0b; color: #f1e6e6; border-color: #b81414; }
+[data-theme="horror"] .bar-fill { background: linear-gradient(90deg, #4a0505, var(--acc)); }
+
+/* ---------- ГОНКИ: carbon & red ---------- */
+[data-theme="racing"] {
+  --bg: #111214; --bg2: #1a1b1e; --panel: #1a1b1e; --line: #2e3035;
+  --text: #f5f5f5; --muted: #8a8d94;
+  --cyan: #e10600; --magenta: #ffffff; --yellow: #ffb400; --green: #00d26a; --red: #ff2d2d;
+  --head: "Oswald", "Arial Narrow", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --on-acc: #ffffff; --side-bg: #0c0d0f; --top-bg: #111214ee; --input-bg: #0c0d0f;
+  --modal-bg: #1a1b1e; --overlay: #000b; --radius: 0px; --btn-r: 0px; --modal-r: 0px; --misc-r: 0px; --bar-r: 0px;
+  --chart-grid: #26282c;
+}
+[data-theme="racing"] .bg-grid { background: repeating-linear-gradient(45deg, #15161a 0 4px, #0f1012 4px 8px), #111214; }
+[data-theme="racing"] .panel { border-top: 3px solid var(--acc); }
+[data-theme="racing"] .panel-head h3 { font: italic 700 17px var(--head); letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+[data-theme="racing"] .stat-value { font: italic 700 34px var(--head); color: #fff; }
+[data-theme="racing"] .stat { border-left: 6px solid var(--acc); }
+[data-theme="racing"] .logo { font: italic 700 26px var(--head); }
+[data-theme="racing"] .logo em { color: var(--cyan); }
+[data-theme="racing"] .btn { font: italic 700 14px var(--head); text-transform: uppercase; letter-spacing: .08em; transform: skewX(-10deg); }
+[data-theme="racing"] .btn.primary { background: var(--cyan); color: #fff; }
+[data-theme="racing"] .bar { height: 8px; background: repeating-linear-gradient(90deg, #2a2c30 0 12px, #1a1b1e 12px 14px); }
+[data-theme="racing"] .bar-fill { background: linear-gradient(90deg, #00d26a 0%, #ffb400 70%, #e10600 100%); background-size: 100vw 100%; }
+[data-theme="racing"] .ring-fg { stroke: var(--cyan); stroke-width: 10; }
+[data-theme="racing"] .ring-label { color: #fff; font: italic 700 30px var(--head); }
+[data-theme="racing"] .nav-btn { font-family: var(--head); text-transform: uppercase; letter-spacing: .08em; font-size: 14px; }
+[data-theme="racing"] .nav-btn.on { background: var(--cyan); color: #fff; }
+
+/* ---------- КОСМОС: starship HUD ---------- */
+[data-theme="space"] {
+  --bg: #02030a; --bg2: #0a0f1f; --panel: rgba(6, 12, 28, .7); --line: rgba(79, 209, 255, .25);
+  --text: #e2f4ff; --muted: #6c86a8;
+  --cyan: #4fd1ff; --magenta: #ff9f43; --yellow: #ffd66b; --green: #a3ffd6; --red: #ff5c7a;
+  --head: "Exo 2", "Segoe UI", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --cut: 0px; --glow: 14px; --on-acc: #02030a; --side-bg: rgba(4, 8, 20, .85); --top-bg: rgba(2, 3, 10, .7);
+  --input-bg: rgba(0, 0, 0, .5); --modal-bg: rgba(8, 14, 32, .95); --overlay: #000a; --grid-op: 0; --scan-op: 0;
+  --chart-grid: rgba(79, 209, 255, .1);
+  --bracket: linear-gradient(var(--acc), var(--acc));
+}
+[data-theme="space"] .bg-grid {
+  background:
+    radial-gradient(1px 1px at 20px 30px, #fff, transparent), radial-gradient(1px 1px at 120px 80px, #cde, transparent),
+    radial-gradient(1.5px 1.5px at 200px 160px, #fff, transparent), radial-gradient(1px 1px at 60px 200px, #9cf, transparent),
+    radial-gradient(1px 1px at 160px 240px, #fff, transparent), radial-gradient(2px 2px at 260px 40px, #ffd, transparent),
+    radial-gradient(ellipse at 80% 10%, rgba(79,209,255,.15), transparent 50%), radial-gradient(ellipse at 10% 90%, rgba(255,159,67,.12), transparent 50%), #02030a;
+  background-size: 300px 300px, 300px 300px, 300px 300px, 300px 300px, 300px 300px, 300px 300px, auto, auto, auto;
+}
+[data-theme="space"] .panel {
+  clip-path: none; border: 1px solid var(--line); backdrop-filter: blur(4px);
+  background:
+    var(--bracket) top left / 18px 2px no-repeat, var(--bracket) top left / 2px 18px no-repeat,
+    var(--bracket) top right / 18px 2px no-repeat, var(--bracket) top right / 2px 18px no-repeat,
+    var(--bracket) bottom left / 18px 2px no-repeat, var(--bracket) bottom left / 2px 18px no-repeat,
+    var(--bracket) bottom right / 18px 2px no-repeat, var(--bracket) bottom right / 2px 18px no-repeat,
+    var(--panel);
+}
+[data-theme="space"] .panel::before { display: none; }
+[data-theme="space"] .panel-head h3 { font: 600 13px var(--head); letter-spacing: .3em; }
+[data-theme="space"] .stat-value { font: 700 28px var(--head); letter-spacing: .04em; }
+[data-theme="space"] .stat { border: 1px solid var(--line); border-left: 2px solid var(--acc); }
+[data-theme="space"] .btn { clip-path: none; border-radius: 2px; text-transform: uppercase; letter-spacing: .15em; font-size: 11px; }
+[data-theme="space"] .modal { clip-path: none; border-radius: 2px; }
+[data-theme="space"] .logo { letter-spacing: .3em; font: 700 18px var(--head); }
+[data-theme="space"] .ring-fg { stroke: var(--cyan); filter: drop-shadow(0 0 6px var(--cyan)); }
+
+/* ---------- АРКАДА: 80s cabinet maze ---------- */
+[data-theme="arcade"] {
+  --bg: #000000; --bg2: #05051a; --panel: #000000; --line: #2121de;
+  --text: #ffffff; --muted: #8888cc;
+  --cyan: #00ffff; --magenta: #ff6ad5; --yellow: #ffd800; --green: #39ff14; --red: #ff2b2b;
+  --head: "Pixelify Sans", "Courier New", monospace; --body: "Pixelify Sans", "Courier New", monospace;
+  --cut: 0px; --glow: 10px; --on-acc: #000; --side-bg: #000; --top-bg: #000;
+  --input-bg: #000; --modal-bg: #000; --overlay: #000c; --grid-op: 0; --scan-op: .8;
+  --chart-grid: rgba(33, 33, 222, .35);
+}
+[data-theme="arcade"] .bg-grid { background: radial-gradient(circle, #ffd8a8 1.5px, transparent 2px) 0 0 / 28px 28px, #000; opacity: .35; }
+[data-theme="arcade"] .panel, [data-theme="arcade"] .stat { clip-path: none; border: 4px double #2121de; border-radius: 12px; background: #000; box-shadow: 0 0 12px rgba(33,33,222,.6), inset 0 0 12px rgba(33,33,222,.4); }
+[data-theme="arcade"] .panel::before, [data-theme="arcade"] .stat::after { display: none; }
+[data-theme="arcade"] .panel-head h3 { font: 700 16px var(--head); color: var(--yellow); letter-spacing: .1em; }
+[data-theme="arcade"] .stat-value { font: 700 28px var(--head); }
+[data-theme="arcade"] .logo { color: var(--yellow); font: 700 24px var(--head); }
+[data-theme="arcade"] .logo em { color: var(--red); }
+[data-theme="arcade"] .logo-mark { color: var(--yellow); }
+[data-theme="arcade"] .btn { clip-path: none; border-radius: 99px; font-family: var(--head); border-width: 3px; }
+[data-theme="arcade"] .modal { clip-path: none; border: 4px double #2121de; border-radius: 14px; }
+[data-theme="arcade"] .bar { height: 10px; background: radial-gradient(circle, #ffd8a855 2px, transparent 2.5px) 0 50% / 12px 10px repeat-x; }
+[data-theme="arcade"] .bar-fill { background: radial-gradient(circle, var(--acc) 3.5px, transparent 4px) 0 50% / 12px 10px repeat-x; box-shadow: none; }
+[data-theme="arcade"] .nav-btn.on { color: var(--yellow); border-left-color: var(--yellow); background: transparent; }
+[data-theme="arcade"] .nav-btn.on .nav-ico::before { content: "ᗧ"; color: var(--yellow); margin-right: 2px; }
+[data-theme="arcade"] .nav-btn.on .nav-ico { font-size: 0; }
+[data-theme="arcade"] .nav-btn.on .nav-ico::before { font-size: 16px; }
+
+/* ================= РЕТРО ================= */
+
+/* ---------- МАТРИЦЯ: digital rain ---------- */
+[data-theme="matrix"] {
+  --bg: #000000; --bg2: #001a07; --panel: rgba(0, 12, 4, .82); --line: rgba(0, 255, 65, .25);
+  --text: #c8ffd4; --muted: #2f9e4f;
+  --cyan: #00ff41; --magenta: #7dff9a; --yellow: #d0ffd8; --green: #00ff41; --red: #ff3b3b;
+  --head: "IBM Plex Mono", Consolas, monospace; --body: "IBM Plex Mono", Consolas, monospace;
+  --cut: 10px; --glow: 14px; --on-acc: #000; --side-bg: rgba(0, 6, 2, .9); --top-bg: rgba(0, 0, 0, .85);
+  --input-bg: #000; --modal-bg: #000d04; --overlay: #000c; --grid-op: 0; --scan-op: .6;
+  --chart-grid: rgba(0, 255, 65, .08);
+}
+[data-theme="matrix"] .bg-grid {
+  background:
+    linear-gradient(180deg, transparent 0 40%, rgba(0,255,65,.55) 49%, #d0ffd8 50%, transparent 50.5%) 0 0 / 23px 340px,
+    linear-gradient(180deg, transparent 0 30%, rgba(0,255,65,.4) 49%, transparent 50%) 11px 120px / 37px 520px,
+    linear-gradient(180deg, transparent 0 55%, rgba(0,255,65,.35) 69%, transparent 70%) 5px 60px / 29px 430px,
+    #000;
+  animation: rain 9s linear infinite;
+}
+@keyframes rain { to { background-position: 0 340px, 11px 640px, 5px 490px, 0 0; } }
+[data-theme="matrix"] .bg-grid::after { opacity: 1; mask-image: none; background: linear-gradient(90deg, #000 0 2px, transparent 2px 23px) 0 0 / 23px 100%; }
+[data-theme="matrix"] .panel-head h3 { color: var(--cyan); letter-spacing: .3em; }
+[data-theme="matrix"] .logo { color: var(--cyan); letter-spacing: .15em; }
+[data-theme="matrix"] .logo em, [data-theme="matrix"] .logo-mark { color: #d0ffd8; }
+
+/* ---------- РЕТРО ОС: grey windows, navy title bars ---------- */
+[data-theme="retroos"] {
+  --bg: #008080; --bg2: #c0c0c0; --panel: #c0c0c0; --line: #808080;
+  --text: #000000; --muted: #404040;
+  --cyan: #000080; --magenta: #800080; --yellow: #808000; --green: #008000; --red: #c00000;
+  --head: Tahoma, Verdana, "Segoe UI", sans-serif; --body: Tahoma, Verdana, "Segoe UI", sans-serif;
+  --on-acc: #ffffff; --side-bg: #c0c0c0; --top-bg: #c0c0c0; --input-bg: #ffffff;
+  --modal-bg: #c0c0c0; --overlay: transparent; --radius: 0px; --btn-r: 0px; --modal-r: 0px; --misc-r: 0px; --bar-r: 0px;
+  --out: inset -1px -1px #000, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  --in: inset -1px -1px #fff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #000;
+  --chart-grid: #a0a0a0;
+  color-scheme: light;
+}
+[data-theme="retroos"] body { font-size: 13px; }
+[data-theme="retroos"] .bg-grid { background: #008080; }
+[data-theme="retroos"] .side { border-right: none; box-shadow: var(--out); }
+[data-theme="retroos"] .top { border-bottom: none; box-shadow: var(--out); backdrop-filter: none; }
+[data-theme="retroos"] .panel, [data-theme="retroos"] .stat { border: none; box-shadow: var(--out); padding: 3px 3px 12px; }
+[data-theme="retroos"] .panel-body { padding: 4px 10px 0; }
+[data-theme="retroos"] .panel-head { background: linear-gradient(90deg, #000080, #1084d0); padding: 3px 4px 3px 8px; margin-bottom: 10px; min-height: 22px; }
+[data-theme="retroos"] .panel-head h3 { color: #fff; font: 700 12px var(--head); letter-spacing: 0; text-transform: none; }
+[data-theme="retroos"] .stat { padding: 10px 12px; border-left: none; }
+[data-theme="retroos"] .stat-value { color: #000; font: 700 22px var(--head); }
+[data-theme="retroos"] .stat-label { color: #000080; font-weight: 700; letter-spacing: .02em; }
+[data-theme="retroos"] .btn { color: #000; background: #c0c0c0; border: none; box-shadow: var(--out); font: 12px var(--head); padding: 6px 16px; }
+[data-theme="retroos"] .btn:hover:not(:disabled) { background: #c0c0c0; color: #000; box-shadow: var(--out); }
+[data-theme="retroos"] .btn:active { box-shadow: var(--in); }
+[data-theme="retroos"] input:not([type=checkbox]), [data-theme="retroos"] select { border: none; box-shadow: var(--in); background: #fff; color: #000; }
+[data-theme="retroos"] input:focus, [data-theme="retroos"] select:focus { box-shadow: var(--in); outline: 1px dotted #000; }
+[data-theme="retroos"] .bar { height: 16px; box-shadow: var(--in); background: #fff; padding: 2px; }
+[data-theme="retroos"] .bar-fill { background: repeating-linear-gradient(90deg, #000080 0 8px, transparent 8px 10px); }
+[data-theme="retroos"] .nav-btn { color: #000; }
+[data-theme="retroos"] .nav-btn.on { background: #000080; color: #fff; }
+[data-theme="retroos"] .modal { border: none; box-shadow: var(--out), 4px 4px 0 rgba(0,0,0,.3); padding: 3px; }
+[data-theme="retroos"] .modal-head { background: linear-gradient(90deg, #000080, #1084d0); padding: 3px 4px 3px 8px; margin: 0 0 10px; }
+[data-theme="retroos"] .modal-head h3 { color: #fff; font: 700 12px var(--head); letter-spacing: 0; text-transform: none; }
+[data-theme="retroos"] .modal-head .icon-btn { background: #c0c0c0; color: #000; box-shadow: var(--out); padding: 0 6px; font-size: 11px; }
+[data-theme="retroos"] .modal > :not(.modal-head) { margin-left: 10px; margin-right: 10px; }
+[data-theme="retroos"] .modal-actions { padding-bottom: 8px; }
+[data-theme="retroos"] .logo { color: #000; font: 700 18px var(--head); }
+[data-theme="retroos"] .logo em { color: #000080; }
+[data-theme="retroos"] .logo-mark { display: inline; color: #c00000; }
+[data-theme="retroos"] .rates, [data-theme="retroos"] .seg, [data-theme="retroos"] .empty, [data-theme="retroos"] .alert, [data-theme="retroos"] .goal-card, [data-theme="retroos"] .debt-card { border: none; box-shadow: var(--in); background: #fff; }
+[data-theme="retroos"] .seg-btn.on { background: #000080; color: #fff; }
+[data-theme="retroos"] .tbl td { border-bottom-color: #a0a0a0; }
+[data-theme="retroos"] input[type=date]::-webkit-calendar-picker-indicator { filter: none; }
+
+/* ---------- ВЕЙПОРВЕЙВ: pastel nostalgia ---------- */
+[data-theme="vaporwave"] {
+  --bg: #ffb3e0; --bg2: #fff0fa; --panel: rgba(255, 255, 255, .62); --line: rgba(61, 44, 107, .25);
+  --text: #3d2c6b; --muted: #8a6fae;
+  --cyan: #00bfb3; --magenta: #ff4fa7; --yellow: #f5a623; --green: #19b48a; --red: #e8335d;
+  --head: "Rubik Mono One", "Arial Black", sans-serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #ffffff; --side-bg: rgba(255, 255, 255, .45); --top-bg: rgba(255, 255, 255, .4);
+  --input-bg: rgba(255, 255, 255, .8); --modal-bg: #fff0fa; --overlay: rgba(61, 44, 107, .3);
+  --radius: 0px; --btn-r: 0px; --modal-r: 0px; --misc-r: 0px; --bar-r: 0px;
+  --panel-shadow: 6px 6px 0 rgba(0, 191, 179, .55); --chart-grid: rgba(61, 44, 107, .12);
+  color-scheme: light;
+}
+[data-theme="vaporwave"] .bg-grid {
+  background:
+    linear-gradient(rgba(255,79,167,.35) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba(255,79,167,.35) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(180deg, #ffb3e0 0%, #c9b6ff 50%, #8ec5fc 100%);
+}
+[data-theme="vaporwave"] .panel, [data-theme="vaporwave"] .stat { backdrop-filter: blur(6px); border: 2px solid var(--text); }
+[data-theme="vaporwave"] .panel-head h3 { font: 400 13px var(--head); letter-spacing: .06em; color: var(--magenta); }
+[data-theme="vaporwave"] .stat-value { font: 400 24px var(--head); }
+[data-theme="vaporwave"] .logo { font: 400 18px var(--head); color: var(--magenta); letter-spacing: .2em; }
+[data-theme="vaporwave"] .logo em { color: var(--cyan); }
+[data-theme="vaporwave"] .btn { border: 2px solid var(--text); box-shadow: 3px 3px 0 var(--text); font-weight: 800; }
+[data-theme="vaporwave"] .btn.primary { background: var(--magenta); color: #fff; }
+[data-theme="vaporwave"] .btn.green { background: var(--cyan); color: #fff; }
+[data-theme="vaporwave"] .modal { border: 2px solid var(--text); box-shadow: 8px 8px 0 var(--cyan); }
+
+/* ---------- СТІМПАНК: brass, leather, rivets ---------- */
+[data-theme="steampunk"] {
+  --bg: #1c120a; --bg2: #2b1b10; --panel: #2e1d11; --line: #7a5a2a;
+  --text: #f0dfb8; --muted: #a88a5c;
+  --cyan: #c9973f; --magenta: #b5653b; --yellow: #e8c37a; --green: #7fa36b; --red: #c0492f;
+  --head: "Cormorant Garamond", Georgia, serif; --body: "Lora", Georgia, serif;
+  --on-acc: #1c120a; --side-bg: #170e07; --top-bg: #1c120aee; --input-bg: #170e07;
+  --modal-bg: #2e1d11; --overlay: #000a; --radius: 6px; --btn-r: 4px; --modal-r: 6px;
+  --rivet: radial-gradient(circle at 10px 10px, #e8c37a 0 2px, #7a5a2a 3px, transparent 4px);
+  --panel-shadow: inset 0 0 0 2px #7a5a2a, inset 0 0 0 4px #1c120a, inset 0 0 0 5px #c9973f, 0 8px 24px rgba(0,0,0,.6);
+  --chart-grid: #3e2a18;
+}
+[data-theme="steampunk"] .bg-grid { background: radial-gradient(ellipse at center, #3a2414 0%, #1c120a 60%, #0d0804 100%); }
+[data-theme="steampunk"] .panel { border: none; padding: 20px 22px;
+  background:
+    radial-gradient(circle, #e8c37a 0 2px, #6b4a1e 2.5px 3.5px, transparent 4px) top 9px left 9px / 8px 8px no-repeat,
+    radial-gradient(circle, #e8c37a 0 2px, #6b4a1e 2.5px 3.5px, transparent 4px) top 9px right 9px / 8px 8px no-repeat,
+    radial-gradient(circle, #e8c37a 0 2px, #6b4a1e 2.5px 3.5px, transparent 4px) bottom 9px left 9px / 8px 8px no-repeat,
+    radial-gradient(circle, #e8c37a 0 2px, #6b4a1e 2.5px 3.5px, transparent 4px) bottom 9px right 9px / 8px 8px no-repeat,
+    linear-gradient(160deg, #3a2414, #2a1a0e);
+}
+[data-theme="steampunk"] .panel-head h3, [data-theme="steampunk"] .modal-head h3 { font: 700 20px var(--head); color: var(--yellow); letter-spacing: .06em; text-transform: none; }
+[data-theme="steampunk"] .stat-value, [data-theme="steampunk"] .networth { font: 700 30px var(--head); color: var(--yellow); }
+[data-theme="steampunk"] .logo { font: 700 24px var(--head); color: var(--cyan); }
+[data-theme="steampunk"] .logo::before { content: "⚙ "; color: var(--cyan); }
+[data-theme="steampunk"] .btn { background: linear-gradient(180deg, #e8c37a, #c9973f 45%, #7a5a2a); color: #1c120a; border: 1px solid #3a2414; font-family: var(--head); font-size: 15px; }
+[data-theme="steampunk"] .btn.ghost { background: linear-gradient(180deg, #5a3e22, #3a2414); color: var(--yellow); }
+[data-theme="steampunk"] .bar { height: 10px; background: #150d06; box-shadow: inset 0 1px 3px #000; border: 1px solid #7a5a2a; }
+[data-theme="steampunk"] .bar-fill { background: linear-gradient(180deg, #f5d79a, var(--acc) 50%, #6b4a1e); }
+[data-theme="steampunk"] .ring-fg { stroke: var(--cyan); }
+
+/* ================= АТМОСФЕРНІ ================= */
+
+/* ---------- LO-FI ВЕЧІР: pastel dusk, cozy ---------- */
+[data-theme="lofi"] {
+  --bg: #2b2650; --bg2: #3b3366; --panel: rgba(59, 51, 102, .6); --line: rgba(255, 214, 165, .18);
+  --text: #fdf1f5; --muted: #b6abd6;
+  --cyan: #a5d8ff; --magenta: #f6a5c0; --yellow: #ffd6a5; --green: #b9f2c9; --red: #ff9aa2;
+  --head: "Nunito", "Segoe UI", sans-serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #2b2650; --side-bg: rgba(43, 38, 80, .55); --top-bg: rgba(43, 38, 80, .35);
+  --input-bg: rgba(0, 0, 0, .2); --modal-bg: #3b3366; --overlay: rgba(20, 16, 40, .5);
+  --radius: 22px; --btn-r: 99px; --modal-r: 24px; --misc-r: 16px;
+  --panel-shadow: 0 10px 30px rgba(10, 6, 30, .3); --chart-grid: rgba(255, 255, 255, .07);
+}
+[data-theme="lofi"] .bg-grid { background: radial-gradient(circle at 80% 85%, #ffd6a5 0 5%, rgba(255,214,165,.35) 9%, transparent 25%), linear-gradient(180deg, #1f1b3d 0%, #3b3366 45%, #8a5c9e 75%, #f6a5c0 100%); }
+[data-theme="lofi"] .panel, [data-theme="lofi"] .stat, [data-theme="lofi"] .side { backdrop-filter: blur(14px); }
+[data-theme="lofi"] .panel-head h3 { font: 800 14px var(--head); text-transform: none; letter-spacing: .02em; color: var(--yellow); }
+[data-theme="lofi"] .panel-head h3::before { content: "☾ "; }
+[data-theme="lofi"] .stat-value { font: 800 28px var(--head); }
+[data-theme="lofi"] .btn.primary, [data-theme="lofi"] .btn.green { background: var(--acc); color: var(--on-acc); }
+[data-theme="lofi"] .logo { font: 800 22px var(--head); }
+[data-theme="lofi"] .nav-btn.on { background: rgba(255,255,255,.14); color: #fff; }
+
+/* ---------- ОКЕАН: deep sea ---------- */
+[data-theme="ocean"] {
+  --bg: #021b2e; --bg2: #04304d; --panel: rgba(4, 48, 77, .55); --line: rgba(46, 230, 201, .2);
+  --text: #e6fbff; --muted: #7fb3c8;
+  --cyan: #2ee6c9; --magenta: #4fa3ff; --yellow: #ffcf70; --green: #5cf2a8; --red: #ff7a7a;
+  --head: "Nunito", "Segoe UI", sans-serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #021b2e; --side-bg: rgba(2, 20, 36, .7); --top-bg: rgba(2, 27, 46, .5);
+  --input-bg: rgba(0, 10, 20, .4); --modal-bg: #04304d; --overlay: rgba(0, 8, 16, .55);
+  --radius: 16px; --btn-r: 12px; --panel-shadow: 0 8px 30px rgba(0, 10, 20, .35); --chart-grid: rgba(46, 230, 201, .08);
+}
+[data-theme="ocean"] .bg-grid {
+  background:
+    radial-gradient(circle at 15% 70%, rgba(255,255,255,.25) 0 3px, transparent 4px),
+    radial-gradient(circle at 18% 60%, rgba(255,255,255,.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 40%, rgba(255,255,255,.2) 0 4px, transparent 5px),
+    radial-gradient(circle at 70% 80%, rgba(255,255,255,.15) 0 2px, transparent 3px),
+    linear-gradient(170deg, transparent 0 20%, rgba(120,230,255,.08) 25%, transparent 32%),
+    linear-gradient(190deg, transparent 0 40%, rgba(120,230,255,.06) 45%, transparent 52%),
+    linear-gradient(180deg, #0a4d74 0%, #04304d 35%, #021b2e 70%, #010d18 100%);
+}
+[data-theme="ocean"] .panel, [data-theme="ocean"] .stat, [data-theme="ocean"] .side { backdrop-filter: blur(10px); }
+[data-theme="ocean"] .panel-head h3 { font: 800 13px var(--head); letter-spacing: .12em; }
+[data-theme="ocean"] .stat-value { font: 800 28px var(--head); }
+[data-theme="ocean"] .btn.primary { background: var(--cyan); color: var(--on-acc); }
+[data-theme="ocean"] .bar-fill { background: linear-gradient(90deg, color-mix(in srgb, var(--acc) 50%, #021b2e), var(--acc)); }
+
+/* ---------- ЛІС: moss, pine, mist ---------- */
+[data-theme="forest"] {
+  --bg: #0f1f17; --bg2: #16291f; --panel: rgba(22, 41, 31, .85); --line: #2b4536;
+  --text: #e8f0e3; --muted: #8fa894;
+  --cyan: #8fd694; --magenta: #e8a87c; --yellow: #e8c07d; --green: #8fd694; --red: #e07a5f;
+  --head: "Lora", Georgia, serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #0f1f17; --side-bg: #0c1912; --top-bg: rgba(15, 31, 23, .9);
+  --input-bg: #0c1912; --modal-bg: #16291f; --overlay: rgba(5, 12, 8, .6);
+  --radius: 14px; --panel-shadow: 0 6px 20px rgba(0,0,0,.25); --chart-grid: #22382b;
+}
+[data-theme="forest"] .bg-grid {
+  background:
+    linear-gradient(180deg, rgba(200,230,210,.08), transparent 40%),
+    conic-gradient(from 160deg at 10% 100%, transparent 0 20deg, #0a1610 20deg 40deg, transparent 40deg) 0 100% / 180px 260px repeat-x,
+    conic-gradient(from 160deg at 50% 100%, transparent 0 18deg, #0c1a13 18deg 42deg, transparent 42deg) 60px 100% / 140px 200px repeat-x,
+    linear-gradient(180deg, #1d3a2b, #0f1f17 70%);
+}
+[data-theme="forest"] .panel-head h3 { font: italic 700 17px var(--head); text-transform: none; letter-spacing: .02em; color: var(--green); }
+[data-theme="forest"] .panel-head h3::before { content: "❧ "; color: var(--yellow); }
+[data-theme="forest"] .stat-value { font: 700 28px var(--head); }
+[data-theme="forest"] .logo { font: italic 700 22px var(--head); }
+[data-theme="forest"] .btn.primary, [data-theme="forest"] .btn.green { background: var(--acc); color: var(--on-acc); }
+
+/* ---------- САКУРА: Japanese spring, ink ---------- */
+[data-theme="sakura"] {
+  --bg: #fff5f7; --bg2: #ffffff; --panel: rgba(255, 255, 255, .85); --line: #f3d3dd;
+  --text: #2b2b2b; --muted: #8c7b80;
+  --cyan: #e85d8a; --magenta: #c8102e; --yellow: #c08a2d; --green: #5a8f5a; --red: #c8102e;
+  --head: "Lora", Georgia, serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #ffffff; --side-bg: #ffffffcc; --top-bg: #fff5f7dd; --input-bg: #fffafb;
+  --modal-bg: #ffffff; --overlay: rgba(43, 43, 43, .3); --radius: 4px; --btn-r: 2px; --modal-r: 4px;
+  --panel-shadow: 0 2px 12px rgba(232, 93, 138, .08); --chart-grid: #f6e3e9;
+  color-scheme: light;
+}
+[data-theme="sakura"] .bg-grid {
+  background:
+    radial-gradient(ellipse 7px 5px at 12% 18%, #f7b6c8 60%, transparent 62%), radial-gradient(ellipse 5px 4px at 32% 72%, #f9c5d4 60%, transparent 62%),
+    radial-gradient(ellipse 6px 4px at 58% 28%, #f7b6c8 60%, transparent 62%), radial-gradient(ellipse 8px 5px at 82% 62%, #f9c5d4 60%, transparent 62%),
+    radial-gradient(ellipse 5px 3px at 90% 12%, #f7b6c8 60%, transparent 62%), radial-gradient(ellipse 6px 4px at 45% 92%, #f9c5d4 60%, transparent 62%),
+    radial-gradient(circle at 92% 8%, rgba(232,93,138,.12), transparent 30%), #fff5f7;
+  background-size: 420px 420px, 420px 420px, 420px 420px, 420px 420px, 420px 420px, 420px 420px, auto, auto;
+}
+[data-theme="sakura"] .panel-head h3, [data-theme="sakura"] .modal-head h3 { font: 700 17px var(--head); text-transform: none; letter-spacing: .04em; color: var(--text); }
+[data-theme="sakura"] .panel-head h3::before { content: ""; display: inline-block; width: 10px; height: 10px; background: var(--magenta); margin-right: 8px; vertical-align: 1px; }
+[data-theme="sakura"] .stat-value { font: 700 28px var(--head); }
+[data-theme="sakura"] .logo { font: 700 22px var(--head); }
+[data-theme="sakura"] .logo em { color: var(--magenta); }
+[data-theme="sakura"] .btn.primary { background: var(--magenta); color: #fff; }
+[data-theme="sakura"] .btn.green { background: var(--cyan); color: #fff; --acc: var(--cyan); }
+[data-theme="sakura"] .stat { border-left-color: var(--magenta); }
+[data-theme="sakura"] input[type=date]::-webkit-calendar-picker-indicator { filter: none; }
+
+/* ---------- МАРС: red desert ---------- */
+[data-theme="mars"] {
+  --bg: #2a0f08; --bg2: #3a160c; --panel: rgba(58, 22, 12, .75); --line: rgba(255, 122, 61, .22);
+  --text: #ffe9d9; --muted: #c08a70;
+  --cyan: #ff7a3d; --magenta: #ffb37a; --yellow: #ffc796; --green: #9fd3c7; --red: #ff4b3a;
+  --head: "Exo 2", "Segoe UI", sans-serif; --body: "Exo 2", "Segoe UI", sans-serif;
+  --on-acc: #2a0f08; --side-bg: rgba(30, 10, 5, .85); --top-bg: rgba(42, 15, 8, .7);
+  --input-bg: rgba(20, 6, 3, .6); --modal-bg: #3a160c; --overlay: rgba(15, 4, 2, .6);
+  --radius: 8px; --btn-r: 4px; --panel-shadow: 0 8px 24px rgba(0,0,0,.35); --chart-grid: rgba(255, 122, 61, .1);
+}
+[data-theme="mars"] .bg-grid {
+  background:
+    radial-gradient(ellipse 140% 40% at 30% 100%, #7a2a12 0 40%, transparent 41%),
+    radial-gradient(ellipse 120% 35% at 85% 100%, #5e1f0d 0 45%, transparent 46%),
+    radial-gradient(circle at 80% 20%, #ffd2a6 0 1.5%, rgba(255,180,120,.25) 3%, transparent 10%),
+    linear-gradient(180deg, #3a1208 0%, #8a3a1c 60%, #c45a2a 100%);
+}
+[data-theme="mars"] .panel, [data-theme="mars"] .stat { backdrop-filter: blur(6px); }
+[data-theme="mars"] .panel-head h3 { font: 700 13px var(--head); letter-spacing: .25em; }
+[data-theme="mars"] .stat-value { font: 700 28px var(--head); }
+[data-theme="mars"] .logo { font: 700 20px var(--head); letter-spacing: .2em; }
+[data-theme="mars"] .btn.primary { background: var(--cyan); color: var(--on-acc); }
+
+/* ================= СТИЛЬОВІ ================= */
+
+/* ---------- КОМІКС: pop-art halftone ---------- */
+[data-theme="comic"] {
+  --bg: #ffe14d; --bg2: #ffffff; --panel: #ffffff; --line: #111111;
+  --text: #111111; --muted: #555555;
+  --cyan: #1d4ed8; --magenta: #e63946; --yellow: #f4a100; --green: #2a9d48; --red: #e63946;
+  --head: "Rubik Mono One", "Arial Black", sans-serif; --body: "Nunito", "Segoe UI", sans-serif;
+  --on-acc: #ffffff; --side-bg: #ffffff; --top-bg: #ffffff; --input-bg: #ffffff;
+  --modal-bg: #ffffff; --overlay: rgba(17, 17, 17, .45);
+  --radius: 4px; --btn-r: 4px; --modal-r: 6px; --misc-r: 4px; --bar-r: 0px;
+  --panel-shadow: 6px 6px 0 #111; --chart-grid: #e6e6e6;
+  color-scheme: light;
+}
+[data-theme="comic"] .bg-grid { background: radial-gradient(circle, #e6a700 2px, transparent 2.6px) 0 0 / 12px 12px, #ffe14d; }
+[data-theme="comic"] .panel, [data-theme="comic"] .stat { border: 3px solid #111; }
+[data-theme="comic"] .stat { border-left-width: 3px; border-left-color: #111; background: var(--acc); }
+[data-theme="comic"] .stat * { color: #fff !important; }
+[data-theme="comic"] .stat-value { font: 400 24px var(--head); -webkit-text-stroke: 1px #111; text-shadow: 3px 3px 0 #111 !important; }
+[data-theme="comic"] .panel-head h3 { display: inline-block; font: 400 12px var(--head); background: var(--acc); color: #fff; padding: 6px 10px; border: 2px solid #111; transform: rotate(-1.5deg); box-shadow: 3px 3px 0 #111; letter-spacing: .02em; }
+[data-theme="comic"] .logo { font: 400 18px var(--head); color: var(--magenta); -webkit-text-stroke: 1px #111; text-shadow: 3px 3px 0 #111 !important; }
+[data-theme="comic"] .logo em { color: var(--cyan); }
+[data-theme="comic"] .side, [data-theme="comic"] .top { border-color: #111; border-width: 3px; }
+[data-theme="comic"] .btn { border: 3px solid #111; box-shadow: 3px 3px 0 #111; color: #111; background: #fff; font-weight: 800; }
+[data-theme="comic"] .btn.primary, [data-theme="comic"] .btn.green { background: var(--acc); color: #fff; }
+[data-theme="comic"] .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #111; }
+[data-theme="comic"] .modal { border: 4px solid #111; box-shadow: 10px 10px 0 #111; }
+[data-theme="comic"] .bar { height: 14px; border: 2px solid #111; background: #fff; }
+[data-theme="comic"] .bar-fill { background: radial-gradient(circle, rgba(255,255,255,.5) 1.5px, transparent 2px) 0 0 / 6px 6px, var(--acc); }
+[data-theme="comic"] input:not([type=checkbox]), [data-theme="comic"] select { border: 2px solid #111; }
+[data-theme="comic"] .nav-btn.on { background: var(--yellow); color: #111; border: 2px solid #111; }
+
+/* ---------- БРУТАЛІЗМ: neo-brutalism ---------- */
+[data-theme="brutal"] {
+  --bg: #f5f0e6; --bg2: #ffffff; --panel: #ffffff; --line: #000000;
+  --text: #000000; --muted: #555555;
+  --cyan: #4dabf7; --magenta: #ff6b6b; --yellow: #ffd43b; --green: #51cf66; --red: #ff6b6b;
+  --head: "Manrope", "Segoe UI", sans-serif; --body: "Manrope", "Segoe UI", sans-serif;
+  --on-acc: #000000; --side-bg: #ffd43b; --top-bg: #f5f0e6; --input-bg: #ffffff;
+  --modal-bg: #ffffff; --overlay: rgba(0,0,0,.3);
+  --radius: 8px; --btn-r: 6px; --modal-r: 10px; --misc-r: 6px; --bar-r: 4px;
+  --panel-shadow: 5px 5px 0 #000; --chart-grid: #eeeeee;
+  color-scheme: light;
+}
+[data-theme="brutal"] .bg-grid { background: #f5f0e6; }
+[data-theme="brutal"] .panel, [data-theme="brutal"] .stat { border: 3px solid #000; }
+[data-theme="brutal"] .stat { background: color-mix(in srgb, var(--acc) 35%, #fff); border-left-width: 3px; border-left-color: #000; }
+[data-theme="brutal"] .stat-value { color: #000; font-weight: 800; font-size: 26px; }
+[data-theme="brutal"] .panel-head h3 { color: #000; font-weight: 800; font-size: 15px; letter-spacing: .02em; }
+[data-theme="brutal"] .panel-head h3::before { content: ""; display: inline-block; width: 14px; height: 14px; background: var(--acc); border: 2px solid #000; margin-right: 8px; vertical-align: -2px; }
+[data-theme="brutal"] .side { border-right: 3px solid #000; }
+[data-theme="brutal"] .top { border-bottom: 3px solid #000; }
+[data-theme="brutal"] .btn { border: 3px solid #000; box-shadow: 3px 3px 0 #000; color: #000; background: #fff; font-weight: 800; }
+[data-theme="brutal"] .btn.primary, [data-theme="brutal"] .btn.green { background: var(--acc); color: #000; }
+[data-theme="brutal"] .btn:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 #000; }
+[data-theme="brutal"] .modal { border: 3px solid #000; box-shadow: 8px 8px 0 #000; }
+[data-theme="brutal"] .bar { height: 12px; border: 2px solid #000; background: #fff; }
+[data-theme="brutal"] input:not([type=checkbox]), [data-theme="brutal"] select { border: 2px solid #000; }
+[data-theme="brutal"] .nav-btn { color: #000; font-weight: 700; }
+[data-theme="brutal"] .nav-btn.on { background: #fff; color: #000; border: 2px solid #000; box-shadow: 3px 3px 0 #000; }
+[data-theme="brutal"] .logo { color: #000; font-weight: 800; }
+[data-theme="brutal"] .networth { color: #000; }
+[data-theme="brutal"] .logo em { color: var(--magenta); }
+[data-theme="brutal"] input[type=date]::-webkit-calendar-picker-indicator { filter: none; }
+
+/* ---------- КРЕСЛЕННЯ: blueprint ---------- */
+[data-theme="blueprint"] {
+  --bg: #0d3b66; --bg2: #0f4577; --panel: rgba(13, 59, 102, .55); --line: rgba(255, 255, 255, .45);
+  --text: #ffffff; --muted: #a9c7e8;
+  --cyan: #ffffff; --magenta: #ffd166; --yellow: #ffd166; --green: #9ef0c0; --red: #ff8fa3;
+  --head: "IBM Plex Mono", Consolas, monospace; --body: "IBM Plex Mono", Consolas, monospace;
+  --on-acc: #0d3b66; --side-bg: rgba(10, 48, 84, .7); --top-bg: rgba(13, 59, 102, .75);
+  --input-bg: rgba(0, 20, 40, .35); --modal-bg: #0f4577; --overlay: rgba(5, 25, 45, .55);
+  --radius: 0px; --btn-r: 0px; --modal-r: 0px; --misc-r: 0px; --bar-r: 0px; --chart-grid: rgba(255, 255, 255, .12);
+}
+[data-theme="blueprint"] .bg-grid {
+  background:
+    linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px) 0 0 / 100px 100px,
+    linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px) 0 0 / 100px 100px,
+    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px) 0 0 / 20px 20px,
+    #0d3b66;
+}
+[data-theme="blueprint"] .panel, [data-theme="blueprint"] .stat { border: 1.5px dashed var(--line); }
+[data-theme="blueprint"] .stat { border-left: 1.5px dashed var(--line); }
+[data-theme="blueprint"] .panel-head h3 { color: #fff; letter-spacing: .2em; border-bottom: 1px solid #fff; padding-bottom: 4px; }
+[data-theme="blueprint"] .panel-head h3::before { content: "▸ "; color: var(--yellow); }
+[data-theme="blueprint"] .stat-value { color: #fff; }
+[data-theme="blueprint"] .stat-label::before { content: "⌀ "; }
+[data-theme="blueprint"] .btn { border-style: dashed; }
+[data-theme="blueprint"] .btn.primary { background: #fff; color: #0d3b66; border-style: solid; }
+[data-theme="blueprint"] .bar { background: repeating-linear-gradient(90deg, rgba(255,255,255,.25) 0 1px, transparent 1px 10px); height: 8px; border: 1px solid rgba(255,255,255,.5); }
+[data-theme="blueprint"] .bar-fill { background: repeating-linear-gradient(-45deg, var(--acc) 0 3px, transparent 3px 6px); }
+[data-theme="blueprint"] .modal { border: 1.5px dashed #fff; }
+
+/* ---------- КОНТРАСТ: high contrast, accessibility ---------- */
+[data-theme="contrast"] {
+  --bg: #000000; --bg2: #000000; --panel: #000000; --line: #ffffff;
+  --text: #ffffff; --muted: #e0e0e0;
+  --cyan: #00ffff; --magenta: #ff66ff; --yellow: #ffff00; --green: #00ff00; --red: #ff4444;
+  --head: "Manrope", "Segoe UI", sans-serif; --body: "Manrope", "Segoe UI", sans-serif;
+  --on-acc: #000000; --side-bg: #000; --top-bg: #000; --input-bg: #000; --modal-bg: #000; --overlay: rgba(0,0,0,.8);
+  --radius: 4px; --btn-r: 4px; --modal-r: 4px; --chart-grid: #444;
+}
+[data-theme="contrast"] body { font-size: 15px; }
+[data-theme="contrast"] .bg-grid { background: #000; }
+[data-theme="contrast"] .panel, [data-theme="contrast"] .stat, [data-theme="contrast"] .modal { border: 2px solid #fff; }
+[data-theme="contrast"] .panel-head h3 { font-size: 14px; color: #ffff00; }
+[data-theme="contrast"] .stat-value { font-weight: 800; font-size: 26px; }
+[data-theme="contrast"] .btn { border-width: 2px; font-size: 14px; }
+[data-theme="contrast"] .btn:focus-visible, [data-theme="contrast"] .nav-btn:focus-visible, [data-theme="contrast"] .icon-btn:focus-visible { outline: 3px solid #ffff00; outline-offset: 2px; }
+[data-theme="contrast"] .nav-btn { color: #fff; font-size: 15px; }
+[data-theme="contrast"] .nav-btn.on { background: #ffff00; color: #000; }
+[data-theme="contrast"] .row-actions { opacity: 1; }
+[data-theme="contrast"] .bar { height: 10px; border: 1px solid #fff; background: #000; }
+[data-theme="contrast"] .bar-fill { border-radius: 0; }
+[data-theme="contrast"] .muted { color: #e0e0e0; }

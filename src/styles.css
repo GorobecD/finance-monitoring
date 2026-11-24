@@ -353,3 +353,5 @@ tr:hover .row-actions, .tx-row:hover .row-actions, .cash-row:hover .row-actions 
 .theme-prev i { display: block; height: 7px; width: 100%; border-radius: 4px; }
 .theme-name { margin-top: 8px; font-family: var(--head); font-size: 13px; font-weight: 700; }
 .theme-desc { font-size: 11px; }
+.theme-group + .theme-group { margin-top: 18px; }
+.theme-group-title { margin: 0 0 8px; font: 700 11px var(--body); letter-spacing: .2em; text-transform: uppercase; }
