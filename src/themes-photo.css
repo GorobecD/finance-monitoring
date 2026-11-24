@@ -1,0 +1,123 @@
+/* =========================================================
+   PHOTO BACKGROUNDS — real photos (Wikimedia Commons, free licences,
+   see src/photo-credits.json) + per-theme colour grade, vignette and
+   frosted-glass panels. Loaded last: overrides drawn scenes.
+   ========================================================= */
+
+:root:is([data-theme="neon"], [data-theme="minimal"], [data-theme="miami"], [data-theme="psycamp"], [data-theme="family"],
+  [data-theme="abyss"], [data-theme="quarantine"], [data-theme="testlab"], [data-theme="factory"], [data-theme="pantheon"],
+  [data-theme="galaxy"], [data-theme="sewer"], [data-theme="lofi"], [data-theme="ocean"]) .bg-grid {
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 45%, transparent 40%, var(--vignette, rgba(0,0,0,.55)) 100%),
+    var(--tint),
+    var(--photo) var(--photo-pos, center) / cover no-repeat,
+    var(--bg) !important;
+  filter: var(--photo-filter, none) !important;
+}
+
+/* frosted glass for dark photo themes */
+:root:is([data-theme="neon"], [data-theme="miami"], [data-theme="abyss"], [data-theme="quarantine"], [data-theme="galaxy"],
+  [data-theme="sewer"], [data-theme="lofi"], [data-theme="ocean"], [data-theme="psycamp"]) :is(.side, .top) {
+  backdrop-filter: blur(18px) saturate(1.3);
+}
+:root:is([data-theme="neon"], [data-theme="miami"], [data-theme="abyss"], [data-theme="quarantine"], [data-theme="galaxy"],
+  [data-theme="sewer"], [data-theme="lofi"], [data-theme="ocean"]) :is(.panel, .stat) {
+  backdrop-filter: blur(14px) saturate(1.25);
+}
+
+/* ---------- per-theme photo + grade ---------- */
+[data-theme="neon"] {
+  --photo: url("/bg/neon.webp"); --photo-pos: center 40%;
+  --tint: linear-gradient(115deg, rgba(4,5,13,.9) 0%, rgba(4,5,13,.72) 45%, rgba(40,4,50,.55) 100%);
+  --panel: rgba(8, 11, 28, .62); --side-bg: rgba(5, 7, 18, .7); --top-bg: rgba(5, 7, 18, .5);
+}
+[data-theme="neon"] .bg-grid::after { opacity: .35; }
+
+[data-theme="minimal"] {
+  --photo: url("/bg/minimal.webp");
+  --tint: linear-gradient(180deg, rgba(244,245,248,.72), rgba(244,245,248,.88));
+  --vignette: rgba(244,245,248,0);
+  --panel: rgba(255,255,255,.82); --side-bg: rgba(255,255,255,.7); --top-bg: rgba(255,255,255,.6);
+}
+[data-theme="minimal"] :is(.panel, .stat, .side, .top) { backdrop-filter: blur(20px) saturate(1.4); }
+
+[data-theme="miami"] {
+  --photo: url("/bg/miami.webp"); --photo-pos: center 60%;
+  --tint: linear-gradient(180deg, rgba(22,7,51,.62) 0%, rgba(60,10,70,.38) 55%, rgba(22,7,51,.8) 100%);
+  --panel: rgba(20, 6, 40, .58); --side-bg: rgba(18, 5, 36, .62); --top-bg: rgba(18, 5, 36, .35);
+}
+[data-theme="miami"] .bg-grid::after { display: none; }
+
+[data-theme="psycamp"] {
+  --photo: url("/bg/psycamp.webp");
+  --tint: linear-gradient(160deg, rgba(60,20,110,.55), rgba(42,20,70,.35) 50%, rgba(232,63,123,.25));
+  --photo-filter: saturate(1.35) hue-rotate(-12deg);
+}
+
+[data-theme="family"] {
+  --photo: url("/bg/family.webp");
+  --tint: linear-gradient(180deg, rgba(11,14,19,.55), rgba(11,14,19,.75));
+  --photo-filter: grayscale(.85) sepia(.35) contrast(1.15) brightness(.85);
+}
+
+[data-theme="abyss"] {
+  --photo: url("/bg/abyss.webp");
+  --tint: linear-gradient(180deg, rgba(1,40,60,.35), rgba(1,19,31,.78));
+  --panel: rgba(3, 40, 58, .42);
+}
+
+[data-theme="quarantine"] {
+  --photo: url("/bg/quarantine.webp"); --photo-pos: center 70%;
+  --tint: linear-gradient(180deg, rgba(42,26,58,.55), rgba(18,15,20,.35) 45%, rgba(18,15,20,.85));
+}
+[data-theme="quarantine"] .panel { background: linear-gradient(180deg, rgba(255,255,255,.03), transparent), rgba(22,18,20,.74); }
+[data-theme="quarantine"] .stat { background: rgba(22,18,20,.72); }
+
+[data-theme="testlab"] {
+  --photo: url("/bg/testlab.webp");
+  --tint: linear-gradient(180deg, rgba(233,236,239,.6), rgba(233,236,239,.8));
+  --vignette: rgba(40,48,56,.25);
+  --photo-filter: grayscale(.6) brightness(1.08);
+}
+
+[data-theme="factory"] {
+  --photo: url("/bg/factory.webp");
+  --tint: linear-gradient(180deg, rgba(36,34,31,.45), rgba(20,18,16,.78));
+  --photo-filter: saturate(.85) contrast(1.1);
+}
+[data-theme="factory"] .bg-grid { animation: none !important; }
+
+[data-theme="pantheon"] {
+  --photo: url("/bg/pantheon.webp"); --photo-pos: center 55%;
+  --tint: linear-gradient(180deg, rgba(13,16,36,.55), rgba(13,16,36,.82));
+  --photo-filter: saturate(1.1) contrast(1.05);
+}
+
+[data-theme="galaxy"] {
+  --photo: url("/bg/galaxy.webp"); --photo-pos: center 65%;
+  --tint: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.6));
+  --panel: rgba(4, 6, 12, .58); --side-bg: rgba(0, 0, 0, .6); --top-bg: rgba(0, 0, 0, .35);
+}
+
+[data-theme="sewer"] {
+  --photo: url("/bg/sewer.webp");
+  --tint: linear-gradient(180deg, rgba(10,40,18,.6), rgba(10,25,14,.82));
+  --photo-filter: saturate(1.2) hue-rotate(15deg);
+}
+[data-theme="sewer"] .panel { background: rgba(28, 43, 32, .82); }
+
+[data-theme="lofi"] {
+  --photo: url("/bg/lofi.webp");
+  --tint: linear-gradient(180deg, rgba(43,38,80,.55), rgba(90,60,130,.35) 60%, rgba(246,165,192,.25));
+  --panel: rgba(59, 51, 102, .48); --side-bg: rgba(43, 38, 80, .45);
+}
+
+[data-theme="ocean"] {
+  --photo: url("/bg/ocean.webp");
+  --tint: linear-gradient(180deg, rgba(2,40,70,.35), rgba(2,27,46,.75));
+  --panel: rgba(4, 48, 77, .45);
+}
+
+/* credits list */
+.credits { display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
+.credits .src { word-break: break-all; user-select: all; }

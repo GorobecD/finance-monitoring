@@ -5,6 +5,7 @@ import { dataLocation, defaultData, exportBackup, fetchNbuRates } from "../stora
 import { fmt, todayStr } from "../calc";
 import type { Data } from "../types";
 import { THEMES, THEME_GROUPS } from "../theme";
+import credits from "../photo-credits.json";
 
 export default function Settings() {
   const { data, update, replace } = useStore();
@@ -64,6 +65,22 @@ export default function Settings() {
           </div>
         ))}
       </Panel>
+
+      {(() => {
+        const cur = THEMES.some((x) => x.id === s.theme) ? s.theme! : "neon";
+        const c = (credits as Record<string, { title: string; author: string; license: string; source: string }>)[cur];
+        return c ? (
+          <Panel title="ФОТО ФОНУ" className="span-12">
+            <div className="credits muted">
+              <span>
+                «{c.title}» — {c.author} · {c.license}
+              </span>
+              <span className="src">{c.source}</span>
+              <span>Джерело: Wikimedia Commons. Фото оброблено (тонування, розмір).</span>
+            </div>
+          </Panel>
+        ) : null;
+      })()}
 
       <Panel title="ПРАВИЛО РОЗПОДІЛУ ЗП" className="span-6">
         <div className="form-grid three">

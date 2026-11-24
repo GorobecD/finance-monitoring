@@ -72,70 +72,6 @@ add("""/* =========================================================
 """)
 
 # ------------------------------------------------------------------ PSYCAMP
-psy_scene = svg(
-    stars(70, 1600, 500, 11)
-    + '<g fill="none" stroke="#ff9f1c" stroke-width="6" opacity=".55">'
-    + "".join(f'<circle cx="1250" cy="180" r="{r}"/>' for r in (30, 60, 90, 120))
-    + "</g>"
-    + '<circle cx="1250" cy="180" r="18" fill="#ffd166"/>'
-    + pines("#1a0b2e", 900, 0, 1600, 160, 320, 5)
-    + '<path d="M0 860 Q400 800 800 850 T1600 840 V900 H0Z" fill="#12061f"/>'
-    + '<circle cx="780" cy="830" r="26" fill="#ff7b00" opacity=".9"/><circle cx="780" cy="820" r="60" fill="#ff9f1c" opacity=".18"/>',
-    1600, 900,
-)
-add(f"""
-/* ---------- ПСИХО-ТАБІР (Psychonauts): wobbly hand-drawn cartoon camp ---------- */
-[data-theme="psycamp"] {{
-  --bg: #2a1446; --bg2: #fff1d6; --panel: #fff1d6; --line: #2a1446;
-  --text: #2a1446; --muted: #7b5a8c;
-  --cyan: #13a89e; --magenta: #e83f7b; --yellow: #f08a00; --green: #5aa832; --red: #e03131;
-  --head: "Pangolin", "Comic Sans MS", cursive; --body: "Nunito", "Segoe UI", sans-serif;
-  --on-acc: #fff1d6; --side-bg: #fff1d6; --top-bg: transparent; --input-bg: #fffaf0;
-  --modal-bg: #fff1d6; --overlay: rgba(26, 11, 46, .55);
-  --radius: 255px 18px 225px 18px / 18px 225px 18px 255px; --btn-r: 30px 8px 26px 10px / 10px 26px 8px 30px;
-  --modal-r: 255px 22px 225px 22px / 22px 225px 22px 255px; --misc-r: 20px 8px 18px 8px / 8px 18px 8px 20px; --bar-r: 14px 4px 14px 4px;
-  --panel-shadow: 6px 7px 0 #1a0b2e; --chart-grid: #ecd9b8;
-  color-scheme: light;
-}}
-[data-theme="psycamp"] .bg-grid {{ background: {psy_scene} center bottom / cover no-repeat, radial-gradient(circle at 78% 20%, #5a2a8a, #2a1446 60%); }}
-[data-theme="psycamp"] .panel, [data-theme="psycamp"] .stat {{ border: 4px solid #2a1446; }}
-[data-theme="psycamp"] .panel:nth-child(3n) {{ transform: rotate(-.6deg); }}
-[data-theme="psycamp"] .panel:nth-child(3n+1) {{ transform: rotate(.5deg); }}
-[data-theme="psycamp"] .panel-head h3, [data-theme="psycamp"] .modal-head h3 {{ font: 400 24px var(--head); color: var(--acc); letter-spacing: 0; text-transform: none; -webkit-text-stroke: .5px #2a1446; }}
-[data-theme="psycamp"] .stat {{ background: var(--acc); border-left-width: 4px; border-left-color: #2a1446; }}
-[data-theme="psycamp"] .stat * {{ color: #fff1d6 !important; }}
-[data-theme="psycamp"] .stat-value {{ font: 400 32px var(--head); -webkit-text-stroke: 1px #2a1446; }}
-[data-theme="psycamp"] .side {{ border-right: 4px solid #2a1446; border-radius: 0 40px 0 0 / 0 300px 0 0; }}
-[data-theme="psycamp"] .top {{ border-bottom: none; backdrop-filter: none; }}
-[data-theme="psycamp"] .top .month-label, [data-theme="psycamp"] .top .icon-btn {{ color: #fff1d6; font: 400 22px var(--head); }}
-[data-theme="psycamp"] .rates {{ background: #fff1d6; border: 3px solid #2a1446; }}
-[data-theme="psycamp"] .logo {{ font: 400 30px var(--head); color: #e83f7b; transform: rotate(-4deg); -webkit-text-stroke: 1px #2a1446; }}
-[data-theme="psycamp"] .logo em {{ color: #13a89e; }}
-[data-theme="psycamp"] .btn {{ font: 400 18px var(--head); border: 3px solid #2a1446; box-shadow: 3px 4px 0 #2a1446; background: #fff1d6; color: #2a1446; }}
-[data-theme="psycamp"] .btn.primary, [data-theme="psycamp"] .btn.green {{ background: var(--acc); color: #fff1d6; }}
-[data-theme="psycamp"] .btn:hover:not(:disabled) {{ animation: wobble .4s ease-in-out; }}
-@keyframes wobble {{ 25% {{ transform: rotate(-3deg) scale(1.04); }} 75% {{ transform: rotate(3deg) scale(1.04); }} }}
-[data-theme="psycamp"] .bar {{ height: 16px; border: 3px solid #2a1446; background: #fffaf0; }}
-[data-theme="psycamp"] .bar-fill {{ background: repeating-linear-gradient(-45deg, var(--acc) 0 9px, color-mix(in srgb, var(--acc) 65%, #fff) 9px 18px); }}
-[data-theme="psycamp"] .nav-btn {{ font: 400 18px var(--head); color: #2a1446; }}
-[data-theme="psycamp"] .nav-btn.on {{ background: #e83f7b; color: #fff1d6; border: 3px solid #2a1446; }}
-[data-theme="psycamp"] .modal {{ border: 4px solid #2a1446; box-shadow: 10px 12px 0 #1a0b2e; }}
-[data-theme="psycamp"] input:not([type=checkbox]), [data-theme="psycamp"] select {{ border: 3px solid #2a1446; }}
-[data-theme="psycamp"] .ring-bg {{ stroke: #ecd9b8; stroke-width: 12; }} [data-theme="psycamp"] .ring-fg {{ stroke: #e83f7b; stroke-width: 12; }}
-[data-theme="psycamp"] .ring-label {{ color: #e83f7b; font-family: var(--head); }}
-[data-theme="psycamp"] input[type=date]::-webkit-calendar-picker-indicator {{ filter: none; }}
-""")
-
-# ------------------------------------------------------------------ FAMILY (Mafia)
-mafia_scene = svg(
-    '<defs><radialGradient id="l" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd58a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd58a" stop-opacity="0"/></radialGradient></defs>'
-    + skyline("#0d1117", 900, 1600, 220, 520, 7, "#e8b766")
-    + '<rect x="0" y="880" width="1600" height="20" fill="#07090c"/>'
-    + '<rect x="300" y="560" width="6" height="320" fill="#05070a"/><circle cx="303" cy="560" r="14" fill="#ffd58a"/><circle cx="303" cy="560" r="160" fill="url(#l)"/>'
-    + '<rect x="1240" y="600" width="6" height="280" fill="#05070a"/><circle cx="1243" cy="600" r="12" fill="#ffd58a"/><circle cx="1243" cy="600" r="140" fill="url(#l)"/>'
-    + '<path d="M620 880 h220 q20 -50 70 -55 h120 q40 0 60 55 h40 v-10 q0 -18 -20 -22 l-60 -8 q-25 -55 -70 -58 h-110 q-45 2 -70 50 l-150 15 q-30 5 -30 33 z" fill="#05070a"/>'
-    + '<circle cx="690" cy="882" r="22" fill="#05070a"/><circle cx="1000" cy="882" r="22" fill="#05070a"/>',
-    1600, 900)
 add(f"""
 /* ---------- СІМЕЙНА СПРАВА (Mafia): rainy 30s city, newspaper panels ---------- */
 [data-theme="family"] {{
@@ -148,7 +84,6 @@ add(f"""
   --panel-shadow: 0 2px 0 #c9bea6, 0 12px 30px rgba(0,0,0,.6); --chart-grid: #d6cbb3;
   color-scheme: light;
 }}
-[data-theme="family"] .bg-grid {{ background: {mafia_scene} center bottom / cover no-repeat, linear-gradient(180deg, #1a2230, #0b0e13); }}
 [data-theme="family"] .bg-grid::after {{ opacity: .35; mask-image: none; background: repeating-linear-gradient(100deg, transparent 0 14px, rgba(200,210,230,.5) 14px 15px, transparent 15px 40px) 0 0 / 300px 300px; animation: rain .5s linear infinite; }}
 @keyframes rain {{ to {{ background-position: -40px 300px; }} }}
 /* newspaper page */
@@ -187,21 +122,6 @@ add(f"""
 """)
 
 # ------------------------------------------------------------------ ABYSS (Subnautica)
-kelp = "".join(
-    f'<path d="M{x} 900 C{x-40} {700} {x+40} {600} {x-10} {h} " stroke="{c}" stroke-width="{sw}" fill="none" stroke-linecap="round"/>'
-    for x, h, c, sw in [(80, 380, "#0b5a4a", 14), (130, 460, "#0a4a3e", 10), (300, 520, "#0b5a4a", 12), (1350, 400, "#0b5a4a", 14),
-                         (1420, 480, "#0a4a3e", 10), (1520, 360, "#0b5a4a", 16), (900, 640, "#093d33", 10)]
-)
-abyss_scene = svg(
-    '<defs><linearGradient id="r" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#9ff" stop-opacity=".22"/><stop offset="1" stop-color="#9ff" stop-opacity="0"/></linearGradient></defs>'
-    '<path d="M300 0 L420 0 L620 900 L380 900Z M700 0 L760 0 L900 900 L760 900Z M1100 0 L1200 0 L1250 900 L1050 900Z" fill="url(#r)"/>'
-    + kelp
-    + '<g fill="#6dffb0"><circle cx="150" cy="600" r="5"/><circle cx="320" cy="560" r="4"/><circle cx="1400" cy="520" r="5"/></g>'
-    '<g fill="#b388ff"><circle cx="110" cy="700" r="6"/><circle cx="1480" cy="640" r="6"/><circle cx="880" cy="760" r="4"/></g>'
-    # seabase pod
-    '<g transform="translate(1100 760)"><rect x="-6" y="0" width="12" height="140" fill="#0a2230"/><ellipse cx="0" cy="0" rx="90" ry="50" fill="#0c2a3a" stroke="#1b4a60" stroke-width="4"/>'
-    '<circle cx="-40" cy="-5" r="10" fill="#ffe28a"/><circle cx="0" cy="-10" r="10" fill="#ffe28a"/><circle cx="40" cy="-5" r="10" fill="#ffe28a"/></g>',
-    1600, 900)
 hexes = tile('<path d="M14 0 L28 8 V24 L14 32 L0 24 V8Z M14 32 V48" fill="none" stroke="rgba(110,231,255,.10)" stroke-width="1"/>', 28, 48)
 add(f"""
 /* ---------- ГЛИБОКОВОДНА БАЗА (Subnautica): PDA hologram over a kelp abyss ---------- */
@@ -214,7 +134,6 @@ add(f"""
   --input-bg: rgba(0, 10, 18, .6); --modal-bg: rgba(3, 35, 54, .94); --overlay: rgba(0, 6, 12, .6);
   --grid-op: 0; --scan-op: 0; --chart-grid: rgba(110, 231, 255, .1); --hex: {hexes};
 }}
-[data-theme="abyss"] .bg-grid {{ background: {abyss_scene} center bottom / cover no-repeat, linear-gradient(180deg, #0a5a7a 0%, #04344c 30%, #01131f 80%); }}
 [data-theme="abyss"] .bg-grid::after {{ opacity: .6; mask-image: none; background: radial-gradient(circle, rgba(220,255,255,.6) 0 2px, transparent 3px) 0 0 / 90px 160px, radial-gradient(circle, rgba(220,255,255,.4) 0 1.5px, transparent 2.5px) 40px 70px / 130px 200px; animation: bubbles 9s linear infinite; }}
 @keyframes bubbles {{ to {{ background-position: 0 -160px, 40px -130px; }} }}
 /* PDA panel: rounded hologram with hex grid + moving scan line + side tab */
@@ -242,16 +161,6 @@ add(f"""
 """)
 
 # ------------------------------------------------------------------ QUARANTINE (Dying Light)
-dl_scene = svg(
-    '<defs><linearGradient id="s" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2a1a3a"/><stop offset=".55" stop-color="#b5482a"/><stop offset=".8" stop-color="#ffab3d"/></linearGradient></defs>'
-    '<rect width="1600" height="900" fill="url(#s)"/>'
-    '<circle cx="1150" cy="640" r="90" fill="#ffd27a" opacity=".85"/>'
-    + skyline("#1a0f14", 900, 1600, 160, 420, 21, "#ff9a2e")
-    + '<rect x="420" y="300" width="10" height="600" fill="#1a0f14"/><path d="M425 300 L395 420 M425 300 L455 420 M405 380 H445" stroke="#1a0f14" stroke-width="6"/>'
-    '<circle cx="425" cy="296" r="6" fill="#e0362c"/>'
-    '<path d="M425 330 L1380 520" stroke="#1a0f14" stroke-width="3"/>'
-    '<path d="M1380 520 V900" stroke="#1a0f14" stroke-width="10"/>',
-    1600, 900)
 add(f"""
 /* ---------- КАРАНТИН (Dying Light): rooftops at dusk, zipline, taped survival notes ---------- */
 [data-theme="quarantine"] {{
@@ -264,7 +173,6 @@ add(f"""
   --chart-grid: #2a2226;
   --tape: linear-gradient(90deg, rgba(255,255,255,.08), transparent 30%, rgba(255,255,255,.06) 70%), #c9b37a;
 }}
-[data-theme="quarantine"] .bg-grid {{ background: {dl_scene} center bottom / cover no-repeat; }}
 [data-theme="quarantine"] .bg-grid::after {{ opacity: 1; mask-image: none; background: radial-gradient(circle at 10% 30%, rgba(224,54,44,.25) 0 30px, transparent 60px), radial-gradient(circle at 85% 15%, rgba(155,107,255,.18) 0 40px, transparent 90px); }}
 /* torn survival-note panels with duct tape */
 [data-theme="quarantine"] .panel {{ position: relative; overflow: visible; border: none;
@@ -293,16 +201,6 @@ add(f"""
 """)
 
 # ------------------------------------------------------------------ TESTLAB (Portal)
-portal = lambda cx, cy, c1, c2: (
-    f'<g transform="translate({cx} {cy})"><ellipse rx="85" ry="150" fill="{c2}" opacity=".25"/><ellipse rx="70" ry="130" fill="#0b1118"/>'
-    f'<ellipse rx="70" ry="130" fill="none" stroke="{c1}" stroke-width="12"/><ellipse rx="58" ry="116" fill="none" stroke="{c2}" stroke-width="3" opacity=".8"/></g>'
-)
-lab_scene = svg(
-    '<rect width="1600" height="900" fill="#e4e8ec"/>'
-    + "".join(f'<rect x="{x}" y="{y}" width="196" height="146" fill="{"#eef1f4" if (x//200+y//150)%2 else "#e6eaee"}" stroke="#cfd5db" stroke-width="4"/>' for x in range(0, 1600, 200) for y in range(0, 900, 150))
-    + '<rect x="0" y="780" width="1600" height="120" fill="#5a6066"/>' + "".join(f'<rect x="{x}" y="780" width="96" height="120" fill="#4d5359" stroke="#3a3f44" stroke-width="4"/>' for x in range(0, 1600, 100))
-    + portal(140, 560, "#1e90ff", "#8fd0ff") + portal(1460, 420, "#ff8c1a", "#ffd08a"),
-    1600, 900)
 add(f"""
 /* ---------- ЛАБОРАТОРІЯ ТЕСТІВ (Portal): chamber signage, numbered panels, portals ---------- */
 [data-theme="testlab"] {{
@@ -316,7 +214,6 @@ add(f"""
   --panel-shadow: 0 0 0 1px #c9d0d7, 0 10px 24px rgba(30, 40, 50, .08); --chart-grid: #eceff2;
   color-scheme: light;
 }}
-[data-theme="testlab"] .bg-grid {{ background: {lab_scene} center / cover no-repeat; }}
 [data-theme="testlab"] .content {{ counter-reset: chamber; }}
 /* panels: white plates with black corner chevrons + chamber number */
 [data-theme="testlab"] .panel {{ position: relative; background:
@@ -405,16 +302,6 @@ add(f"""
 """)
 
 # ------------------------------------------------------------------ PANTHEON (SMITE)
-column = lambda x: (f'<g transform="translate({x} 380)"><rect x="-38" y="0" width="76" height="22" fill="#2a3060"/><rect x="-28" y="22" width="56" height="440" fill="#232850"/>'
-                    + "".join(f'<rect x="{-24+i*12}" y="22" width="4" height="440" fill="#1c2044"/>' for i in range(5))
-                    + '<rect x="-40" y="462" width="80" height="22" fill="#2a3060"/></g>')
-pantheon_scene = svg(
-    '<path d="M0 380 L800 230 L1600 380Z" fill="#20254a"/><rect x="0" y="380" width="1600" height="12" fill="#2a3060"/>'
-    + "".join(column(x) for x in (120, 360, 600, 1000, 1240, 1480))
-    + '<rect x="0" y="864" width="1600" height="36" fill="#1a1e3e"/>'
-    '<path d="M780 0 L740 140 L790 140 L730 300 L860 110 L800 110 L840 0Z" fill="#ffe39a" opacity=".85"/>'
-    '<ellipse cx="300" cy="120" rx="220" ry="40" fill="#2c3270" opacity=".6"/><ellipse cx="1300" cy="90" rx="260" ry="46" fill="#2c3270" opacity=".6"/>',
-    1600, 900)
 marble = tile('<rect width="160" height="160" fill="#e9e6df"/><path d="M0 40 C40 30 60 70 100 60 S150 20 160 30" stroke="#cfc9bd" stroke-width="1.5" fill="none"/><path d="M0 120 C30 110 70 140 110 120 S150 100 160 110" stroke="#d8d2c6" stroke-width="1" fill="none"/><path d="M40 0 C50 40 30 80 60 160" stroke="#d5cfc3" stroke-width=".8" fill="none"/>', 160, 160)
 meander = tile('<rect width="24" height="24" fill="#b8902a"/><path d="M2 22 V2 H22 V18 H8 V8 H16 V14" stroke="#ffe39a" stroke-width="2.4" fill="none"/>', 24, 24)
 add(f"""
@@ -429,7 +316,6 @@ add(f"""
   --chart-grid: #d6d0c4; --marble: {marble}; --meander: {meander};
   color-scheme: light;
 }}
-[data-theme="pantheon"] .bg-grid {{ background: {pantheon_scene} center bottom / cover no-repeat, radial-gradient(ellipse at 50% 0%, #3a3f8a, #0d1024 65%); }}
 [data-theme="pantheon"] .panel, [data-theme="pantheon"] .modal {{ border: 3px solid #b8902a; padding-top: 34px; position: relative; overflow: hidden;
   background: var(--marble) 0 0 / 160px 160px; box-shadow: 0 0 0 1px #6b5418, 0 12px 30px rgba(0,0,0,.55); }}
 [data-theme="pantheon"] .panel::before {{ display: block; content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 24px; box-shadow: 0 2px 0 #6b5418; background: var(--meander) 0 0 / 24px 24px repeat-x; }}
@@ -515,17 +401,6 @@ add(f"""
 """)
 
 # ------------------------------------------------------------------ SEWER (TMNT)
-sewer_scene = svg(
-    '<rect width="1600" height="900" fill="#1a2a1e"/>'
-    + "".join(f'<rect x="{x + (y//40 % 2)*40}" y="{y}" width="76" height="36" fill="#22362a" stroke="#142018" stroke-width="4"/>' for x in range(-40, 1600, 80) for y in range(0, 900, 40))
-    + '<path d="M0 0 Q800 260 1600 0 V-10 H0Z" fill="#0d150f"/>'
-    + '<ellipse cx="800" cy="20" rx="120" ry="34" fill="#3a4a3e"/><ellipse cx="800" cy="20" rx="100" ry="26" fill="#f4f1c0" opacity=".8"/>'
-    + '<path d="M690 30 L560 900 H1040 L910 30Z" fill="#f4f1c0" opacity=".07"/>'
-    + '<g stroke="#2d4a36" stroke-width="40" fill="none"><path d="M0 200 H260 Q300 200 300 240 V420"/><path d="M1600 300 H1380 Q1340 300 1340 340 V520"/></g>'
-    + '<g stroke="#3d6a4a" stroke-width="6" fill="none"><path d="M0 182 H260"/><path d="M1600 282 H1380"/></g>'
-    + '<path d="M0 780 Q400 750 800 790 T1600 770 V900 H0Z" fill="#3f8f2a"/><path d="M0 800 Q400 775 800 810 T1600 790" stroke="#7cff3a" stroke-width="5" fill="none" opacity=".7"/>'
-    + '<g fill="#7cff3a" opacity=".55"><circle cx="300" cy="840" r="8"/><circle cx="1200" cy="850" r="10"/><circle cx="1240" cy="830" r="5"/></g>',
-    1600, 900)
 drips = tile('<path d="M0 0 H120 V10 Q110 10 108 18 Q106 34 100 34 Q94 34 92 18 Q90 10 80 10 Q70 10 68 14 Q66 22 62 22 Q58 22 56 14 Q54 10 40 10 Q30 10 28 20 Q26 44 20 44 Q14 44 12 20 Q10 10 0 10Z" fill="#7cff3a"/><path d="M0 4 H120" stroke="#b6ff8a" stroke-width="2"/>', 120, 46)
 add(f"""
 /* ---------- КАНАЛІЗАЦІЯ (TMNT): sewer bricks, manhole light, slime-dripping comic panels, graffiti type ---------- */
@@ -538,7 +413,6 @@ add(f"""
   --modal-bg: #1c2b20; --overlay: rgba(0,0,0,.6); --radius: 6px; --btn-r: 6px; --modal-r: 8px;
   --panel-shadow: 6px 6px 0 #0a0f0b; --chart-grid: rgba(124, 255, 58, .08); --drips: {drips};
 }}
-[data-theme="sewer"] .bg-grid {{ background: {sewer_scene} center / cover no-repeat; }}
 [data-theme="sewer"] .panel {{ border: 4px solid #0a0f0b; position: relative; overflow: visible; padding-top: 40px; margin-top: 6px; }}
 [data-theme="sewer"] .panel::before {{ display: block; content: ""; position: absolute; left: -4px; right: -4px; top: -4px; width: auto; height: 46px; box-shadow: none; border-radius: 6px 6px 0 0;
   background: var(--drips) 0 0 / 120px 46px repeat-x; filter: drop-shadow(0 2px 0 #0a0f0b); }}
