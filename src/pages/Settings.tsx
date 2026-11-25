@@ -121,11 +121,11 @@ export default function Settings() {
           <Field label="Подушка, місяців витрат">
             <input inputMode="numeric" defaultValue={s.cushionMonths} onBlur={(e) => update((d) => void (d.settings.cushionMonths = Math.max(1, num(e.target.value) || 6)))} />
           </Field>
-          <Field label="Стартовий вільний баланс, ₴">
-            <input inputMode="decimal" defaultValue={s.startBalance} onBlur={(e) => update((d) => void (d.settings.startBalance = num(e.target.value)))} />
+          <Field label="Рахунки та баланси">
+            <span className="muted small">Початкові баланси задаються окремо для кожного рахунку на сторінці «Рахунки».</span>
           </Field>
         </div>
-        <div className="hint">Стартовий баланс — скільки вільних грошей на картках було до початку обліку. Вільні кошти = старт + доходи − витрати − відкладене.</div>
+        <div className="hint">Вільні кошти = сума балансів усіх рахунків.</div>
       </Panel>
 
       <Panel title="КУРСИ ВАЛЮТ" className="span-6">

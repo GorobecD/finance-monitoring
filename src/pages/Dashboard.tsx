@@ -14,6 +14,7 @@ import {
   shiftMonth,
   todayStr,
   curMonth,
+  forecast,
 } from "../calc";
 import type { PageId } from "../App";
 import { catColor, chartTheme } from "../theme";
@@ -100,6 +101,8 @@ export default function Dashboard({ go }: { go: (p: PageId) => void }) {
           tone={savingsRate >= rule.savings ? "green" : savingsRate >= 0 ? "yellow" : "red"}
         />
       </div>
+
+      {month === curMonth() && <Forecast go={go} />}
 
       <Panel title={`ПРАВИЛО ${rule.needs}/${rule.wants}/${rule.savings}`} className="span-5" accent="cyan">
         {base <= 0 ? (
@@ -227,5 +230,68 @@ export default function Dashboard({ go }: { go: (p: PageId) => void }) {
         )}
       </Panel>
     </div>
+  );
+}
+
+function Forecast({ go }: { go: (p: PageId) => void }) {
+  const { data } = useStore();
+  const f = forecast(data);
+  if (f.base <= 0)
+    return (
+      <Panel title="ПРОГНОЗ МІСЯЦЯ" className="span-12" accent="green">
+        <Empty>Внеси дохід (або ЗП) — і тут з'явиться ліміт на день і прогноз до кінця місяця.</Empty>
+      </Panel>
+    );
+  const over = f.projSpend > f.cap;
+  const tone = f.todayLeft < 0 ? "red" : f.todayLeft < f.daily * 0.25 ? "yellow" : "green";
+  return (
+    <Panel
+      title="ПРОГНОЗ МІСЯЦЯ"
+      className="span-12 forecast"
+      accent={tone}
+      right={<span className="muted small">залишилось {f.left} дн. з {f.total}{f.baseGuess ? " · дохід оцінено за 3 міс" : ""}</span>}
+    >
+      <div className="fc-grid">
+        <div className="fc-main">
+          <div className="fc-label">МОЖНА ВИТРАТИТИ СЬОГОДНІ</div>
+          <div className={`fc-big tone-text-${tone}`}>{fmt(Math.max(0, f.todayLeft))}</div>
+          <Bar value={f.spentToday} max={Math.max(1, f.daily)} tone={tone} />
+          <div className="muted small">
+            ліміт {fmt(f.daily)}/день · сьогодні витрачено {fmt(f.spentToday)}
+            {f.todayLeft < 0 ? ` · понад ліміт на ${fmt(-f.todayLeft)}` : ""}
+          </div>
+        </div>
+        <div className="fc-cell">
+          <div className="fc-label">ЗАЛИШОК НА МІСЯЦЬ</div>
+          <div className={`fc-num ${f.remaining < 0 ? "neg" : ""}`}>{fmt(f.remaining)}</div>
+          <div className="muted small">
+            з {fmt(f.cap)} на потреби+бажання{f.pendOut > 0 ? ` · ${fmt(f.pendOut)} ще піде на регулярні` : ""}
+          </div>
+        </div>
+        <div className="fc-cell">
+          <div className="fc-label">ВИТРАТИ НА КІНЕЦЬ МІСЯЦЯ</div>
+          <div className={`fc-num ${over ? "neg" : "pos"}`}>{fmt(f.projSpend)}</div>
+          <div className="muted small">
+            {over ? `перевищення плану на ${fmt(f.projSpend - f.cap)}` : `в межах плану, запас ${fmt(f.cap - f.projSpend)}`} · темп {fmt(f.pace)}/день
+          </div>
+        </div>
+        <div className="fc-cell">
+          <div className="fc-label">НА РАХУНКАХ НА КІНЕЦЬ МІСЯЦЯ</div>
+          <div className={`fc-num ${f.endBalance < 0 ? "neg" : ""}`}>{fmt(f.endBalance)}</div>
+          <div className="muted small">зараз {fmt(f.free)}</div>
+        </div>
+      </div>
+      {f.upcoming.length > 0 && (
+        <div className="fc-up">
+          <span className="muted small">Ще цього місяця:</span>
+          {f.upcoming.slice(0, 6).map((u, i) => (
+            <button key={i} className={`fc-chip ${u.kind === "income" ? "pos" : ""} ${u.day < f.day ? "late" : ""}`} onClick={() => go("rec")}>
+              {u.day < f.day ? "не проведено" : `${u.day}-го`} · {u.name} · {u.kind === "income" ? "+" : "−"}
+              {fmt(u.amount)}
+            </button>
+          ))}
+        </div>
+      )}
+    </Panel>
   );
 }

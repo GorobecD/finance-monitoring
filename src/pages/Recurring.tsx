@@ -21,6 +21,7 @@ export function applyRecurring(d: Data, r: Rec, month: string) {
     categoryId: r.kind === "expense" ? r.categoryId : undefined,
     source: r.kind === "income" ? r.source : undefined,
     recurringId: r.id,
+    accountId: r.accountId,
     note: r.name,
   });
   d.appliedRecurring[month] = [...(d.appliedRecurring[month] || []), r.id];

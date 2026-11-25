@@ -1,4 +1,4 @@
-import type { Bucket, Cur, Data, Debt, Deposit, Rates } from "./types";
+import type { Account, Bucket, Cur, Data, Debt, Deposit, Rates, Tx } from "./types";
 
 export const uid = () => Math.random().toString(36).slice(2, 9) + Date.now().toString(36);
 
@@ -64,14 +64,31 @@ export function monthStats(d: Data, month: string): MonthStats {
   return s;
 }
 
-export function freeBalance(d: Data) {
-  let b = d.settings.startBalance;
+export const accOf = (d: Data, t: Tx) => t.accountId || d.settings.defaultAccount || d.accounts[0]?.id;
+
+/** Balance of one account in its own currency. */
+export function accountBalance(d: Data, acc: Account) {
+  const r = d.settings.rates;
+  const inAcc = (t: Tx, amount: number) => (t.currency === acc.currency ? amount : (t.uah * (amount / (t.amount || 1))) / (rateOf(acc.currency, r) || 1));
+  let b = acc.initial;
   for (const t of d.txs) {
-    if (t.type === "income") b += t.uah;
-    else if (t.type === "expense") b -= t.uah;
-    else b -= t.uah;
+    if (t.type === "move") {
+      if (accOf(d, t) === acc.id) b -= t.amount;
+      if (t.toAccountId === acc.id) b += t.toAmount ?? t.amount;
+      continue;
+    }
+    if (accOf(d, t) !== acc.id) continue;
+    if (t.type === "income") b += inAcc(t, t.amount);
+    else if (t.type === "expense") b -= inAcc(t, t.amount);
+    else b -= inAcc(t, t.amount); // transfer into pot (negative amount = withdrawal back)
   }
   return b;
+}
+
+/** Money on all accounts, in UAH at current rates. */
+export function freeBalance(d: Data) {
+  const r = d.settings.rates;
+  return d.settings.startBalance + d.accounts.reduce((s, a) => s + toUAH(accountBalance(d, a), a.currency, r), 0);
 }
 
 export const potBalance = (d: Data, potId: string) =>
@@ -128,4 +145,48 @@ export function portfolio(d: Data) {
 export function pendingRecurring(d: Data, month: string) {
   const applied = new Set(d.appliedRecurring[month] || []);
   return d.recurring.filter((r) => r.active && !applied.has(r.id));
+}
+
+const daysIn = (m: string) => new Date(Number(m.slice(0, 4)), Number(m.slice(5, 7)), 0).getDate();
+
+/** Current-month forecast: daily allowance, projected spend and end-of-month money. */
+export function forecast(d: Data) {
+  const month = curMonth();
+  const today = todayStr();
+  const day = Number(today.slice(8, 10));
+  const total = daysIn(month);
+  const left = total - day + 1; // incl. today
+  const r = d.settings.rates;
+  const s = monthStats(d, month);
+  const pend = pendingRecurring(d, month);
+  const pendOut = pend.filter((x) => x.kind === "expense").reduce((a, x) => a + toUAH(x.amount, x.currency, r), 0);
+  const pendIn = pend.filter((x) => x.kind === "income").reduce((a, x) => a + toUAH(x.amount, x.currency, r), 0);
+  // income base: this month's income (+ expected regular income); if none yet — average of 3 previous months
+  let base = s.income + pendIn;
+  let baseGuess = false;
+  if (s.income === 0) {
+    const prev = [1, 2, 3].map((i) => monthStats(d, shiftMonth(month, -i)).income).filter((x) => x > 0);
+    if (prev.length) {
+      base = prev.reduce((a, b) => a + b, 0) / prev.length;
+      baseGuess = true;
+    }
+  }
+  const { needs, wants } = d.settings.rule;
+  const cap = (base * (needs + wants)) / 100; // spendable this month per rule
+  // discretionary spend so far = expenses not created from regular payments
+  const recSpent = d.txs.filter((t) => t.type === "expense" && t.recurringId && t.date.startsWith(month)).reduce((a, t) => a + t.uah, 0);
+  const flexSpent = s.expense - recSpent;
+  const spentToday = d.txs.filter((t) => t.type === "expense" && !t.recurringId && t.date === today).reduce((a, t) => a + t.uah, 0);
+  const spentBeforeToday = flexSpent - spentToday;
+  const remaining = cap - s.expense - pendOut; // what's still free to spend this month
+  const daily = Math.max(0, (remaining + spentToday) / left); // allowance per day (today's spend counted against today)
+  const todayLeft = daily - spentToday;
+  const pace = day > 1 ? spentBeforeToday / (day - 1) : flexSpent; // avg flexible spend per day so far
+  const projSpend = s.expense + pendOut + pace * Math.max(0, left - (spentToday > 0 ? 1 : 0));
+  const free = freeBalance(d);
+  const endBalance = free + pendIn - pendOut - pace * Math.max(0, left - (spentToday > 0 ? 1 : 0));
+  const upcoming = pend
+    .map((x) => ({ name: x.name, kind: x.kind, day: Math.min(x.day, total), amount: toUAH(x.amount, x.currency, r) }))
+    .sort((a, b) => a.day - b.day);
+  return { month, day, total, left, base, baseGuess, cap, remaining, daily, spentToday, todayLeft, pace, projSpend, endBalance, pendOut, pendIn, upcoming, free };
 }

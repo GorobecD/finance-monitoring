@@ -24,6 +24,7 @@ export function defaultData(): Data {
   return {
     version: 1,
     categories: cats.map(([name, icon, bucket, color], i) => ({ id: i === cats.length - 1 ? "other" : uid(), name, icon, bucket, color })),
+    accounts: [{ id: "main", name: "Основна картка", icon: "▭", kind: "card", currency: "UAH", initial: 0 }],
     txs: [],
     budgets: {},
     recurring: [],
@@ -37,6 +38,7 @@ export function defaultData(): Data {
       rule: { needs: 50, wants: 30, savings: 20 },
       cushionMonths: 6,
       startBalance: 0,
+      defaultAccount: "main",
       rates: { USD: 41.5, EUR: 48, date: "", manual: false },
     },
   };
@@ -51,7 +53,15 @@ export async function loadData(): Promise<Data> {
   }
   if (!raw) return defaultData();
   try {
-    return { ...defaultData(), ...JSON.parse(raw) } as Data;
+    const d = { ...defaultData(), ...JSON.parse(raw) } as Data;
+    // migration: data from before accounts existed -> one default account holding the old start balance
+    if (!Array.isArray((JSON.parse(raw) as Partial<Data>).accounts)) {
+      d.accounts = [{ id: "main", name: "Основна картка", icon: "▭", kind: "card", currency: "UAH", initial: d.settings.startBalance || 0 }];
+      d.settings.startBalance = 0;
+    }
+    if (!d.accounts.length) d.accounts = defaultData().accounts;
+    if (!d.settings.defaultAccount || !d.accounts.some((a) => a.id === d.settings.defaultAccount)) d.settings.defaultAccount = d.accounts[0].id;
+    return d;
   } catch {
     return defaultData();
   }

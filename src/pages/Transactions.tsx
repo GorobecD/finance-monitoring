@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStore } from "../store";
 import { DelBtn, Empty, Panel } from "../ui";
-import { fmt, monthFull, monthStats } from "../calc";
+import { fmt, monthFull, monthStats, accOf } from "../calc";
 import { SOURCES, TxModal } from "../TxModal";
 import type { Tx } from "../types";
 import { catColor, cssVar } from "../theme";
@@ -16,6 +16,8 @@ export default function Transactions() {
   const [add, setAdd] = useState(false);
   const catMap = Object.fromEntries(data.categories.map((c) => [c.id, c]));
   const potMap = Object.fromEntries(data.pots.map((p) => [p.id, p]));
+  const accMap = Object.fromEntries(data.accounts.map((a) => [a.id, a]));
+  const multiAcc = data.accounts.length > 1;
   const s = monthStats(data, month);
 
   const list = data.txs
@@ -33,6 +35,11 @@ export default function Transactions() {
 
   const label = (t: Tx) => {
     if (t.type === "income") return { icon: "▲", name: SOURCES[t.source || "other"], color: cssVar("--green") };
+    if (t.type === "move") {
+      const from = accMap[accOf(data, t)];
+      const to = t.toAccountId ? accMap[t.toAccountId] : undefined;
+      return { icon: "⇆", name: `${from?.name ?? "—"} → ${to?.name ?? "—"}`, color: cssVar("--cyan") };
+    }
     if (t.type === "transfer") {
       const p = t.potId ? potMap[t.potId] : undefined;
       return { icon: p?.icon ?? "⇄", name: `${t.amount < 0 ? "Зняття з" : "Поповнення:"} ${p?.name ?? "—"}`, color: cssVar("--yellow") };
@@ -82,9 +89,9 @@ export default function Transactions() {
                 <div className="tx-date">{new Date(day).toLocaleDateString("uk-UA", { day: "2-digit", month: "long", weekday: "short" })}</div>
                 {txs.map((t) => {
                   const l = label(t);
-                  const sign = t.type === "income" ? "+" : t.type === "expense" ? "−" : t.amount < 0 ? "←" : "→";
+                  const sign = t.type === "income" ? "+" : t.type === "expense" ? "−" : t.type === "move" ? "" : t.amount < 0 ? "←" : "→";
                   return (
-                    <div key={t.id} className="tx-row" onDoubleClick={() => setEdit(t)}>
+                    <div key={t.id} className="tx-row" onDoubleClick={() => t.type !== "move" && setEdit(t)}>
                       <span className="tx-ico" style={{ color: l.color, textShadow: `0 0 8px ${l.color}` }}>
                         {l.icon}
                       </span>
@@ -92,6 +99,7 @@ export default function Transactions() {
                         {l.name}
                         {t.recurringId && <span className="tag">↻</span>}
                         {t.note && <span className="tx-note">{t.note}</span>}
+                        {multiAcc && t.type !== "move" && <span className="tag">{accMap[accOf(data, t)]?.name ?? "—"}</span>}
                       </span>
                       <span className={`tx-amt t-${t.type}`}>
                         {sign}
@@ -99,9 +107,11 @@ export default function Transactions() {
                         {t.currency !== "UAH" && <small> ≈{fmt(Math.abs(t.uah))}</small>}
                       </span>
                       <span className="row-actions">
-                        <button className="icon-btn" onClick={() => setEdit(t)} title="Редагувати">
-                          ✎
-                        </button>
+                        {t.type !== "move" && (
+                          <button className="icon-btn" onClick={() => setEdit(t)} title="Редагувати">
+                            ✎
+                          </button>
+                        )}
                         <DelBtn onDelete={() => update((d) => void (d.txs = d.txs.filter((x) => x.id !== t.id)))} />
                       </span>
                     </div>

@@ -28,7 +28,8 @@ export function TxModal({
 }) {
   const { data, update } = useStore();
   const rates = data.settings.rates;
-  const [mode, setMode] = useState<Mode>(edit?.type ?? initMode);
+  const [mode, setMode] = useState<Mode>((edit?.type as Mode) ?? initMode);
+  const [accountId, setAccountId] = useState(edit?.accountId ?? data.settings.defaultAccount ?? data.accounts[0]?.id);
   const [amount, setAmount] = useState(edit ? String(Math.abs(edit.amount)) : "");
   const [currency, setCurrency] = useState<Cur>(edit?.currency ?? "UAH");
   const [rate, setRate] = useState(
@@ -58,6 +59,7 @@ export function TxModal({
       uah: uahVal * sign,
       note: note.trim() || undefined,
       recurringId: edit?.recurringId,
+      accountId,
     };
     if (mode === "expense") tx.categoryId = categoryId;
     if (mode === "income") tx.source = source;
@@ -145,6 +147,19 @@ export function TxModal({
               </select>
             </Field>
           </>
+        )}
+        {data.accounts.filter((a) => !a.archived || a.id === accountId).length > 1 && (
+          <Field label={mode === "income" ? "На рахунок" : "З рахунку"}>
+            <select value={accountId} onChange={(e) => setAccountId(e.target.value)}>
+              {data.accounts
+                .filter((a) => !a.archived || a.id === accountId)
+                .map((a) => (
+                  <option key={a.id} value={a.id}>
+                    {a.icon} {a.name} · {a.currency}
+                  </option>
+                ))}
+            </select>
+          </Field>
         )}
         <Field label="Коментар" wide>
           <input value={note} onChange={(e) => setNote(e.target.value)} placeholder="необов'язково" />

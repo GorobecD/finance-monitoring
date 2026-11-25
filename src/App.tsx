@@ -12,6 +12,7 @@ import Investments from "./pages/Investments";
 import Debts from "./pages/Debts";
 import Recurring from "./pages/Recurring";
 import Settings from "./pages/Settings";
+import Accounts from "./pages/Accounts";
 import { Updater } from "./Updater";
 import { applyTheme, THEMES } from "./theme";
 import { Fx } from "./fx/engine";
@@ -22,6 +23,7 @@ let fxEngine: Fx | null = null;
 const PAGES = [
   ["dash", "◈", "Огляд"],
   ["tx", "≡", "Операції"],
+  ["acc", "▭", "Рахунки"],
   ["budget", "◔", "Бюджети"],
   ["save", "⛨", "Накопичення"],
   ["inv", "◆", "Інвестиції"],
@@ -156,6 +158,7 @@ export default function App() {
         <div className="content" key={page}>
           {page === "dash" && <Dashboard go={setPage} />}
           {page === "tx" && <Transactions />}
+          {page === "acc" && <Accounts />}
           {page === "budget" && <Budgets />}
           {page === "save" && <Savings />}
           {page === "inv" && <Investments />}

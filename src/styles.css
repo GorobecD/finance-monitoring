@@ -355,3 +355,18 @@ tr:hover .row-actions, .tx-row:hover .row-actions, .cash-row:hover .row-actions 
 .theme-desc { font-size: 11px; }
 .theme-group + .theme-group { margin-top: 18px; }
 .theme-group-title { margin: 0 0 8px; font: 700 11px var(--body); letter-spacing: .2em; text-transform: uppercase; }
+
+/* ---------- forecast ---------- */
+.fc-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 22px; align-items: start; }
+@media (max-width: 1100px) { .fc-grid { grid-template-columns: 1fr 1fr; } }
+.fc-label { font-size: 10px; letter-spacing: .2em; color: var(--muted); margin-bottom: 6px; }
+.fc-big { font: 700 36px/1.1 var(--head); margin-bottom: 10px; }
+.fc-main .bar { margin-bottom: 6px; }
+.fc-num { font: 700 22px var(--head); margin-bottom: 4px; }
+.fc-up { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.fc-chip { all: unset; cursor: pointer; font-size: 12px; padding: 4px 10px; border: 1px solid var(--line); border-radius: var(--btn-r, 0); color: var(--text); }
+.fc-chip:hover { border-color: var(--cyan); }
+.fc-chip.pos { color: var(--green); }
+.tone-text-yellow { color: var(--yellow); } .tone-text-red { color: var(--red); }
+.acc-card.dim { opacity: .5; }
+.fc-chip.late { border-color: var(--yellow); color: var(--yellow); }

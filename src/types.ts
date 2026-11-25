@@ -13,8 +13,8 @@ export interface Category {
 export interface Tx {
   id: string;
   date: string; // YYYY-MM-DD
-  type: "income" | "expense" | "transfer";
-  amount: number; // in original currency; for transfer: + to pot, - from pot
+  type: "income" | "expense" | "transfer" | "move";
+  amount: number; // in original currency; transfer: + to pot / - from pot; move: amount leaving accountId
   currency: Cur;
   uah: number; // UAH value at entry time (same sign as amount)
   categoryId?: string;
@@ -22,6 +22,19 @@ export interface Tx {
   potId?: string;
   recurringId?: string;
   note?: string;
+  accountId?: string; // missing = default account
+  toAccountId?: string; // move only
+  toAmount?: number; // move only: amount arriving, in target account currency
+}
+
+export interface Account {
+  id: string;
+  name: string;
+  icon: string;
+  kind: "card" | "cash" | "deposit";
+  currency: Cur;
+  initial: number; // opening balance in account currency
+  archived?: boolean;
 }
 
 export interface Recurring {
@@ -34,6 +47,7 @@ export interface Recurring {
   source?: IncomeSource;
   day: number;
   active: boolean;
+  accountId?: string;
 }
 
 export interface Pot {
@@ -102,12 +116,14 @@ export interface Settings {
   startBalance: number;
   rates: Rates;
   theme?: string;
+  defaultAccount?: string;
   fx?: boolean;
 }
 
 export interface Data {
   version: 1;
   categories: Category[];
+  accounts: Account[];
   txs: Tx[];
   budgets: Record<string, number>; // categoryId -> monthly UAH limit
   recurring: Recurring[];
