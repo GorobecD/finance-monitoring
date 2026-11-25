@@ -48,42 +48,6 @@
   & .boot-text { animation: none; }
 }
 
-/* ---------- МІНІМАЛ: light, clean ---------- */
-[data-theme="minimal"] {
-  --bg: #f4f5f8;
-  --bg2: #ffffff;
-  --panel: #ffffff;
-  --line: #e3e6ee;
-  --text: #16181f;
-  --muted: #7a8194;
-  --cyan: #2f6bff;
-  --magenta: #e5487d;
-  --yellow: #d98a00;
-  --green: #12a46b;
-  --red: #e5383b;
-  --head: "Manrope", "Segoe UI", sans-serif;
-  --body: "Manrope", "Segoe UI", sans-serif;
-  --on-acc: #ffffff;
-  --side-bg: #ffffff;
-  --top-bg: #ffffffcc;
-  --input-bg: #f7f8fb;
-  --modal-bg: #ffffff;
-  --overlay: #16181f55;
-  --panel-shadow: 0 1px 2px rgba(20, 24, 40, .04), 0 4px 16px rgba(20, 24, 40, .04);
-  --chart-grid: #eceef3;
-  color-scheme: light;
-}
-[data-theme="minimal"] .bg-grid { background: var(--bg); }
-[data-theme="minimal"] .logo em { color: var(--cyan); }
-[data-theme="minimal"] .btn { background: transparent; }
-[data-theme="minimal"] .btn.primary, [data-theme="minimal"] .btn.green { background: var(--acc); color: #fff; }
-[data-theme="minimal"] .btn.primary:hover, [data-theme="minimal"] .btn.green:hover { filter: brightness(1.08); }
-[data-theme="minimal"] .stat-value, [data-theme="minimal"] .networth { font-weight: 800; }
-[data-theme="minimal"] input[type=date]::-webkit-calendar-picker-indicator { filter: none; }
-
-/* ---------- category palettes (map neon category colors per theme) ---------- */
-[data-theme="minimal"] { --cat-0: #2f6bff; --cat-1: #3aa0f0; --cat-2: #12a46b; --cat-3: #2bb5a0; --cat-4: #1fb8c9; --cat-5: #4a5cf0; --cat-6: #e5487d; --cat-7: #8b5cf6; --cat-8: #ec7aa8; --cat-9: #7c6cf0; --cat-10: #f08a24; --cat-11: #d9a400; --cat-12: #9aa1b2; --cat-13: #c9b000; --cat-14: #e5383b; }
-
 /* ---------- МАЯМІ: neon sunset, palms, 80s crime-drama vibe ---------- */
 [data-theme="miami"] {
   --bg: #1a0933;

@@ -4,9 +4,8 @@
    frosted-glass panels. Loaded last: overrides drawn scenes.
    ========================================================= */
 
-:root:is([data-theme="neon"], [data-theme="minimal"], [data-theme="miami"], [data-theme="psycamp"], [data-theme="family"],
-  [data-theme="abyss"], [data-theme="quarantine"], [data-theme="testlab"], [data-theme="factory"], [data-theme="pantheon"],
-  [data-theme="galaxy"], [data-theme="sewer"], [data-theme="lofi"], [data-theme="ocean"]) .bg-grid {
+:root:is([data-theme="neon"], [data-theme="miami"], [data-theme="family"],
+  [data-theme="abyss"], [data-theme="sewer"]) .bg-grid {
   background:
     radial-gradient(ellipse 120% 90% at 50% 45%, transparent 40%, var(--vignette, rgba(0,0,0,.55)) 100%),
     var(--tint),
@@ -16,12 +15,12 @@
 }
 
 /* frosted glass for dark photo themes */
-:root:is([data-theme="neon"], [data-theme="miami"], [data-theme="abyss"], [data-theme="quarantine"], [data-theme="galaxy"],
-  [data-theme="sewer"], [data-theme="lofi"], [data-theme="ocean"], [data-theme="psycamp"]) :is(.side, .top) {
+:root:is([data-theme="neon"], [data-theme="miami"], [data-theme="abyss"],
+  [data-theme="sewer"]) :is(.side, .top) {
   backdrop-filter: blur(18px) saturate(1.3);
 }
-:root:is([data-theme="neon"], [data-theme="miami"], [data-theme="abyss"], [data-theme="quarantine"], [data-theme="galaxy"],
-  [data-theme="sewer"], [data-theme="lofi"], [data-theme="ocean"]) :is(.panel, .stat) {
+:root:is([data-theme="neon"], [data-theme="miami"], [data-theme="abyss"],
+  [data-theme="sewer"]) :is(.panel, .stat) {
   backdrop-filter: blur(14px) saturate(1.25);
 }
 
@@ -33,13 +32,6 @@
 }
 [data-theme="neon"] .bg-grid::after { opacity: .35; }
 
-[data-theme="minimal"] {
-  --photo: url("/bg/minimal.webp");
-  --tint: linear-gradient(180deg, rgba(244,245,248,.72), rgba(244,245,248,.88));
-  --vignette: rgba(244,245,248,0);
-  --panel: rgba(255,255,255,.82); --side-bg: rgba(255,255,255,.7); --top-bg: rgba(255,255,255,.6);
-}
-[data-theme="minimal"] :is(.panel, .stat, .side, .top) { backdrop-filter: blur(20px) saturate(1.4); }
 
 [data-theme="miami"] {
   --photo: url("/bg/miami.webp"); --photo-pos: center 60%;
@@ -48,11 +40,6 @@
 }
 [data-theme="miami"] .bg-grid::after { display: none; }
 
-[data-theme="psycamp"] {
-  --photo: url("/bg/psycamp.webp");
-  --tint: linear-gradient(160deg, rgba(60,20,110,.55), rgba(42,20,70,.35) 50%, rgba(232,63,123,.25));
-  --photo-filter: saturate(1.35) hue-rotate(-12deg);
-}
 
 [data-theme="family"] {
   --photo: url("/bg/family.webp");
@@ -66,38 +53,10 @@
   --panel: rgba(3, 40, 58, .42);
 }
 
-[data-theme="quarantine"] {
-  --photo: url("/bg/quarantine.webp"); --photo-pos: center 70%;
-  --tint: linear-gradient(180deg, rgba(42,26,58,.55), rgba(18,15,20,.35) 45%, rgba(18,15,20,.85));
-}
-[data-theme="quarantine"] .panel { background: linear-gradient(180deg, rgba(255,255,255,.03), transparent), rgba(22,18,20,.74); }
-[data-theme="quarantine"] .stat { background: rgba(22,18,20,.72); }
 
-[data-theme="testlab"] {
-  --photo: url("/bg/testlab.webp"); --photo-pos: 92% 40%; --hero-pos: 100% 35%;
-  --tint: linear-gradient(180deg, rgba(233,236,239,.6), rgba(233,236,239,.8));
-  --vignette: rgba(40,48,56,.25);
-  --photo-filter: grayscale(.6) brightness(1.08);
-}
 
-[data-theme="factory"] {
-  --photo: url("/bg/factory.webp");
-  --tint: linear-gradient(180deg, rgba(36,34,31,.45), rgba(20,18,16,.78));
-  --photo-filter: saturate(.85) contrast(1.1);
-}
-[data-theme="factory"] .bg-grid { animation: none !important; }
 
-[data-theme="pantheon"] {
-  --photo: url("/bg/pantheon.webp"); --photo-pos: center 55%;
-  --tint: linear-gradient(180deg, rgba(13,16,36,.55), rgba(13,16,36,.82));
-  --photo-filter: saturate(1.1) contrast(1.05);
-}
 
-[data-theme="galaxy"] {
-  --photo: url("/bg/galaxy.webp"); --photo-pos: center 65%;
-  --tint: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.6));
-  --panel: rgba(4, 6, 12, .58); --side-bg: rgba(0, 0, 0, .6); --top-bg: rgba(0, 0, 0, .35);
-}
 
 [data-theme="sewer"] {
   --photo: url("/bg/sewer.webp");
@@ -106,17 +65,7 @@
 }
 [data-theme="sewer"] .panel { background: rgba(28, 43, 32, .82); }
 
-[data-theme="lofi"] {
-  --photo: url("/bg/lofi.webp");
-  --tint: linear-gradient(180deg, rgba(43,38,80,.55), rgba(90,60,130,.35) 60%, rgba(246,165,192,.25));
-  --panel: rgba(59, 51, 102, .48); --side-bg: rgba(43, 38, 80, .45);
-}
 
-[data-theme="ocean"] {
-  --photo: url("/bg/ocean.webp");
-  --tint: linear-gradient(180deg, rgba(2,40,70,.35), rgba(2,27,46,.75));
-  --panel: rgba(4, 48, 77, .45);
-}
 
 /* credits list */
 .credits { display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
@@ -146,29 +95,14 @@
 [data-theme="neon"] { --tint: linear-gradient(115deg, rgba(4,5,13,.78) 0%, rgba(4,5,13,.5) 50%, rgba(40,4,50,.35) 100%); --panel: rgba(8,11,28,.55); }
 [data-theme="miami"] { --tint: linear-gradient(180deg, rgba(22,7,51,.45) 0%, rgba(60,10,70,.2) 55%, rgba(22,7,51,.65) 100%); --panel: rgba(20,6,40,.5); }
 [data-theme="abyss"] { --tint: linear-gradient(180deg, rgba(1,40,60,.15), rgba(1,19,31,.6)); --panel: rgba(3,40,58,.36); }
-[data-theme="quarantine"] { --tint: linear-gradient(180deg, rgba(42,26,58,.35), rgba(18,15,20,.15) 45%, rgba(18,15,20,.7)); }
-[data-theme="quarantine"] .panel { background: rgba(22,18,20,.62); backdrop-filter: blur(12px); }
-[data-theme="galaxy"] { --tint: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.45)); --panel: rgba(4,6,12,.5); }
 [data-theme="sewer"] { --tint: linear-gradient(180deg, rgba(10,40,18,.4), rgba(10,25,14,.7)); }
 [data-theme="sewer"] .panel { background: rgba(28,43,32,.72); backdrop-filter: blur(10px); }
-[data-theme="factory"] { --tint: linear-gradient(180deg, rgba(36,34,31,.3), rgba(20,18,16,.62)); }
-[data-theme="pantheon"] { --tint: linear-gradient(180deg, rgba(13,16,36,.35), rgba(13,16,36,.7)); }
 [data-theme="family"] { --tint: linear-gradient(180deg, rgba(11,14,19,.35), rgba(11,14,19,.62)); }
-[data-theme="psycamp"] { --tint: linear-gradient(160deg, rgba(60,20,110,.4), rgba(42,20,70,.15) 50%, rgba(232,63,123,.2)); }
-[data-theme="minimal"] { --tint: linear-gradient(180deg, rgba(244,245,248,.5), rgba(244,245,248,.78)); --hero-shade: linear-gradient(90deg, rgba(10,20,40,.55), rgba(10,20,40,.1) 60%, transparent); }
-[data-theme="testlab"] { --tint: linear-gradient(180deg, rgba(233,236,239,.45), rgba(233,236,239,.7)); }
 
 /* hero per-theme touches */
 [data-theme="family"] .hero { filter: grayscale(.85) sepia(.35) contrast(1.1); }
 [data-theme="family"] .hero-title { font-family: var(--head); font-weight: 900; }
-[data-theme="psycamp"] .hero { border: 4px solid #2a1446; box-shadow: 6px 7px 0 #1a0b2e; }
 [data-theme="sewer"] .hero { border: 4px solid #0a0f0b; box-shadow: 6px 6px 0 #0a0f0b; }
-[data-theme="pantheon"] .hero { border: 3px solid #b8902a; }
-[data-theme="pantheon"] .hero-title { background: linear-gradient(180deg, #fff6d0, #e6c15a 55%, #a8842a); -webkit-background-clip: text; background-clip: text; color: transparent; }
-[data-theme="galaxy"] .hero-title { color: #000; -webkit-text-stroke: 2px #ffe81f; text-shadow: none; }
 [data-theme="miami"] .hero-title { font-style: italic; text-shadow: 3px 3px 0 #ff3d8b, 0 0 24px rgba(255,61,139,.6); }
-[data-theme="quarantine"] .hero { clip-path: polygon(0 4px, 30% 0, 60% 5px, 100% 0, 100% 100%, 70% calc(100% - 4px), 35% 100%, 0 calc(100% - 3px)); }
-[data-theme="testlab"] .hero-kicker::before { content: "ТЕСТ-КАМЕРА · "; }
-[data-theme="factory"] .hero { border: none; box-shadow: var(--win); }
 [data-theme="neon"] .hero { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px)); }
 [data-theme="neon"] .hero-title { text-shadow: 0 0 18px var(--cyan), 0 2px 14px rgba(0,0,0,.6); }
